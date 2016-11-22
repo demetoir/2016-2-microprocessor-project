@@ -1,0 +1,14 @@
+.\obj\debug_frmwrk.o: debug_frmwrk.c
+.\obj\debug_frmwrk.o: debug_frmwrk.h
+.\obj\debug_frmwrk.o: lpc17xx_uart.h
+.\obj\debug_frmwrk.o: C:\Keil_v5\ARM\INC\NXP\LPC17xx\LPC17xx.h
+.\obj\debug_frmwrk.o: C:\Keil_v5\ARM\CMSIS\Include\core_cm3.h
+.\obj\debug_frmwrk.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+.\obj\debug_frmwrk.o: C:\Keil_v5\ARM\CMSIS\Include\core_cmInstr.h
+.\obj\debug_frmwrk.o: C:\Keil_v5\ARM\CMSIS\Include\core_cmFunc.h
+.\obj\debug_frmwrk.o: C:\Keil_v5\ARM\INC\NXP\LPC17xx\system_LPC17xx.h
+.\obj\debug_frmwrk.o: lpc_types.h
+.\obj\debug_frmwrk.o: lpc17xx_gpio.h
+.\obj\debug_frmwrk.o: lpc17xx_pinsel.h
+.\obj\debug_frmwrk.o: LPC1768_Huins.h
+.\obj\debug_frmwrk.o: lpc17xx_libcfg_default.h
