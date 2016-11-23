@@ -82,7 +82,6 @@ uint8_t Keypad_Value			= 	KEYPAD_UP;
 char 	cKeypad_Value 			=	CHAR_KEYPAD_UP;
 //		end keypad varaibles
 
-
 //		stepping motor variables
 typedef enum { move, stop, } MOTOR_STATE;
 MOTOR_STATE motor_state = stop;
@@ -91,9 +90,10 @@ MOTOR_STATE motor_state = stop;
 //		uart variables
 #define UART_DEFAULT_INPUT 'X'
 char char_uart_input = UART_DEFAULT_INPUT; 
+#define UART_BUFFER_SIZE 100
 uint8_t ch;
-uint8_t aTxBuffer[10];	// 문자열 저장 버퍼
-uint8_t buffer_count = 0;	// 현재 Write 버퍼 위치
+uint8_t aTxBuffer[UART_BUFFER_SIZE];	// 문자열 저장 버퍼
+uint8_t buffer_count = 0;			// 현재 Write 버퍼 위치
 //		end uart varaibles
 
 ////////////////////////////////////////////////////////////////////////////////////
@@ -128,12 +128,11 @@ void init_EXTI(void);
 void init_FND(void);
 void init_timer0(void);
 void init(void);
+void uart_init(void);
 //		end init function 
 
 ////////////////////////////////////////////////////////////////////////////////////////
 /*end declare function ---------------------------------------------------------------*/
-
-
 
 /* Private function ------------------------------------------------------------------*/
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -163,6 +162,71 @@ void load_LCP_GPIO_setting_to(LPC_GPIO_TypeDef setting[5]){
 }
 //		end GPIO setting function
 
+//		init function
+void init_lcd() {
+	GLCD_init();                              /* Initialize the GLCD           */
+	GLCD_clear(White);                        /* Clear the GLCD                */
+	PAINT_LCD = true;
+	LCD_refresh();
+}
+
+void init_keypad() {
+	Keypad_DIR_Input();
+	set_EXT_IO_DIRECTION('C');
+	Keypad_test();
+	load_LCP_GPIO_setting_to(keypad_GPIO_SETTING);
+}
+
+void init_EXTI() {
+	EXTI_Init();	// EXTI 초기화
+	AF_ConfigPin(GPIO_PORT_2, PINSEL_PIN_10, PINSEL_FUNC_1);	// 단순 GPIO 기능이 아닌 Alternate Function을 사용하기 위해 설정
+	EXTI_ConfigPin(EXTI_EINT0); // EXTI0 설정
+	NVIC_EnableIRQ(EINT0_IRQn); // EXTI0 활성화
+}
+
+void init_FND() {
+	FND_Init();	// FND 사용 PIN 초기화
+	set_EXT_IO_DIRECTION('B');
+	FND_blink();
+	load_LCP_GPIO_setting_to(FND_GPIO_SETTING);
+}
+
+void init_timer0() {
+	//timer0 init
+	TIM_ConfigStruct.PrescaleOption = TIM_PRESCALE_USVAL;	//	us(microsecond) 占쏙옙占쏙옙占쏙옙占쏙옙 Prescale 占쏙옙占쏙옙
+	TIM_ConfigStruct.PrescaleValue = 100;	//	100us
+	TIM_MatchConfigStruct.MatchChannel = 0;	//	0占쏙옙 채占쏙옙 占쏙옙占쏙옙
+	TIM_MatchConfigStruct.IntOnMatch = ENABLE;	//	Timer占쏙옙 占쏙옙치占쏙옙 占쏙옙  Interrupt 占쌩삼옙 Enable
+	TIM_MatchConfigStruct.ResetOnMatch = ENABLE;	//	Timer占쏙옙 占쏙옙치占쏙옙 占쏙옙  Reset Enable
+	TIM_MatchConfigStruct.StopOnMatch = DISABLE;	//	Timer占쏙옙 占쏙옙치占쏙옙 占쏙옙 Timer Stop Disable
+	TIM_MatchConfigStruct.ExtMatchOutputType = TIM_EXTMATCH_NOTHING;	//	Timer 占쏙옙치占쌀띰옙 占싣뱄옙占쏙옙 占쌤븝옙 占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙 (占쌤부뤄옙 占쏙옙占쏙옙占쏙옙占쏙옙 占십깍옙 占쏙옙占쏙옙占쏙옙 GPIO占쏙옙 占쏙옙占쏙옙占쏙옙占쏙옙 占십아듸옙 占쏙옙.)
+	TIM_MatchConfigStruct.MatchValue = 10000;	// Timer 占쏙옙치 占쏙옙 占쏙옙占쏙옙 100us * 10000占쏙옙 = 1占쏙옙
+
+	TIM_Init(LPC_TIM0, TIM_TIMER_MODE,&TIM_ConfigStruct);	//  TIM_ConfigStruct 설정 적용
+	TIM_ConfigMatch(LPC_TIM0,&TIM_MatchConfigStruct);		// TIM_MatchConfigStruct 설정 적용
+	NVIC_EnableIRQ(TIMER0_IRQn);	//	TIMER0 Interrupt 활성화
+	TIM_Cmd(LPC_TIM0, ENABLE);	//	Timer Start
+}
+
+void init_stepping_motor() {
+	set_EXT_IO_DIRECTION('A');
+	Motor_Init();
+	move_steppingMotor();
+	load_LCP_GPIO_setting_to(step_motor_GPIO_SETTING);
+}
+
+void init(){
+	load_LCP_GPIO_setting_to(default_GPIO_SETTING);
+	init_FND();
+	init_timer0();
+	init_lcd();
+	init_keypad();
+	init_EXTI();
+	init_stepping_motor();
+	uart_init();
+}
+//		init function
+
 //		etc function
 void set_EXT_IO_DIRECTION(char EXT_IO_NUM) {
 	if(EXT_IO_NUM == 'A' || EXT_IO_NUM == 'a')
@@ -175,6 +239,7 @@ void set_EXT_IO_DIRECTION(char EXT_IO_NUM) {
 //		etc function
 
 //		modduel function
+//			lcd function
 void LCD_refresh (void){
 	if(PAINT_LCD == false) return;
 	PAINT_LCD = false;
@@ -200,6 +265,7 @@ void LCD_refresh (void){
 
 }
 
+//			FND function
 void FND_blink(){
 	/* time mmss */
 	FND_COM_DATA_Select(8,time_1s);
@@ -229,6 +295,7 @@ void FND_blink(){
 	FND_Init();
 }
 
+//			keypad function
 void Keypad_test(){
 	int Keypad_Value = Keypad('C');
 	if (Keypad_Value == KEYPAD_UP)
@@ -240,23 +307,103 @@ void Keypad_test(){
 
 }
 
-void UART_communication(void) {
-	ch = UART_ReceiveByte(LPC_UART0);	// Polling으로 Data 읽어오기
+//			uart function 
+bool is_uart_connected = false;
+#define uart_msg_mark_connection	"connnect_uart"
 
-	if (ch) {// Data가 존재한다면..
-		aTxBuffer[buffer_count] = ch;	// 버퍼에 저장
 
-		UARTPuts(LPC_UART0, &ch);	// 하이퍼터미널로 저장된 Data 출력
 
-		UARTPuts(LPC_UART0, "\r\n");	// CR(Carriage Return), LF(Line Feed) 개행
-		char_uart_input = aTxBuffer[0];
-		motor_state = move;
+//통신의 끝은 eof???
+typedef enum {SEND_CONNECTION_MSG, RECEIVE_CONNECTION_MSG, 
+			UART_CONNECTED, UART_DISCONNECTED
+} UART_CONNECTION_STATE;
+UART_CONNECTION_STATE UART_current_state = UART_DISCONNECTED;
+bool UART_is_refresh = false;
+int uart_refresh_count = 0;
 
-		buffer_count = 0;	 // 저장 위치 초기화
-		memset(aTxBuffer, 0x00, sizeof(aTxBuffer)); // Buffer 클리어			
-	}
+void uart_init(void) {
+	Uart0_Init();	// UART0 초기화
+	UARTPuts(LPC_UART0, "\r\n hello world \r\n");
+	UART_is_refresh = true;
 }
 
+// void uart_clear_buffer() {
+	// memset(aTxBuffer, 0x00, sizeof(aTxBuffer)); // Buffer 클리어					
+	// buffer_count = 0;
+// }
+
+// void uart_send_msg(char msg[UART_BUFFER_SIZE]) {
+	// UARTPuts(LPC_UART0, msg);
+// }
+
+// int uart_receive_msg(char msg[UART_BUFFER_SIZE]) {
+	// int bufSize = 0;
+
+	// ch = UART_ReceiveByte(LPC_UART0);	// Polling으로 Data 읽어오기
+	// //receive connection msg
+	// while (ch) {
+		// msg[bufSize] = ch;
+		// if (bufSize == UART_BUFFER_SIZE) break;
+		// bufSize++;
+	// }
+
+	// return bufSize;
+// }
+
+// void UART_communication(void) {
+	// if (UART_is_refresh == false) return;
+	// UART_is_refresh = false;
+
+	// if (UART_current_state == UART_DISCONNECTED
+		// || UART_current_state == SEND_CONNECTION_MSG) {
+		// //send connection msg 5초에 한번씩 새로만듦
+
+		// int seqnum;
+		// char cSeqnum[5];
+		// //get seqnum from  cSeqnum
+
+		// uart_send_msg(msg);
+	// }
+	// else if (UART_current_state == RECEIVE_CONNECTION_MSG){		
+		// //receive connection msg
+		// buffer_count = uart_receive_msg(aTxBuffer);
+
+		// if (successconnection) {
+
+
+		// }
+		// else {
+
+
+
+		// }
+
+		// //clear buffer
+		// //UARTPuts(LPC_UART0, "\r\n");	// CR(Carriage Return), LF(Line Feed) 개행
+		// uart_clear_buffer();
+	// }
+	// else if (UART_current_state == UART_CONNECTED){
+		// //send msg
+		// //send some msg
+		
+
+		// //receive msg
+		// //uart_receive_msg(msg);
+
+		// // msg 처리
+
+	// }
+	// //this error case
+	// else {
+
+	// }
+	
+	// return;
+// }
+//			end uart function 
+
+
+//			stepMotor function
 #define forward_motor_time 150
 #define backward_motor_time 150
 #define motor_time 200
@@ -319,86 +466,38 @@ void StepMotor_move_CWhalf(uint8_t cycle) {
 	}
 }
 
+void stepMotor_move_cw() {
+	uint32_t count = 0;
+	//GPIO_SetValue(GPIO_PORT_3, GPIO_PIN_26);
+	for (count = 0; count <6; count++) {
+		set_motor_output(1, 1, 0, 0);
+		Delay(SEC_1 / backward_motor_time);
+		set_motor_output(0, 1, 1, 0);
+		Delay(SEC_1 / backward_motor_time);
+		set_motor_output(0, 0, 1, 1);
+		Delay(SEC_1 / backward_motor_time);
+		set_motor_output(1, 0, 0, 1);
+		Delay(SEC_1 / backward_motor_time);
+	}
+}
+
+void stepMotor_move_ccw() {
+	StepMotor_Cycle(1);
+}
+
 void move_steppingMotor() {
 	if (cKeypad_Value == '1') {
-		StepMotor_Cycle(1);
+		stepMotor_move_cw();
 	}
 	else if (cKeypad_Value == '3') {
 		//back ward cycle
-		StepMotor_move_CWhalf(1);
+		stepMotor_move_ccw();
 	}
 }
+//			endstepMotor function
+
 //		end module function
 
-//		init function
-void init_lcd() {
-	GLCD_init();                              /* Initialize the GLCD           */
-	GLCD_clear(White);                        /* Clear the GLCD                */
-	PAINT_LCD = true;
-	LCD_refresh();
-}
-
-void init_keypad() {
-	Keypad_DIR_Input();
-	set_EXT_IO_DIRECTION('C');
-	Keypad_test();
-	load_LCP_GPIO_setting_to(keypad_GPIO_SETTING);
-}
-
-void init_EXTI() {
-	EXTI_Init();	// EXTI 초기화
-	AF_ConfigPin(GPIO_PORT_2, PINSEL_PIN_10, PINSEL_FUNC_1);	// 단순 GPIO 기능이 아닌 Alternate Function을 사용하기 위해 설정
-	EXTI_ConfigPin(EXTI_EINT0); // EXTI0 설정
-	NVIC_EnableIRQ(EINT0_IRQn); // EXTI0 활성화
-}
-
-void init_FND() {
-	FND_Init();	// FND 사용 PIN 초기화
-	set_EXT_IO_DIRECTION('B');
-	FND_blink();
-	load_LCP_GPIO_setting_to(FND_GPIO_SETTING);
-}
-
-void init_timer0() {
-	//timer0 init
-	TIM_ConfigStruct.PrescaleOption = TIM_PRESCALE_USVAL;	//	us(microsecond) 占쏙옙占쏙옙占쏙옙占쏙옙 Prescale 占쏙옙占쏙옙
-	TIM_ConfigStruct.PrescaleValue = 100;	//	100us
-	TIM_MatchConfigStruct.MatchChannel = 0;	//	0占쏙옙 채占쏙옙 占쏙옙占쏙옙
-	TIM_MatchConfigStruct.IntOnMatch = ENABLE;	//	Timer占쏙옙 占쏙옙치占쏙옙 占쏙옙  Interrupt 占쌩삼옙 Enable
-	TIM_MatchConfigStruct.ResetOnMatch = ENABLE;	//	Timer占쏙옙 占쏙옙치占쏙옙 占쏙옙  Reset Enable
-	TIM_MatchConfigStruct.StopOnMatch = DISABLE;	//	Timer占쏙옙 占쏙옙치占쏙옙 占쏙옙 Timer Stop Disable
-	TIM_MatchConfigStruct.ExtMatchOutputType = TIM_EXTMATCH_NOTHING;	//	Timer 占쏙옙치占쌀띰옙 占싣뱄옙占쏙옙 占쌤븝옙 占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙 (占쌤부뤄옙 占쏙옙占쏙옙占쏙옙占쏙옙 占십깍옙 占쏙옙占쏙옙占쏙옙 GPIO占쏙옙 占쏙옙占쏙옙占쏙옙占쏙옙 占십아듸옙 占쏙옙.)
-	TIM_MatchConfigStruct.MatchValue = 10000;	// Timer 占쏙옙치 占쏙옙 占쏙옙占쏙옙 100us * 10000占쏙옙 = 1占쏙옙
-
-	TIM_Init(LPC_TIM0, TIM_TIMER_MODE,&TIM_ConfigStruct);	//  TIM_ConfigStruct 설정 적용
-	TIM_ConfigMatch(LPC_TIM0,&TIM_MatchConfigStruct);		// TIM_MatchConfigStruct 설정 적용
-	NVIC_EnableIRQ(TIMER0_IRQn);	//	TIMER0 Interrupt 활성화
-	TIM_Cmd(LPC_TIM0, ENABLE);	//	Timer Start
-}
-
-void init_stepping_motor() {
-	set_EXT_IO_DIRECTION('A');
-	Motor_Init();
-	move_steppingMotor();
-	load_LCP_GPIO_setting_to(step_motor_GPIO_SETTING);
-}
-
-void uart_init(void) {
-	Uart0_Init();	// UART0 초기화
-	UARTPuts(LPC_UART0, "\r\n Enter the Content, 1~8 LED Toggle\r\n");
-}
-
-void init(){
-	load_LCP_GPIO_setting_to(default_GPIO_SETTING);
-	init_FND();
-	init_timer0();
-	init_lcd();
-	init_keypad();
-	init_EXTI();
-	init_stepping_motor();
-	uart_init();
-}
-//		init function
 
 /* end Private function --------------------------------------------------------------*/
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -419,7 +518,7 @@ int main(void){
 		save_LPC_GPIO_setting_to(step_motor_GPIO_SETTING);
 		move_steppingMotor();
 
-		UART_communication();
+		//UART_communication();
 	}
 }
 
@@ -453,6 +552,14 @@ void TIMER0_IRQHandler(void){
 
 	//repaint
 	PAINT_LCD = true;
+
+
+	//uart_refresh count 
+	uart_refresh_count++;
+	if (uart_refresh_count == 5) {
+		UART_is_refresh = true;
+		uart_refresh_count = 0;
+	}
 }
 
 // INT button pressed

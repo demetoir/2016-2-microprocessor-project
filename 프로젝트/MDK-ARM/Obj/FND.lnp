@@ -1,8 +1,8 @@
 --cpu Cortex-M3
 ".\obj\system_lpc17xx.o"
 ".\obj\startup_lpc17xx.o"
-".\obj\glcd.o"
 ".\obj\main.o"
+".\obj\glcd.o"
 ".\obj\debug_frmwrk.o"
 ".\obj\lpc17xx_adc.o"
 ".\obj\lpc17xx_can.o"

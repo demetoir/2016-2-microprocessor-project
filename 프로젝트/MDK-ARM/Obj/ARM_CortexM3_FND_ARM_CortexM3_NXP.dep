@@ -1,20 +1,13 @@
 Dependencies for Project 'ARM_CortexM3_FND', Target 'ARM_CortexM3_NXP': (DO NOT MODIFY !)
 F (..\Src\system_LPC17xx.c)(0x58298EA0)(-c --cpu Cortex-M3 -D__RTX -g -O0 --apcs=interwork -I C:\Keil_v5\ARM\INC\NXP\LPC17xx -I ..\Inc -I ..\..\Huins_NXP_LPC1768_Library\Core\Device\NXP\LPC17xx\Include -I ..\..\Huins_NXP_LPC1768_Library\Drivers\include-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\Inc\NXP-D__UVISION_VERSION="522"-o .\obj\system_lpc17xx.o --omf_browse .\obj\system_lpc17xx.crf --depend .\obj\system_lpc17xx.d)
-F (..\Src\startup_LPC17xx.s)(0x58298EA0)(--cpu Cortex-M3 --pd "__RTX SETA 1" -g --apcs=interwork -IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\Inc\NXP--pd "__UVISION_VERSION SETA 522"--list .\lst\startup_lpc17xx.lst --xref -o .\obj\startup_lpc17xx.o --depend .\obj\startup_lpc17xx.d)
-F (.\font.h)(0x582AE71C)()
-F (.\GLCD.h)(0x582AE71C)()
-F (.\GLCD.c)(0x582C38A1)(-c --cpu Cortex-M3 -D__RTX -g -O0 --apcs=interwork -I C:\Keil_v5\ARM\INC\NXP\LPC17xx -I ..\Inc -I ..\..\Huins_NXP_LPC1768_Library\Core\Device\NXP\LPC17xx\Include -I ..\..\Huins_NXP_LPC1768_Library\Drivers\include-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\Inc\NXP-D__UVISION_VERSION="522"-o .\obj\glcd.o --omf_browse .\obj\glcd.crf --depend .\obj\glcd.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F5F8A8)
-I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x57F5F8A8)
-I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x57F5F8A8)
-I (C:\Keil_v5\ARM\INC\NXP\LPC17xx\LPC17xx.H)(0x570F3464)
+I (C:\Keil_v5\ARM\INC\NXP\LPC17xx\LPC17xx.h)(0x570F3464)
 I (C:\Keil_v5\ARM\CMSIS\Include\core_cm3.h)(0x570F3738)
 I (C:\Keil_v5\ARM\CMSIS\Include\core_cmInstr.h)(0x570F3738)
 I (C:\Keil_v5\ARM\CMSIS\Include\core_cmFunc.h)(0x570F3738)
 I (C:\Keil_v5\ARM\INC\NXP\LPC17xx\system_LPC17xx.h)(0x570F3464)
-I (GLCD.h)(0x582AE71C)
-I (font.h)(0x582AE71C)
-F (.\main.c)(0x58347531)(-c --cpu Cortex-M3 -D__RTX -g -O0 --apcs=interwork -I C:\Keil_v5\ARM\INC\NXP\LPC17xx -I ..\Inc -I ..\..\Huins_NXP_LPC1768_Library\Core\Device\NXP\LPC17xx\Include -I ..\..\Huins_NXP_LPC1768_Library\Drivers\include-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\Inc\NXP-D__UVISION_VERSION="522"-o .\obj\main.o --omf_browse .\obj\main.crf --depend .\obj\main.d)
+F (..\Src\startup_LPC17xx.s)(0x58298EA0)(--cpu Cortex-M3 --pd "__RTX SETA 1" -g --apcs=interwork -IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\Inc\NXP--pd "__UVISION_VERSION SETA 522"--list .\lst\startup_lpc17xx.lst --xref -o .\obj\startup_lpc17xx.o --depend .\obj\startup_lpc17xx.d)
+F (.\main.c)(0x58355D97)(-c --cpu Cortex-M3 -D__RTX -g -O0 --apcs=interwork -I C:\Keil_v5\ARM\INC\NXP\LPC17xx -I ..\Inc -I ..\..\Huins_NXP_LPC1768_Library\Core\Device\NXP\LPC17xx\Include -I ..\..\Huins_NXP_LPC1768_Library\Drivers\include-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\Inc\NXP-D__UVISION_VERSION="522"-o .\obj\main.o --omf_browse .\obj\main.crf --depend .\obj\main.d)
 I (C:\Keil_v5\ARM\INC\NXP\LPC17xx\LPC17xx.H)(0x570F3464)
 I (C:\Keil_v5\ARM\CMSIS\Include\core_cm3.h)(0x570F3738)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F5F8A8)
@@ -36,6 +29,17 @@ I (..\Inc\LED.H)(0x58298EA2)
 I (..\Inc\Keypad.H)(0x582C8D12)
 I (debug_frmwrk.h)(0x4FBF201A)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x57F5F8A8)
+F (.\GLCD.c)(0x582C38A1)(-c --cpu Cortex-M3 -D__RTX -g -O0 --apcs=interwork -I C:\Keil_v5\ARM\INC\NXP\LPC17xx -I ..\Inc -I ..\..\Huins_NXP_LPC1768_Library\Core\Device\NXP\LPC17xx\Include -I ..\..\Huins_NXP_LPC1768_Library\Drivers\include-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\Inc\NXP-D__UVISION_VERSION="522"-o .\obj\glcd.o --omf_browse .\obj\glcd.crf --depend .\obj\glcd.d)
+I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F5F8A8)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x57F5F8A8)
+I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x57F5F8A8)
+I (C:\Keil_v5\ARM\INC\NXP\LPC17xx\LPC17xx.H)(0x570F3464)
+I (C:\Keil_v5\ARM\CMSIS\Include\core_cm3.h)(0x570F3738)
+I (C:\Keil_v5\ARM\CMSIS\Include\core_cmInstr.h)(0x570F3738)
+I (C:\Keil_v5\ARM\CMSIS\Include\core_cmFunc.h)(0x570F3738)
+I (C:\Keil_v5\ARM\INC\NXP\LPC17xx\system_LPC17xx.h)(0x570F3464)
+I (GLCD.h)(0x582AE71C)
+I (font.h)(0x582AE71C)
 F (.\debug_frmwrk.c)(0x54DB191C)(-c --cpu Cortex-M3 -D__RTX -g -O0 --apcs=interwork -I C:\Keil_v5\ARM\INC\NXP\LPC17xx -I ..\Inc -I ..\..\Huins_NXP_LPC1768_Library\Core\Device\NXP\LPC17xx\Include -I ..\..\Huins_NXP_LPC1768_Library\Drivers\include-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\Inc\NXP-D__UVISION_VERSION="522"-o .\obj\debug_frmwrk.o --omf_browse .\obj\debug_frmwrk.crf --depend .\obj\debug_frmwrk.d)
 I (debug_frmwrk.h)(0x4FBF201A)
 I (lpc17xx_uart.h)(0x54DB17CC)
@@ -353,34 +357,3 @@ I (LPC1768_Huins.h)(0x54DB1DBE)
 I (lpc17xx_pinsel.h)(0x54D1B634)
 I (lpc17xx_exti.h)(0x54D1BA3C)
 I (lpc17xx_uart.h)(0x54DB17CC)
-F (.\debug_frmwrk.h)(0x4FBF201A)()
-F (.\lpc_types.h)(0x4FBF201A)()
-F (.\lpc17xx_adc.h)(0x4FBF201A)()
-F (.\lpc17xx_can.h)(0x4FBF201A)()
-F (.\lpc17xx_clkpwr.h)(0x4FBF201A)()
-F (.\lpc17xx_dac.h)(0x4FBF201A)()
-F (.\lpc17xx_emac.h)(0x4FBF201A)()
-F (.\lpc17xx_exti.h)(0x54D1BA3C)()
-F (.\lpc17xx_gpdma.h)(0x4FBF201A)()
-F (.\lpc17xx_gpio.h)(0x54D83E6C)()
-F (.\lpc17xx_i2c.h)(0x4FBF201A)()
-F (.\lpc17xx_i2s.h)(0x4FBF201A)()
-F (.\lpc17xx_iap.h)(0x4FBF201A)()
-F (.\lpc17xx_libcfg_default.h)(0x54DB1DBE)()
-F (.\lpc17xx_mcpwm.h)(0x4FBF201A)()
-F (.\lpc17xx_nvic.h)(0x4FBF201A)()
-F (.\lpc17xx_pinsel.h)(0x54D1B634)()
-F (.\lpc17xx_pwm.h)(0x54D3270E)()
-F (.\lpc17xx_qei.h)(0x4FBF201A)()
-F (.\lpc17xx_rit.h)(0x4FBF201A)()
-F (.\lpc17xx_rtc.h)(0x4FBF201A)()
-F (.\lpc17xx_spi.h)(0x4FBF201A)()
-F (.\lpc17xx_ssp.h)(0x4FBF201A)()
-F (.\lpc17xx_systick.h)(0x4FBF201A)()
-F (.\lpc17xx_timer.h)(0x4FBF201A)()
-F (.\lpc17xx_uart.h)(0x54DB17CC)()
-F (.\lpc17xx_wdt.h)(0x4FBF201A)()
-F (.\LPC1768_fnd.h)(0x54D9A063)()
-F (.\LPC1768_Huins.h)(0x54DB1DBE)()
-F (.\LPC1768_motor.h)(0x54DB21A5)()
-F (.\LPC1768_utility.h)(0x54DC45E1)()
