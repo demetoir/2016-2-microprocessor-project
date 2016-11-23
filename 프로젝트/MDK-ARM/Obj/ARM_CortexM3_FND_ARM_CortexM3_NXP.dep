@@ -7,7 +7,7 @@ I (C:\Keil_v5\ARM\CMSIS\Include\core_cmInstr.h)(0x570F3738)
 I (C:\Keil_v5\ARM\CMSIS\Include\core_cmFunc.h)(0x570F3738)
 I (C:\Keil_v5\ARM\INC\NXP\LPC17xx\system_LPC17xx.h)(0x570F3464)
 F (..\Src\startup_LPC17xx.s)(0x58298EA0)(--cpu Cortex-M3 --pd "__RTX SETA 1" -g --apcs=interwork -IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\Inc\NXP--pd "__UVISION_VERSION SETA 522"--list .\lst\startup_lpc17xx.lst --xref -o .\obj\startup_lpc17xx.o --depend .\obj\startup_lpc17xx.d)
-F (.\main.c)(0x58355D97)(-c --cpu Cortex-M3 -D__RTX -g -O0 --apcs=interwork -I C:\Keil_v5\ARM\INC\NXP\LPC17xx -I ..\Inc -I ..\..\Huins_NXP_LPC1768_Library\Core\Device\NXP\LPC17xx\Include -I ..\..\Huins_NXP_LPC1768_Library\Drivers\include-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\Inc\NXP-D__UVISION_VERSION="522"-o .\obj\main.o --omf_browse .\obj\main.crf --depend .\obj\main.d)
+F (.\main.c)(0x58358EE9)(-c --cpu Cortex-M3 -D__RTX -g -O0 --apcs=interwork -I C:\Keil_v5\ARM\INC\NXP\LPC17xx -I ..\Inc -I ..\..\Huins_NXP_LPC1768_Library\Core\Device\NXP\LPC17xx\Include -I ..\..\Huins_NXP_LPC1768_Library\Drivers\include-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\Inc\NXP-D__UVISION_VERSION="522"-o .\obj\main.o --omf_browse .\obj\main.crf --depend .\obj\main.d)
 I (C:\Keil_v5\ARM\INC\NXP\LPC17xx\LPC17xx.H)(0x570F3464)
 I (C:\Keil_v5\ARM\CMSIS\Include\core_cm3.h)(0x570F3738)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F5F8A8)
@@ -29,6 +29,7 @@ I (..\Inc\LED.H)(0x58298EA2)
 I (..\Inc\Keypad.H)(0x582C8D12)
 I (debug_frmwrk.h)(0x4FBF201A)
 I (C:\Keil_v5\ARM\ARMCC\include\string.h)(0x57F5F8A8)
+I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x57F5F8A8)
 F (.\GLCD.c)(0x582C38A1)(-c --cpu Cortex-M3 -D__RTX -g -O0 --apcs=interwork -I C:\Keil_v5\ARM\INC\NXP\LPC17xx -I ..\Inc -I ..\..\Huins_NXP_LPC1768_Library\Core\Device\NXP\LPC17xx\Include -I ..\..\Huins_NXP_LPC1768_Library\Drivers\include-IC:\Keil_v5\ARM\RV31\INC-IC:\Keil_v5\ARM\CMSIS\Include-IC:\Keil_v5\ARM\Inc\NXP-D__UVISION_VERSION="522"-o .\obj\glcd.o --omf_browse .\obj\glcd.crf --depend .\obj\glcd.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x57F5F8A8)
 I (C:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x57F5F8A8)

@@ -24,3 +24,4 @@
 .\obj\main.o: LPC1768_Huins.h
 .\obj\main.o: debug_frmwrk.h
 .\obj\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\obj\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
