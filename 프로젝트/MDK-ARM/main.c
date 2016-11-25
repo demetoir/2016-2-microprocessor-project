@@ -23,33 +23,149 @@
 #include "debug_frmwrk.h"
 #include <string.h>
 #include <stdlib.h>
+#include <stdio.h>
 ////////////////////////////////////////////////////////////////////////////////////
-/* Includes --------------------------------------------------------------------- */
+/* end Includes --------------------------------------------------------------------- */
 
 
 /* define ------------------------------------------------------------------------*/
 ////////////////////////////////////////////////////////////////////////////////////
-#define FND_BLINK_DELAY_TIME 			5000
 #define bool 							int
 #define false							0
 #define true 							1
-#define KEYPAD_UP						16
-#define CHAR_KEYPAD_UP					'X'
 ////////////////////////////////////////////////////////////////////////////////////
 /* end define --------------------------------------------------------------------*/
 
 
 /* Private variables -------------------------------------------------------------*/
 ////////////////////////////////////////////////////////////////////////////////////
-//		GPIO setting variables
+
+////////////////////////////////////////////////////////////////////////////////////
+/* end Private variables ---------------------------------------------------------*/
+
+
+/*declare function ---------------------------------------------------------------*/
+////////////////////////////////////////////////////////////////////////////////////
+
+/// utility function ??
+//		GPIO setting function
 LPC_GPIO_TypeDef    FND_GPIO_SETTING[5];
 LPC_GPIO_TypeDef    keypad_GPIO_SETTING[5];
 LPC_GPIO_TypeDef    step_motor_GPIO_SETTING[5];
 LPC_GPIO_TypeDef    default_GPIO_SETTING[5];
 LPC_GPIO_TypeDef    cleared_GPIO_SETTING[5];
-//		end GPIO setting variables
+void copy_GPIOn_setting(LPC_GPIO_TypeDef *source, LPC_GPIO_TypeDef *dest);
+void save_LPC_GPIO_setting_to(LPC_GPIO_TypeDef source[5]);
+void load_LCP_GPIO_setting_to(LPC_GPIO_TypeDef setting[5]);
+//		end GPIO setting function
 
-//		timer variables
+//		etc function ??
+void set_EXT_IO_DIRECTION(char EXT_IO_NUM);
+//		end etc function ??
+/// end utility function ??
+
+//		lcd fuction
+bool PAINT_LCD = false;
+void init_lcd(void);
+void LCD_refresh(void);
+//		end lcd fuction
+
+
+//		fnd fucntion
+#define FND_BLINK_DELAY_TIME 			5000
+void init_FND(void);
+void FND_blink(void);
+//		end fnd function
+
+
+
+//		keypad function
+#define KEYPAD_UP						16
+#define CHAR_KEYPAD_UP					'X'
+uint8_t Keypad_Value = KEYPAD_UP;
+char 	cKeypad_Value = CHAR_KEYPAD_UP;
+void init_keypad(void);
+void Keypad_test(void);
+//		end keypad function
+
+
+
+//		motor function
+typedef enum { move, stop, } MOTOR_STATE;
+MOTOR_STATE motor_state = stop;
+#define FORWARD_MOTOR_TIME 150
+#define BACKWARD_MOTOR_TIME 150
+#define MOTOR_DELAY_TIME 200
+void init_stepping_motor(void);
+void move_steppingMotor(void);
+void StepMotor_back_Cycle(uint8_t cycle);
+void set_motor_output(int a, int na, int b, int nb);
+void StepMotor_Cycle(uint8_t cycle);
+void stepMotor_move_cw(void);
+void stepMotor_move_ccw(void);
+//		end motor function
+
+
+//		uart function
+bool is_uart_connected = false;
+
+//통신의 끝은 eof???
+//		uart state
+typedef enum {
+	SEND_HANDSHAKE_MSG, RECEIVE_HANDSHAKE_MSG,
+	UART_CONNECTED, UART_DISCONNECTED
+} UART_CONNECTION_STATE;
+UART_CONNECTION_STATE UART_current_state = UART_DISCONNECTED;
+//		end uart state
+
+#define UART_DEFAULT_INPUT 'X'
+char char_uart_input = UART_DEFAULT_INPUT;
+
+#define UART_BUFFER_SIZE 100
+uint8_t ch;
+uint8_t aTxBuffer[UART_BUFFER_SIZE];	// 문자열 저장 버퍼
+uint8_t buffer_count = 0;			// 현재 Write 버퍼 위치
+
+									//		uart msg mark 
+#define UART_MSG_MARK_end					"end\r\n"
+#define UART_MSG_MARK_handshake_send		"send_handshake"
+#define UART_MSG_MARK_handshake_receive		"receive_handshake"
+#define UART_MSG_MARK_connected_confirm		"connected_confirm"
+#define UART_MSG_MARK_send					"send"
+#define UART_MSG_MARK_receive				"receive"
+#define UART_MSG_MAKR_disconnect			"disconnect"
+									//		end uart msg mark
+
+									//		uart refresh
+#define uart_refresh_time 5
+bool UART_refresh = false;
+int uart_refresh_time_count = 0;
+//		end uart refresh
+
+//		uart seq num
+#define uart_seq_num_size  100
+int uart_seq_num = 0;
+//		end uart seq num
+
+//		uart hand shake time
+#define uart_handShake_timeout 5
+int uart_handShake_time_count = 0;
+//		end uart hand shake time
+
+void uart_init(void);
+void uart_clearBuffer(void);
+void uart_sendMsg(char msg[UART_BUFFER_SIZE]);
+bool uart_receiveMsg(char buffer[UART_BUFFER_SIZE]);
+bool ishandShakeMsg(char msg[UART_BUFFER_SIZE]);
+void uart_makeHandShakeMsg(char msg[UART_BUFFER_SIZE], int seqnum);
+void UART_communication(void);
+
+//		end uart function
+
+//		interrupt key
+void init_EXTI(void);
+
+//		timer0
 uint8_t time_10m = 0;
 uint8_t time_1m = 0;
 uint8_t time_10s = 0;
@@ -72,62 +188,26 @@ char clap_time_1s = 0;
 
 TIM_TIMERCFG_Type TIM_ConfigStruct;
 TIM_MATCHCFG_Type TIM_MatchConfigStruct;
-//		end timer variables
 
-//		lcd variables
-bool PAINT_LCD = false;
-//		end lcd variables
-
-//		keypad varaibles
-uint8_t Keypad_Value = KEYPAD_UP;
-char 	cKeypad_Value = CHAR_KEYPAD_UP;
-//		end keypad varaibles
-
-//		stepping motor variables
-typedef enum { move, stop, } MOTOR_STATE;
-MOTOR_STATE motor_state = stop;
-//		end stepping motor variables
-
-//		uart variables
+void init_timer0(void);
+//		end timer0
 
 
+// system total init leave in main.c ??
+void init(void);
 
-//		end uart varaibles
-
-////////////////////////////////////////////////////////////////////////////////////
-/* end Private variables ---------------------------------------------------------*/
-
-
-/*declare function ---------------------------------------------------------------*/
-////////////////////////////////////////////////////////////////////////////////////
-//		GPIO setting function
-void copy_GPIOn_setting(LPC_GPIO_TypeDef *source, LPC_GPIO_TypeDef *dest);
-void save_LPC_GPIO_setting_to(LPC_GPIO_TypeDef source[5]);
-void load_LCP_GPIO_setting_to(LPC_GPIO_TypeDef setting[5]);
-//		end GPIO setting function
-
-//		etc function ??
-void set_EXT_IO_DIRECTION(char EXT_IO_NUM);
-//		end etc function ??
-
-//		module function
-void LCD_refresh(void);
-void FND_blink(void);
-void Keypad_test(void);
-
-void move_steppingMotor(void);
-void StepMotor_back_Cycle(uint8_t cycle);
 //		end modduel function
 
-//		init function
-void init_lcd(void);
-void init_keypad(void);
-void init_EXTI(void);
-void init_FND(void);
-void init_timer0(void);
-void init(void);
-void uart_init(void);
-//		end init function 
+
+void time_update(void);
+
+void TIMER0_IRQHandler(void);
+
+// INT button pressed
+void EINT0_IRQHandler(void);
+
+
+
 
 ////////////////////////////////////////////////////////////////////////////////////////
 /*end declare function ---------------------------------------------------------------*/
@@ -161,19 +241,6 @@ void load_LCP_GPIO_setting_to(LPC_GPIO_TypeDef setting[5]) {
 //		end GPIO setting function
 
 //		init function
-void init_lcd() {
-	GLCD_init();                              /* Initialize the GLCD           */
-	GLCD_clear(White);                        /* Clear the GLCD                */
-	PAINT_LCD = true;
-	LCD_refresh();
-}
-
-void init_keypad() {
-	Keypad_DIR_Input();
-	set_EXT_IO_DIRECTION('C');
-	Keypad_test();
-	load_LCP_GPIO_setting_to(keypad_GPIO_SETTING);
-}
 
 void init_EXTI() {
 	EXTI_Init();	// EXTI 초기화
@@ -182,12 +249,6 @@ void init_EXTI() {
 	NVIC_EnableIRQ(EINT0_IRQn); // EXTI0 활성화
 }
 
-void init_FND() {
-	FND_Init();	// FND 사용 PIN 초기화
-	set_EXT_IO_DIRECTION('B');
-	FND_blink();
-	load_LCP_GPIO_setting_to(FND_GPIO_SETTING);
-}
 
 void init_timer0() {
 	//timer0 init
@@ -206,12 +267,6 @@ void init_timer0() {
 	TIM_Cmd(LPC_TIM0, ENABLE);	//	Timer Start
 }
 
-void init_stepping_motor() {
-	set_EXT_IO_DIRECTION('A');
-	Motor_Init();
-	move_steppingMotor();
-	load_LCP_GPIO_setting_to(step_motor_GPIO_SETTING);
-}
 
 void init() {
 	load_LCP_GPIO_setting_to(default_GPIO_SETTING);
@@ -225,6 +280,7 @@ void init() {
 }
 //		init function
 
+
 //		etc function
 void set_EXT_IO_DIRECTION(char EXT_IO_NUM) {
 	if (EXT_IO_NUM == 'A' || EXT_IO_NUM == 'a')
@@ -237,7 +293,14 @@ void set_EXT_IO_DIRECTION(char EXT_IO_NUM) {
 //		etc function
 
 //		modduel function
+
 //			lcd function
+void init_lcd() {
+	GLCD_init();                              /* Initialize the GLCD           */
+	GLCD_clear(White);                        /* Clear the GLCD                */
+	PAINT_LCD = true;
+	LCD_refresh();
+}
 void LCD_refresh(void) {
 	if (PAINT_LCD == false) return;
 	PAINT_LCD = false;
@@ -262,8 +325,17 @@ void LCD_refresh(void) {
 	GLCD_displayChar(200, 80, 'x');
 
 }
+//			end lcd function
+
+
 
 //			FND function
+void init_FND() {
+	FND_Init();	// FND 사용 PIN 초기화
+	set_EXT_IO_DIRECTION('B');
+	FND_blink();
+	load_LCP_GPIO_setting_to(FND_GPIO_SETTING);
+}
 void FND_blink() {
 	/* time mmss */
 	FND_COM_DATA_Select(8, time_1s);
@@ -292,8 +364,15 @@ void FND_blink() {
 	FND_COM_CS();
 	FND_Init();
 }
+//			end sFND function
 
 //			keypad function
+void init_keypad() {
+	Keypad_DIR_Input();
+	set_EXT_IO_DIRECTION('C');
+	Keypad_test();
+	load_LCP_GPIO_setting_to(keypad_GPIO_SETTING);
+}
 void Keypad_test() {
 	int Keypad_Value = Keypad('C');
 	if (Keypad_Value == KEYPAD_UP)
@@ -304,90 +383,64 @@ void Keypad_test() {
 		cKeypad_Value = Keypad_Value + '0';
 
 }
+//			end keypad function
+
 
 //			uart function 
 
 //  ????
-bool is_uart_connected = false;
-
-//통신의 끝은 eof???
-//		uart state
-typedef enum {
-	SEND_HANDSHAKE_MSG, RECEIVE_HANDSHAKE_MSG,
-	UART_CONNECTED, UART_DISCONNECTED
-} UART_CONNECTION_STATE;
-UART_CONNECTION_STATE UART_current_state = UART_DISCONNECTED;
-//		end uart state
-
-#define UART_DEFAULT_INPUT 'X'
-char char_uart_input = UART_DEFAULT_INPUT;
-#define UART_BUFFER_SIZE 100
-uint8_t ch;
-uint8_t aTxBuffer[UART_BUFFER_SIZE];	// 문자열 저장 버퍼
-uint8_t buffer_count = 0;			// 현재 Write 버퍼 위치
-
-
-
-//		uart msg mark 
-#define UART_MSG_MARK_end  "end"
-#define UART_MSG_MARK_handshake_send  "send_handshake"
-#define UART_MSG_MARK_handshake_receive  "receive_handshake"
-#define UART_MSG_MARK_connected_confirm  "connected_confirm"
-#define UART_MSG_MARK_send  "send"
-#define UART_MSG_MARK_receive  "receive"
-//		end uart msg mark
-
-//		uart refresh
-#define uart_refresh_time 5
-bool UART_refresh = false;
-int uart_refresh_time_count = 0;
-//		end uart refresh
-
-//		uart seq num
-#define uart_seq_num_size  100
-int uart_seq_num = 0;
-//		end uart seq num
-
-//		uart hand shake time
-#define uart_handShake_timeout 5
-int uart_handShake_time_count = 0;
-//		end uart hand shake time
 
 void uart_init(void) {
 	Uart0_Init();	// UART0 초기화
-	UARTPuts(LPC_UART0, "hello world this is arm processor\n");
+	UARTPuts(LPC_UART0, "hello world this is arm processor \r\n");
 	UART_refresh = true;
 	uart_seq_num = 0;
 	uart_handShake_time_count = 0;
 }
 
-void uart_clear_buffer() {
+void uart_clearBuffer(void) {
 	memset(aTxBuffer, 0x00, sizeof(aTxBuffer)); // Buffer 클리어					
 	buffer_count = 0;
 }
 
-void uart_send_msg(char msg[UART_BUFFER_SIZE]) {
+void uart_sendMsg(char msg[UART_BUFFER_SIZE]) {
 	UARTPuts(LPC_UART0, msg);
 }
 
-bool uart_receive_msg(char msg[UART_BUFFER_SIZE]) {
+bool uart_receiveMsg(char buffer[UART_BUFFER_SIZE]) {
+	bool isReceivedMsg;
+	int i = 0;
+	char received_char;
+	char received_msg[UART_BUFFER_SIZE];
+	bool is_received_char = false;
+	memset(received_msg, 0, sizeof(received_msg));
+
 	if (buffer_count == UART_BUFFER_SIZE) return false;
 
-	//receive connection msg
-	ch = UART_ReceiveByte(LPC_UART0);	// Polling으로 Data 읽어오기
-	if (ch) {
-		msg[buffer_count] = ch;
+	for (i = 0; i < UART_BUFFER_SIZE; i++) {
+		is_received_char = UART_Receive(LPC_UART0, (uint8_t *)received_msg, UART_BUFFER_SIZE, NONE_BLOCKING);	// Polling으로 Data 읽어오기
+		if (is_received_char == 0) break;
+
+		received_char = received_msg[0];
+		
+		//receive echo
+		UARTPuts(LPC_UART0, &received_char);
+
+		//buffer count 수정 필요
+		buffer[buffer_count] = received_char;
 		buffer_count++;
+
+		if (received_char == '\n') {
+			isReceivedMsg = true;
+			break;
+		}
 	}
 
-	if (ch == '\n') {
-		msg[buffer_count - 1] = 0x00;
-		return true;
-	}
+	if (isReceivedMsg) return true;
 	else return false;
 }
 
-void make_hand_shake_msg(char msg[UART_BUFFER_SIZE], int seqnum) {
+void uart_makeHandShakeMsg(char msg[UART_BUFFER_SIZE], int seqnum) {
 	// hand shake mark + seq + end
 	char num[10];
 	memset(num, 0x00, sizeof(num));
@@ -396,14 +449,10 @@ void make_hand_shake_msg(char msg[UART_BUFFER_SIZE], int seqnum) {
 	num[0] = uart_seq_num / 10+'0';
 	num[1] = uart_seq_num % 10 + '0';
 
-	strcpy(msg, UART_MSG_MARK_handshake_send);
-	strcat(msg, " ");
-	strcat(msg, num);
-	strcat(msg, " ");
-	strcat(msg, UART_MSG_MARK_end);
+	sprintf(msg, "%s %s %s", UART_MSG_MARK_handshake_send, num, UART_MSG_MARK_end);
 }
 
-bool ishand_shake_msg(char msg[UART_BUFFER_SIZE]) {
+bool ishandShakeMsg(char msg[UART_BUFFER_SIZE]) {
 	char temp_str[UART_BUFFER_SIZE];
 	char num[10];
 	memset(num, 0x00, sizeof(num));
@@ -413,22 +462,18 @@ bool ishand_shake_msg(char msg[UART_BUFFER_SIZE]) {
 	num[0] = uart_seq_num / 10 + '0';
 	num[1] = uart_seq_num % 10 + '0';
 	
-	strcpy(temp_str, UART_MSG_MARK_handshake_receive);
-	strcat(temp_str, " ");
-	strcat(temp_str, num);
-	strcat(temp_str, " ");
-	strcat(temp_str, UART_MSG_MARK_end);
-
+	sprintf(temp_str, "%s %s %s", UART_MSG_MARK_handshake_receive, num, UART_MSG_MARK_end);
 	if (strcmp(msg, temp_str) == 0)
 		return true;
 	else 
 		return false;
 }
 
-char temp_msg[UART_BUFFER_SIZE];
 void UART_communication(void) {
-	bool ishandshaked = false;
-	bool isreach_newline = false;
+	char temp_msg[UART_BUFFER_SIZE];
+	bool isHandShakeSuccess = false;
+
+	memset(temp_msg, 0, sizeof(temp_msg));
 
 	if (UART_refresh == false) return;
 	UART_refresh = false;
@@ -437,36 +482,38 @@ void UART_communication(void) {
 		|| UART_current_state == SEND_HANDSHAKE_MSG) {
 		//send hand shake msg
 		memset(temp_msg, 0x00, sizeof(temp_msg));
-		make_hand_shake_msg(temp_msg, uart_seq_num);
-		uart_send_msg(temp_msg);
+		uart_makeHandShakeMsg(temp_msg, uart_seq_num);
+		uart_sendMsg(temp_msg);
 		UART_current_state = RECEIVE_HANDSHAKE_MSG;
+
+		memset(aTxBuffer, 0x00, sizeof(aTxBuffer));
 	}
 	else if (UART_current_state == RECEIVE_HANDSHAKE_MSG) {
-		//receive connection msg
-		isreach_newline = uart_receive_msg((char *)aTxBuffer);
+		UART_refresh = true;
 
 		//receive nothing 
-		if (isreach_newline == false ) 	return;
+		if (uart_receiveMsg((char *)aTxBuffer) == false ) return;
+			
+		isHandShakeSuccess = ishandShakeMsg((char *)aTxBuffer);
 
-		ishandshaked = ishand_shake_msg((char *)aTxBuffer);
+		
 		// hand shake success
-		if (ishandshaked) {
-			UART_refresh = true;
+		if (isHandShakeSuccess) {
 			UART_current_state = UART_CONNECTED;
 			uart_handShake_time_count = 0;
-			uart_send_msg(" hand shake suceess \n");
+			uart_sendMsg("arm : success hand shake \r\n");
 		}
 		//handshake time out 
 		else if (uart_handShake_time_count > uart_handShake_timeout) {
 			uart_seq_num = (uart_seq_num + 1) % uart_seq_num_size;
 			UART_current_state = SEND_HANDSHAKE_MSG;
-		}
+			uart_sendMsg("arm : time out hand shake \r\n");
+		}	
+
 	}
-
-
 	else if (UART_current_state == UART_CONNECTED) {
 
-		uart_send_msg(" CONNECTED \n");
+		uart_sendMsg("arm : CONNECTED \n");
 		//check sending msg
 	
 		//send msg
@@ -485,9 +532,12 @@ void UART_communication(void) {
 
 //need 정리 
 //			stepMotor function
-#define FORWARD_MOTOR_TIME 150
-#define BACKWARD_MOTOR_TIME 150
-#define MOTOR_DELAY_TIME 200
+void init_stepping_motor() {
+	set_EXT_IO_DIRECTION('A');
+	Motor_Init();
+	move_steppingMotor();
+	load_LCP_GPIO_setting_to(step_motor_GPIO_SETTING);
+}
 
 void set_motor_output(int a, int na, int b, int nb) {
 	if (a)	GPIO_SetValue(GPIO_PORT_0, GPIO_PIN_5);
@@ -529,21 +579,6 @@ void StepMotor_Cycle(uint8_t cycle) {
 		GPIO_ClearValue(GPIO_PORT_0, GPIO_PIN_23);
 		GPIO_SetValue(GPIO_PORT_0, GPIO_PIN_24);
 		Delay(SEC_1 / MOTOR_DELAY_TIME);
-	}
-}
-
-void StepMotor_move_CWhalf(uint8_t cycle) {
-	uint32_t count = 0;
-	//GPIO_SetValue(GPIO_PORT_3, GPIO_PIN_26);
-	for (count = 0; count < cycle * 6; count++) {
-		set_motor_output(1, 1, 0, 0);
-		Delay(SEC_1 / BACKWARD_MOTOR_TIME);
-		set_motor_output(0, 1, 1, 0);
-		Delay(SEC_1 / BACKWARD_MOTOR_TIME);
-		set_motor_output(0, 0, 1, 1);
-		Delay(SEC_1 / BACKWARD_MOTOR_TIME);
-		set_motor_output(1, 0, 0, 1);
-		Delay(SEC_1 / BACKWARD_MOTOR_TIME);
 	}
 }
 
