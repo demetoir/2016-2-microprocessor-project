@@ -7,20 +7,75 @@
 
 /* Includes ----------------------------------------------------------------------*/
 ////////////////////////////////////////////////////////////////////////////////////
+
+#ifndef _LPC17xx_H
 #include <LPC17xx.H>
+#endif // !<LPC17xx.H>
+
+#ifndef  _LPC1768_utility_h
 #include "LPC1768_utility.h"
+#endif // !"LPC1768_utility.h"
+
+#ifndef _lpc17xx_timer_h
 #include "lpc17xx_timer.h"
+#endif // !"lpc17xx_timer.h"
+
+#ifndef _LPC1768_motor_h
 #include "LPC1768_motor.h"
+#endif // !"LPC1768_motor.h"
+
+#ifndef _LPC1768_fnd_h
 #include "LPC1768_fnd.h"
-#include "GLCD.h"
+#endif // !"LPC1768_fnd.h"
+
+#ifndef _LED_H
 #include "LED.H"
+#endif // !"LED.H"
+
+#ifndef _Keypad_H
 #include "Keypad.H"
+#endif // !"Keypad.H"
+
+#ifndef _lpc17xx_gpio_h
 #include "lpc17xx_gpio.h"
+#endif // !"lpc17xx_gpio.h"
+
+#ifndef _LPC17xx_h
 #include "LPC17xx.h"
+#endif // !"LPC17xx.h"
+
+#ifndef _lpc_types_h
 #include "lpc_types.h"
+#endif // !"lpc_types.h"
+
+#ifndef _LPC1768_Huins_h
 #include "LPC1768_Huins.h"
+#endif // !"LPC1768_Huins.h"
+
+#ifndef _lpc17xx_pinsel_h
 #include "lpc17xx_pinsel.h"
+#endif // !"lpc17xx_pinsel.h"
+
+#ifndef _debug_frmwrk_h
 #include "debug_frmwrk.h"
+#endif // !"debug_frmwrk.h"
+
+
+
+#ifndef _doorLock_utility_h
+#include "doorLock_utility.h"
+#endif // !_doorLock_utility_H
+
+#ifndef  _doorLock_LCD_h
+#include "doorLock_LCD.h"
+#endif // !"doorLock_LCD.h"
+
+#ifndef _doorLock_MOTOR_h
+#include "doorLock_MOTOR.h"
+#endif // !_doorLock_MOTOR_H
+
+
+
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -51,24 +106,11 @@
 //		GPIO setting function
 LPC_GPIO_TypeDef    FND_GPIO_SETTING[5];
 LPC_GPIO_TypeDef    keypad_GPIO_SETTING[5];
-LPC_GPIO_TypeDef    step_motor_GPIO_SETTING[5];
 LPC_GPIO_TypeDef    default_GPIO_SETTING[5];
-LPC_GPIO_TypeDef    cleared_GPIO_SETTING[5];
-void copy_GPIOn_setting(LPC_GPIO_TypeDef *source, LPC_GPIO_TypeDef *dest);
-void save_LPC_GPIO_setting_to(LPC_GPIO_TypeDef source[5]);
-void load_LCP_GPIO_setting_to(LPC_GPIO_TypeDef setting[5]);
+
 //		end GPIO setting function
 
-//		etc function ??
-void set_EXT_IO_DIRECTION(char EXT_IO_NUM);
-//		end etc function ??
 /// end utility function ??
-
-//		lcd fuction
-bool PAINT_LCD = false;
-void init_lcd(void);
-void LCD_refresh(void);
-//		end lcd fuction
 
 
 //		fnd fucntion
@@ -76,8 +118,6 @@ void LCD_refresh(void);
 void init_FND(void);
 void FND_blink(void);
 //		end fnd function
-
-
 
 //		keypad function
 #define KEYPAD_UP						16
@@ -87,23 +127,6 @@ char 	cKeypad_Value = CHAR_KEYPAD_UP;
 void init_keypad(void);
 void Keypad_test(void);
 //		end keypad function
-
-
-
-//		motor function
-typedef enum { move, stop, } MOTOR_STATE;
-MOTOR_STATE motor_state = stop;
-#define FORWARD_MOTOR_TIME 150
-#define BACKWARD_MOTOR_TIME 150
-#define MOTOR_DELAY_TIME 200
-void init_stepping_motor(void);
-void move_steppingMotor(void);
-void StepMotor_back_Cycle(uint8_t cycle);
-void set_motor_output(int a, int na, int b, int nb);
-void StepMotor_Cycle(uint8_t cycle);
-void stepMotor_move_cw(void);
-void stepMotor_move_ccw(void);
-//		end motor function
 
 
 //		uart function
@@ -166,25 +189,20 @@ void UART_communication(void);
 void init_EXTI(void);
 
 //		timer0
+uint8_t time_10h = 0;
+uint8_t time_1h = 0;
 uint8_t time_10m = 0;
 uint8_t time_1m = 0;
 uint8_t time_10s = 0;
 uint8_t time_1s = 0;
 
+uint8_t lap_time_10h = 0;
+uint8_t lap_time_1h = 0;
 uint8_t lap_time_10m = 0;
 uint8_t lap_time_1m = 0;
 uint8_t lap_time_10s = 0;
 uint8_t lap_time_1s = 0;
 
-char cTime_1s = 0;
-char cTime_10s = 0;
-char cTime_1m = 0;
-char cTime_10m = 0;
-
-char clap_time_10m = 0;
-char clap_time_1m = 0;
-char clap_time_10s = 0;
-char clap_time_1s = 0;
 
 TIM_TIMERCFG_Type TIM_ConfigStruct;
 TIM_MATCHCFG_Type TIM_MatchConfigStruct;
@@ -214,31 +232,6 @@ void EINT0_IRQHandler(void);
 
 /* Private function ------------------------------------------------------------------*/
 ////////////////////////////////////////////////////////////////////////////////////////
-//		GPIO setting function
-void copy_GPIOn_setting(LPC_GPIO_TypeDef *source, LPC_GPIO_TypeDef *dest) {
-	dest->FIODIR = source->FIODIR;
-	dest->FIOMASK = source->FIOMASK;
-	dest->FIOPIN = source->FIOPIN;
-	dest->FIOCLR = source->FIOCLR;
-	dest->FIOSET = source->FIOSET;
-}
-
-void save_LPC_GPIO_setting_to(LPC_GPIO_TypeDef source[5]) {
-	copy_GPIOn_setting(&(source[0]), LPC_GPIO0);
-	copy_GPIOn_setting(&(source[1]), LPC_GPIO1);
-	copy_GPIOn_setting(&(source[2]), LPC_GPIO2);
-	copy_GPIOn_setting(&(source[3]), LPC_GPIO3);
-	copy_GPIOn_setting(&(source[4]), LPC_GPIO4);
-}
-
-void load_LCP_GPIO_setting_to(LPC_GPIO_TypeDef setting[5]) {
-	copy_GPIOn_setting(LPC_GPIO0, &(setting[0]));
-	copy_GPIOn_setting(LPC_GPIO1, &(setting[1]));
-	copy_GPIOn_setting(LPC_GPIO2, &(setting[2]));
-	copy_GPIOn_setting(LPC_GPIO3, &(setting[3]));
-	copy_GPIOn_setting(LPC_GPIO4, &(setting[4]));
-}
-//		end GPIO setting function
 
 //		init function
 
@@ -269,7 +262,7 @@ void init_timer0() {
 
 
 void init() {
-	load_LCP_GPIO_setting_to(default_GPIO_SETTING);
+	save_LCP_GPIO_setting_to(default_GPIO_SETTING);
 	init_FND();
 	init_timer0();
 	init_lcd();
@@ -281,63 +274,18 @@ void init() {
 //		init function
 
 
-//		etc function
-void set_EXT_IO_DIRECTION(char EXT_IO_NUM) {
-	if (EXT_IO_NUM == 'A' || EXT_IO_NUM == 'a')
-		EXT_IO_A_CS();
-	else if (EXT_IO_NUM == 'B' || EXT_IO_NUM == 'b')
-		EXT_IO_B_CS();
-	else if (EXT_IO_NUM == 'C' || EXT_IO_NUM == 'c')
-		EXT_IO_C_CS();
-}
-//		etc function
 
 //		modduel function
-
-//			lcd function
-void init_lcd() {
-	GLCD_init();                              /* Initialize the GLCD           */
-	GLCD_clear(White);                        /* Clear the GLCD                */
-	PAINT_LCD = true;
-	LCD_refresh();
-}
-void LCD_refresh(void) {
-	if (PAINT_LCD == false) return;
-	PAINT_LCD = false;
-
-	GLCD_setBackColor(Blue);                           /* Set the Text Color */
-	GLCD_setTextColor(White);                          /* Set the Text Color */
-	GLCD_displayStringLn(Line0, "   CortexM3_NXP     ");
-	GLCD_displayStringLn(Line1, "    RTX Blinky      ");
-	GLCD_displayStringLn(Line2, "   www.huins.com    ");
-
-	cTime_1s = time_1s + '0';
-	cTime_10s = time_10s + '0';
-	cTime_1m = time_1m + '0';
-	cTime_10m = time_10m + '0';
-	GLCD_displayChar(20, 80, cTime_10m);
-	GLCD_displayChar(40, 80, cTime_1m);
-	GLCD_displayChar(60, 80, cTime_10s);
-	GLCD_displayChar(80, 80, cTime_1s);
-
-	GLCD_displayChar(160, 80, cKeypad_Value);
-
-	GLCD_displayChar(200, 80, 'x');
-
-}
-//			end lcd function
-
-
-
 //			FND function
 void init_FND() {
 	FND_Init();	// FND 사용 PIN 초기화
 	set_EXT_IO_DIRECTION('B');
 	FND_blink();
-	load_LCP_GPIO_setting_to(FND_GPIO_SETTING);
+	save_LCP_GPIO_setting_to(FND_GPIO_SETTING);
 }
 void FND_blink() {
-	/* time mmss */
+
+	/* time hhmmss */
 	FND_COM_DATA_Select(8, time_1s);
 	Delay(FND_BLINK_DELAY_TIME);
 	FND_COM_DATA_Select(7, time_10s);
@@ -346,15 +294,16 @@ void FND_blink() {
 	Delay(FND_BLINK_DELAY_TIME);
 	FND_COM_DATA_Select(5, time_10m);
 	Delay(FND_BLINK_DELAY_TIME);
+	FND_COM_DATA_Select(4, time_1h);
+	Delay(FND_BLINK_DELAY_TIME);
+	FND_COM_DATA_Select(3, time_10h);
+	Delay(FND_BLINK_DELAY_TIME);
 
-	/* Lap Time  */
-	FND_COM_DATA_Select(4, lap_time_1s);
+
+	//forcheck
+	FND_COM_DATA_Select(2, 0);
 	Delay(FND_BLINK_DELAY_TIME);
-	FND_COM_DATA_Select(3, lap_time_10s);
-	Delay(FND_BLINK_DELAY_TIME);
-	FND_COM_DATA_Select(2, lap_time_1m);
-	Delay(FND_BLINK_DELAY_TIME);
-	FND_COM_DATA_Select(1, lap_time_10m);
+	FND_COM_DATA_Select(1, 0);
 	Delay(FND_BLINK_DELAY_TIME);
 
 	//clear FND
@@ -371,8 +320,9 @@ void init_keypad() {
 	Keypad_DIR_Input();
 	set_EXT_IO_DIRECTION('C');
 	Keypad_test();
-	load_LCP_GPIO_setting_to(keypad_GPIO_SETTING);
+	save_LCP_GPIO_setting_to(keypad_GPIO_SETTING);
 }
+
 void Keypad_test() {
 	int Keypad_Value = Keypad('C');
 	if (Keypad_Value == KEYPAD_UP)
@@ -382,6 +332,12 @@ void Keypad_test() {
 	else if (Keypad_Value < 10)
 		cKeypad_Value = Keypad_Value + '0';
 
+	setLCDkey(cKeypad_Value);
+
+	if (cKeypad_Value == '1')
+		setCloseDoorLock();
+	else if (cKeypad_Value == '3')
+		setOpenDoorLock();
 }
 //			end keypad function
 
@@ -530,91 +486,6 @@ void UART_communication(void) {
 //			end uart function 
 
 
-//need 정리 
-//			stepMotor function
-void init_stepping_motor() {
-	set_EXT_IO_DIRECTION('A');
-	Motor_Init();
-	move_steppingMotor();
-	load_LCP_GPIO_setting_to(step_motor_GPIO_SETTING);
-}
-
-void set_motor_output(int a, int na, int b, int nb) {
-	if (a)	GPIO_SetValue(GPIO_PORT_0, GPIO_PIN_5);
-	else GPIO_ClearValue(GPIO_PORT_0, GPIO_PIN_5);
-
-	if (b)	GPIO_SetValue(GPIO_PORT_0, GPIO_PIN_23);
-	else GPIO_ClearValue(GPIO_PORT_0, GPIO_PIN_23);
-
-	if (na)	GPIO_SetValue(GPIO_PORT_0, GPIO_PIN_10);
-	else GPIO_ClearValue(GPIO_PORT_0, GPIO_PIN_10);
-
-	if (nb)	GPIO_SetValue(GPIO_PORT_0, GPIO_PIN_24);
-	else GPIO_ClearValue(GPIO_PORT_0, GPIO_PIN_24);
-}
-
-void StepMotor_Cycle(uint8_t cycle) {
-	uint32_t count = 0;
-	for (count = 0; count < cycle * 6; count++) {
-		GPIO_SetValue(GPIO_PORT_0, GPIO_PIN_5);
-		GPIO_ClearValue(GPIO_PORT_0, GPIO_PIN_10);
-		GPIO_SetValue(GPIO_PORT_0, GPIO_PIN_23);
-		GPIO_ClearValue(GPIO_PORT_0, GPIO_PIN_24);
-		Delay(SEC_1 / MOTOR_DELAY_TIME);
-
-		GPIO_ClearValue(GPIO_PORT_0, GPIO_PIN_5);
-		GPIO_SetValue(GPIO_PORT_0, GPIO_PIN_10);
-		GPIO_SetValue(GPIO_PORT_0, GPIO_PIN_23);
-		GPIO_ClearValue(GPIO_PORT_0, GPIO_PIN_24);
-		Delay(SEC_1 / MOTOR_DELAY_TIME);
-
-		GPIO_ClearValue(GPIO_PORT_0, GPIO_PIN_5);
-		GPIO_SetValue(GPIO_PORT_0, GPIO_PIN_10);
-		GPIO_ClearValue(GPIO_PORT_0, GPIO_PIN_23);
-		GPIO_SetValue(GPIO_PORT_0, GPIO_PIN_24);
-		Delay(SEC_1 / MOTOR_DELAY_TIME);
-
-		GPIO_SetValue(GPIO_PORT_0, GPIO_PIN_5);
-		GPIO_ClearValue(GPIO_PORT_0, GPIO_PIN_10);
-		GPIO_ClearValue(GPIO_PORT_0, GPIO_PIN_23);
-		GPIO_SetValue(GPIO_PORT_0, GPIO_PIN_24);
-		Delay(SEC_1 / MOTOR_DELAY_TIME);
-	}
-}
-
-void stepMotor_move_cw() {
-	uint32_t count = 0;
-	//GPIO_SetValue(GPIO_PORT_3, GPIO_PIN_26);
-	for (count = 0; count < 6; count++) {
-		set_motor_output(1, 1, 0, 0);
-		Delay(SEC_1 / BACKWARD_MOTOR_TIME);
-		set_motor_output(0, 1, 1, 0);
-		Delay(SEC_1 / BACKWARD_MOTOR_TIME);
-		set_motor_output(0, 0, 1, 1);
-		Delay(SEC_1 / BACKWARD_MOTOR_TIME);
-		set_motor_output(1, 0, 0, 1);
-		Delay(SEC_1 / BACKWARD_MOTOR_TIME);
-	}
-}
-
-void stepMotor_move_ccw() {
-	StepMotor_Cycle(1);
-}
-
-void move_steppingMotor() {
-	if (cKeypad_Value == '1') {
-		stepMotor_move_cw();
-	}
-	else if (cKeypad_Value == '3') {
-		//back ward cycle
-		stepMotor_move_ccw();
-	}
-}
-//			endstepMotor function
-
-//		end module function
-
-
 /* end Private function --------------------------------------------------------------*/
 ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -623,15 +494,15 @@ int main(void) {
 	init();
 
 	while (1) {
-		save_LPC_GPIO_setting_to(FND_GPIO_SETTING);
+		load_LPC_GPIO_setting_to(FND_GPIO_SETTING);
 		FND_blink();
 
-		save_LPC_GPIO_setting_to(keypad_GPIO_SETTING);
+		load_LPC_GPIO_setting_to(keypad_GPIO_SETTING);
 		Keypad_test();
 
 		LCD_refresh();
 
-		save_LPC_GPIO_setting_to(step_motor_GPIO_SETTING);
+		//load_LCP_GPIO_setting_to(step_motor_GPIO_SETTING);
 		move_steppingMotor();
 
 		UART_communication();
@@ -663,6 +534,8 @@ void time_update(void) {
 		time_10s = 0;
 		time_1s = 0;
 	}
+
+	
 }
 
 
@@ -672,8 +545,10 @@ void TIMER0_IRQHandler(void) {
 	// timer for 1sec,10sec,1minute,10minute
 	time_update();
 		
+
 	//repaint
-	PAINT_LCD = true;
+	setLCD_refresh();
+	setLCDTime(time_10h, time_1h, time_10m, time_1m, time_10s, time_1s);
 
 	//uart_refresh count 
 	uart_refresh_time_count = (uart_refresh_time_count+1)%uart_refresh_time;
@@ -695,7 +570,7 @@ void EINT0_IRQHandler(void) {
 	lap_time_1m = time_1m;
 	lap_time_1s = time_1s;
 	lap_time_10s = time_10s;
-	motor_state = move;
+	setOpenDoorLock();
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////
