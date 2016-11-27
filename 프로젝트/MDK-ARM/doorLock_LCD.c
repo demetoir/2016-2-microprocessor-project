@@ -1,9 +1,9 @@
-///*----------------------------------------------------------------------------
-// *      doorLock_LCD.c
-// *----------------------------------------------------------------------------
-// *      Name:    doorLock_LCD.c
-// *---------------------------------------------------------------------------*/
-//
+/*----------------------------------------------------------------------------
+ *      doorLock_LCD.c
+ *----------------------------------------------------------------------------
+ *      Name:    doorLock_LCD.c
+ *---------------------------------------------------------------------------*/
+
 
 #ifndef _doorLock_h_
 #include "doorLock_LCD.h"
@@ -32,7 +32,7 @@ char cLCD_lap_time_1s;
 
 char cLCD_Keypad_Value;
 
-void setLCDTime(int time_10h, int time_1h, int time_10m, int time_1m, int time_10s, int time_1s) {
+void setLCDTime(int time_10h, int time_1h, int time_10m, int time_1m, int time_10s, int time_1s){
 	cLCD_time_10h = time_10h + '0';
 	cLCD_time_1h = time_1h + '0';
 	cLCD_time_10m = time_10m + '0';
@@ -68,7 +68,7 @@ void init_lcd() {
 
 	cLCD_Keypad_Value = 'x';
 		
-	///	LPC_PINCON->PINSEL9 &= ~(3 << 24);   back light on
+	//LPC_PINCON->PINSEL9 &= ~(3 << 24);   back light on
 	GLCD_init();                              /* Initialize the GLCD           */
 	GLCD_clear(White);						/* Clear the GLCD                */
 	setLCD_refresh();
@@ -103,10 +103,6 @@ void LCD_refresh(void) {
 	GLCD_displayChar(80, 140, cLCD_time_1m);
 	GLCD_displayChar(100, 140, cLCD_time_10s);
 	GLCD_displayChar(120, 140, cLCD_time_1s);
-
-
-
-
 }
 
 

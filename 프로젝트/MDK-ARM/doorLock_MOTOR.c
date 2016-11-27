@@ -9,7 +9,7 @@
 #include "doorLock_MOTOR.h"
 #endif // !doorLock_MOTOR_H
 
-DOOR_LOCK_MOTOR_STATE motor_state = stop;
+int motor_state = stop;
 bool isNeed_doorLock_motor_move = false;
 
 LPC_GPIO_TypeDef    step_motor_GPIO_SETTING[5];
@@ -65,6 +65,7 @@ void StepMotor_Cycle(uint8_t cycle) {
 }
 
 void stepMotor_move_cw() {
+
 	uint32_t count = 0;
 	//GPIO_SetValue(GPIO_PORT_3, GPIO_PIN_26);
 	for (count = 0; count < 6; count++) {

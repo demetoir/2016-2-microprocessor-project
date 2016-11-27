@@ -4,6 +4,8 @@
 // *      Name:    doorLock_utility.h
 // *---------------------------------------------------------------------------*/
 
+#ifndef _DOORLOCK_UTILITY_H_
+#define _DOORLOCK_UTILITY_H_
 #define bool 							int
 #define false							0
 #define true 							1
@@ -14,7 +16,6 @@ void save_LCP_GPIO_setting_to(LPC_GPIO_TypeDef dest[5]);
 
 void set_EXT_IO_DIRECTION(char EXT_IO_NUM);
 
-
-
+#endif 
 
 

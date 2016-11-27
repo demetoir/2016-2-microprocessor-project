@@ -443,6 +443,36 @@
               <FileType>1</FileType>
               <FilePath>.\GLCD.c</FilePath>
             </File>
+            <File>
+              <FileName>doorLock_FND.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\doorLock_FND.c</FilePath>
+            </File>
+            <File>
+              <FileName>doorLock_KEYPAD.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\doorLock_KEYPAD.c</FilePath>
+            </File>
+            <File>
+              <FileName>doorLock_LCD.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\doorLock_LCD.c</FilePath>
+            </File>
+            <File>
+              <FileName>doorLock_MOTOR.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\doorLock_MOTOR.c</FilePath>
+            </File>
+            <File>
+              <FileName>doorLock_UART.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\doorLock_UART.c</FilePath>
+            </File>
+            <File>
+              <FileName>doorLock_utility.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\doorLock_utility.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -454,24 +484,9 @@
               <FilePath>.\debug_frmwrk.c</FilePath>
             </File>
             <File>
-              <FileName>lpc17xx_adc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\lpc17xx_adc.c</FilePath>
-            </File>
-            <File>
-              <FileName>lpc17xx_can.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\lpc17xx_can.c</FilePath>
-            </File>
-            <File>
               <FileName>lpc17xx_clkpwr.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\lpc17xx_clkpwr.c</FilePath>
-            </File>
-            <File>
-              <FileName>lpc17xx_dac.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\lpc17xx_dac.c</FilePath>
             </File>
             <File>
               <FileName>lpc17xx_emac.c</FileName>
@@ -529,11 +544,6 @@
               <FilePath>.\lpc17xx_pinsel.c</FilePath>
             </File>
             <File>
-              <FileName>lpc17xx_pwm.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\lpc17xx_pwm.c</FilePath>
-            </File>
-            <File>
               <FileName>lpc17xx_qei.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\lpc17xx_qei.c</FilePath>
@@ -547,16 +557,6 @@
               <FileName>lpc17xx_rtc.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\lpc17xx_rtc.c</FilePath>
-            </File>
-            <File>
-              <FileName>lpc17xx_spi.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\lpc17xx_spi.c</FilePath>
-            </File>
-            <File>
-              <FileName>lpc17xx_ssp.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\lpc17xx_ssp.c</FilePath>
             </File>
             <File>
               <FileName>lpc17xx_systick.c</FileName>
