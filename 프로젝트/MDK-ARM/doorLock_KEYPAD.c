@@ -17,7 +17,6 @@ uint8_t iKeypad_Value = KEYPAD_UP;
 char 	cKeypad_Value = CHAR_KEYPAD_UP;
 
 
-
 void EXT_IO_init(void) {
 	/*EXT_IO on PORT0 as Output*/
 	LPC_GPIO0->FIODIR |= (1 << 4) | (1 << 19) | (1 << 20) | (1 << 21);	// Mainboard Chip Select
@@ -202,31 +201,68 @@ char getKEYPAD_cvalue(void) {
 }
 
 void init_keypad(void) {
+	init_keypad_vactor();
 	Keypad_DIR_Input();
 	set_EXT_IO_DIRECTION('C');
 	save_LCP_GPIO_setting_to(keypad_GPIO_SETTING);
 	Keypad_test();
 }
 
-void Keypad_test(void) {
-	int Keypad_Value = 0;
-	load_LPC_GPIO_setting_to(keypad_GPIO_SETTING);
-	Keypad_Value = Keypad(DEFAULT_KEYPAD_EXIO_NUM);
+///////////////////////////////////////////////////////////////////////// 추가부분
+char keypad_vector[16];
+void init_keypad_vactor(void) {
 
-	if (Keypad_Value == KEYPAD_UP)
-		cKeypad_Value = CHAR_KEYPAD_UP;
-	else if (Keypad_Value >= 10)
-		cKeypad_Value = Keypad_Value + 'A' - 10;
-	else if (Keypad_Value < 10)
-		cKeypad_Value = Keypad_Value + '0';
+	//number pad
+	keypad_vector[0] = '1';
+	keypad_vector[1] = '2';
+	keypad_vector[2] = '3';
+	keypad_vector[4] = '4';
+	keypad_vector[5] = '5';
+	keypad_vector[6] = '6';
+	keypad_vector[8] = '7';
+	keypad_vector[9] = '8';
+	keypad_vector[10] = '9';
+	keypad_vector[13] = '0';
+	
+	//function key
+	keypad_vector[3] = 'C';
+	keypad_vector[7] = 'R';
+	keypad_vector[11] = 'E';
+	keypad_vector[15] = 'F';
 
-	setLCDkey(cKeypad_Value);
+	//open lock
+	keypad_vector[12] = 'O';
+	keypad_vector[14] = 'L';
 
-	if (cKeypad_Value == '1')
-		setCloseDoorLock();
-	else if (cKeypad_Value == '3')
-		setOpenDoorLock();
 }
+
+void Keypad_test(void) {
+	char Rev_Value = '0';																																					// To Revise Keypad #
+	load_LPC_GPIO_setting_to(keypad_GPIO_SETTING);
+	iKeypad_Value = Keypad(DEFAULT_KEYPAD_EXIO_NUM);
+
+	if (iKeypad_Value == KEYPAD_UP)
+		cKeypad_Value = CHAR_KEYPAD_UP;
+	else if (iKeypad_Value >= 10) {
+		cKeypad_Value = iKeypad_Value + 'A' - 10;
+	}
+	else if (iKeypad_Value < 10) {
+		cKeypad_Value = iKeypad_Value + '0';
+	}
+
+	Rev_Value = keypad_vector[iKeypad_Value];
+
+	setLCDkey(Rev_Value);
+
+	if (Rev_Value == 'L')
+		setCloseDoorLock();
+	else if (Rev_Value == 'O')
+		setOpenDoorLock();
+
+	//입력이 필요할때만 되도록 수정
+	///if()
+}
+
 
 
 

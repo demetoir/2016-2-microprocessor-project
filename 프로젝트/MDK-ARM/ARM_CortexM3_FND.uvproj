@@ -473,6 +473,11 @@
               <FileType>1</FileType>
               <FilePath>.\doorLock_utility.c</FilePath>
             </File>
+            <File>
+              <FileName>doorLock_data.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\doorLock_data.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -557,11 +562,6 @@
               <FileName>lpc17xx_rtc.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\lpc17xx_rtc.c</FilePath>
-            </File>
-            <File>
-              <FileName>lpc17xx_systick.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\lpc17xx_systick.c</FilePath>
             </File>
             <File>
               <FileName>lpc17xx_timer.c</FileName>

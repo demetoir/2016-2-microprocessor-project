@@ -23,22 +23,19 @@
 #define false							0
 #define true 							1
 
+#include "doorLock_MOTOR.h"
+#include "doorLock_LCD.h"
+#include "doorLock_data.h"
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
 
-//		uart state
-typedef enum {
-	SEND_HANDSHAKE_MSG, RECEIVE_HANDSHAKE_MSG,
-	UART_CONNECTED, UART_DISCONNECTED
-} UART_CONNECTION_STATE;
-//		end uart state
 
 #define UART_DEFAULT_INPUT 'X'
 
 #define UART_BUFFER_SIZE 100
 									//		uart msg mark 
-#define UART_MSG_MARK_end					"end\r\n"
+#define UART_MSG_MARK_end					"end\n"
 #define UART_MSG_MARK_handshake_send		"send_handshake"
 #define UART_MSG_MARK_handshake_receive		"receive_handshake"
 #define UART_MSG_MARK_connected_confirm		"connected_confirm"
@@ -46,6 +43,13 @@ typedef enum {
 #define UART_MSG_MARK_receive				"receive"
 #define UART_MSG_MARK_disconnect			"disconnect"
 #define UART_MSG_MARK_success				"success"
+#define UART_MSG_MARK_SycTime				"Syc_time"
+#define UART_MSG_MARK_LIVE_SIGNAL			"live_signal"
+#define UART_MSG_MARK_request_permission	"request_permission"
+#define UART_MSG_MARK_response_permission	"reseponse_permission"
+#define UART_MSG_MARK_yes					"yes"
+#define UART_MSG_MARK_no					"no"
+
 #define uart_refresh_time 1
 
 #define uart_seq_num_size  100
@@ -60,15 +64,13 @@ bool ishandShakeMsg(char msg[UART_BUFFER_SIZE]);
 void uart_makeHandShakeMsg(char msg[UART_BUFFER_SIZE], int seqnum);
 void UART_communication(void);
 
-
 void uart_refresh_counter_up(void);
-
 
 bool isDisconnectMsg(char msg[UART_BUFFER_SIZE]);
 void uart_makeDisconnectionMsg(char msg[UART_BUFFER_SIZE]);
 
-
-
+#define UART_Live_signal_Time 5
+void UART_liveSigal_count_up(void);
 
 
 

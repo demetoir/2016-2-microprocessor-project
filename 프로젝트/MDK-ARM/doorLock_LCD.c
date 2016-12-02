@@ -15,56 +15,89 @@
 #define true 							1
 
 bool isNeedRepaintLCD;
+typedef enum {
+LCD_MODE_SET_PASSWORD,
+LCD_SHOW_PASSWORD,
+LCD_OPEN_DOOR,
+LCD_SELECT_STORAGE,
+LCD_INIT_MODE,
+LCD_CONNECTING_SERVER,
+LCD_WRONG_PASSWORD,
+}LCD_MODE;
 
-char cLCD_time_10h ;
-char cLCD_time_1h ;
-char cLCD_time_10m ;
-char cLCD_time_1m;
-char cLCD_time_10s;
-char cLCD_time_1s;
+LCD_MODE lcdMode;
 
-char cLCD_lap_time_10h;
-char cLCD_lap_time_1h;
-char cLCD_lap_time_10m;
-char cLCD_lap_time_1m;
-char cLCD_lap_time_10s;
-char cLCD_lap_time_1s;
+
+
+
 
 char cLCD_Keypad_Value;
 
-void setLCDTime(int time_10h, int time_1h, int time_10m, int time_1m, int time_10s, int time_1s){
-	cLCD_time_10h = time_10h + '0';
-	cLCD_time_1h = time_1h + '0';
-	cLCD_time_10m = time_10m + '0';
-	cLCD_time_1m = time_1m + '0';
-	cLCD_time_10s = time_10s + '0';
-	cLCD_time_1s = time_1s + '0';
-}
 
 void setLCDkey(char  val) {
 	cLCD_Keypad_Value = val;
 }
 
-void setLCD_refresh() {
+void setLCD_refresh(void) {
 	isNeedRepaintLCD = true;
 }
+
+void setLCDMode(LCD_MODE mode) {
+	lcdMode = mode;
+}
+
+void showLabel(void) {
+	char lineBuffer[21];
+	
+	GLCD_setBackColor(Blue);                           /* Set the Text Color */
+	GLCD_setTextColor(White);                          /* Set the Text Color */
+	GLCD_displayStringLn(Line0, "   Fridge Locker     ");
+
+	GLCD_setBackColor(White);                           /* Set the Text Color */
+	GLCD_setTextColor(Blue);                          /* Set the Text Color */
+	memset(lineBuffer, 0x00, sizeof(lineBuffer));
+	sprintf(lineBuffer, " data: %4d/%2d/%2d",
+		getTime(YEAR), getTime(MONTH), getTime(DAY));
+	GLCD_displayStringLn(Line1, lineBuffer);
+	
+	memset(lineBuffer, 0x00, sizeof(lineBuffer));
+	sprintf(lineBuffer, " time: %2d:%2d:%2d",
+		getTime(HOUR), getTime(MINUTE), getTime(SECOND));
+	GLCD_displayStringLn(Line2, lineBuffer);
+
+}
+
+void showInit(void) {
+	char lineBuffer[21];
+
+	GLCD_setBackColor(White);                           /* Set the Text Color */
+	GLCD_setTextColor(Blue);                          /* Set the Text Color */
+
+	memset(lineBuffer, 0x00, sizeof(lineBuffer));
+	sprintf(lineBuffer, "  initializing...");
+	GLCD_displayStringLn(Line5, lineBuffer);
+}
+
+void showServerDisconnection(void) {
+	char lineBuffer[21];
+
+	GLCD_setBackColor(White);                           /* Set the Text Color */
+	GLCD_setTextColor(Blue);                          /* Set the Text Color */
+
+	memset(lineBuffer, 0x00, sizeof(lineBuffer));
+	sprintf(lineBuffer, "server disconnceted");
+	GLCD_displayStringLn(Line4, lineBuffer);
+}
+
+
+
+
 
 void init_lcd() {
 	isNeedRepaintLCD = false;
 
-	cLCD_time_10h = '0';
-	cLCD_time_1h = '0';
-	cLCD_time_10m = '0';
-	cLCD_time_1m = '0';
-	cLCD_time_10s = '0';
-	cLCD_time_1s = '0';
+	lcdMode = LCD_INIT_MODE;
 
-	cLCD_lap_time_10h = '0';
-	cLCD_lap_time_1h = '0';
-	cLCD_lap_time_10m = '0';
-	cLCD_lap_time_1m = '0';
-	cLCD_lap_time_10s = '0';
-	cLCD_lap_time_1s = '0';
 
 	cLCD_Keypad_Value = 'x';
 		
@@ -72,38 +105,38 @@ void init_lcd() {
 	GLCD_init();                              /* Initialize the GLCD           */
 	GLCD_clear(White);						/* Clear the GLCD                */
 	setLCD_refresh();
-
 	LCD_refresh();
+	showInit();
 }
+
+
 
 void LCD_refresh(void) {
 	if (isNeedRepaintLCD == false) return;
 	isNeedRepaintLCD = false;
 
-	GLCD_setBackColor(Blue);                           /* Set the Text Color */
-	GLCD_setTextColor(White);                          /* Set the Text Color */
-	GLCD_displayStringLn(Line0, "   CortexM3_NXP     ");
-	GLCD_displayStringLn(Line1, "    RTX Blinky      ");
-	GLCD_displayStringLn(Line2, "   www.huins.com    ");
-	
+	showLabel();
+	showInit();
+	showServerDisconnection();
 
-	GLCD_displayChar(20, 80, cLCD_lap_time_10h);
-	GLCD_displayChar(40, 80, cLCD_lap_time_1h);
-	GLCD_displayChar(60, 80, cLCD_lap_time_10m);
-	GLCD_displayChar(80, 80, cLCD_lap_time_1m);
-	GLCD_displayChar(100, 80, cLCD_lap_time_10s);
-	GLCD_displayChar(120, 80, cLCD_lap_time_1s);
 
-	GLCD_displayChar(180, 80, cLCD_Keypad_Value);
-	GLCD_displayChar(200, 80, 'x');
+	//show lcd
+	switch (lcdMode) {
+	case LCD_MODE_SET_PASSWORD: break;
+	case LCD_SHOW_PASSWORD: break;
+	case LCD_OPEN_DOOR: break;
+	case LCD_SELECT_STORAGE: break;
+	case LCD_INIT_MODE: break;
+	case LCD_CONNECTING_SERVER: break;
+	case LCD_WRONG_PASSWORD: break;
+	default:
+		break;
+	}
 
-	GLCD_displayChar(20, 140, cLCD_time_10h);
-	GLCD_displayChar(40, 140, cLCD_time_1h);
-	GLCD_displayChar(60, 140, cLCD_time_10m);
-	GLCD_displayChar(80, 140, cLCD_time_1m);
-	GLCD_displayChar(100, 140, cLCD_time_10s);
-	GLCD_displayChar(120, 140, cLCD_time_1s);
 }
+
+
+
 
 
 

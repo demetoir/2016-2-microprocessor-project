@@ -10,6 +10,9 @@
 .\obj\doorlock_keypad.o: lpc_types.h
 .\obj\doorlock_keypad.o: doorLock_LCD.h
 .\obj\doorlock_keypad.o: GLCD.h
+.\obj\doorlock_keypad.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
+.\obj\doorlock_keypad.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\obj\doorlock_keypad.o: doorLock_data.h
 .\obj\doorlock_keypad.o: doorLock_MOTOR.h
 .\obj\doorlock_keypad.o: LPC1768_utility.h
 .\obj\doorlock_keypad.o: LPC1768_Huins.h
@@ -25,3 +28,5 @@
 .\obj\doorlock_keypad.o: LPC1768_Huins.h
 .\obj\doorlock_keypad.o: LPC1768_utility.h
 .\obj\doorlock_keypad.o: LPC1768_Huins.h
+.\obj\doorlock_keypad.o: doorLock_data.h
+.\obj\doorlock_keypad.o: doorLock_data.h

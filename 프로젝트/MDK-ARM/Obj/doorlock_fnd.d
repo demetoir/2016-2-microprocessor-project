@@ -17,3 +17,4 @@
 .\obj\doorlock_fnd.o: LPC1768_utility.h
 .\obj\doorlock_fnd.o: LPC1768_Huins.h
 .\obj\doorlock_fnd.o: doorLock_utility.h
+.\obj\doorlock_fnd.o: doorLock_data.h

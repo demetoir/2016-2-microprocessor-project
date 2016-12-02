@@ -19,13 +19,18 @@ int FNDtime_1m;
 int FNDtime_10s;
 int FNDtime_1s;
 
-void setFNDTime(int time_10h, int time_1h, int time_10m, int time_1m, int time_10s, int time_1s) {
-	FNDtime_10h = time_10h;
-	FNDtime_1h = time_1h;
-	FNDtime_10m = time_10m;
-	FNDtime_1m = time_1m;
-	FNDtime_10s = time_10s;
-	FNDtime_1s = time_1s;
+void setFNDTime() {
+	int hour, minute, second;
+	hour = getTime(HOUR);
+	minute = getTime(MINUTE);
+	second = getTime(SECOND);
+
+	FNDtime_10h		= hour / 10;
+	FNDtime_1h		= hour % 10;
+	FNDtime_10m		= minute / 10;
+	FNDtime_1m		= minute % 10;
+	FNDtime_10s		= second / 10;
+	FNDtime_1s		= second % 10;
 }
 
 void init_FND() {
@@ -44,6 +49,9 @@ void init_FND() {
 
 void FND_blink() {
 	load_LPC_GPIO_setting_to(FND_GPIO_SETTING);
+
+	setFNDTime();
+
 	/* time hhmmss */
 	FND_COM_DATA_Select(8, FNDtime_1s);
 	Delay(FND_BLINK_DELAY_TIME);

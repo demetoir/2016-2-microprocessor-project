@@ -6,9 +6,6 @@
 //		GPIO setting function
 
 //
-#ifndef _LPC17xx_H
-#include <LPC17xx.H>
-#endif // !<LPC17xx.H>
 
 
 #ifndef _doorLock_utility_h	

@@ -17,6 +17,8 @@
 #include "doorLock_utility.h"
 #endif // !_doorLock_utility_H
 
+#include "doorLock_data.h"
+
 #ifndef _DOORLOCK_FND_H_
 #define _DOORLOCK_FND_H_
 
@@ -27,7 +29,7 @@
 
 #define FND_BLINK_DELAY_TIME 			5000
 
-void setFNDTime(int FNDtime_10h, int FNDtime_1h, int FNDtime_10m, int FNDtime_1m, int FNDtime_10s, int FNDtime_1s);
+void setFNDTime(void);
 void init_FND(void);
 void FND_blink(void);
 

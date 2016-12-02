@@ -1,0 +1,714 @@
+//LPC1768_fnd.c*
+
+void FND_DATA_Select(uint8_t dataNum)
+{ //»ç¿ë °¡´ÉÇÑ ¾ËÆÄºª A,b,C,d,E,F,g,H,L,n,o,P,r,S,U,y   ºÒ°¡´ÉÇÑ ¾ËÆÄºª I  J  K  M Q T V W X Z
+   FND_Data_Reset();
+   switch(dataNum)
+   {
+      case 0:
+         GPIO_ClearValue(GPIO_PORT_0,FND_A | FND_B);   
+         GPIO_ClearValue(GPIO_PORT_1,FND_C);   
+         GPIO_ClearValue(GPIO_PORT_2,FND_D | FND_E | FND_F);   
+         break;
+      
+      case 1:
+         GPIO_ClearValue(GPIO_PORT_0,FND_B);
+         GPIO_ClearValue(GPIO_PORT_1,FND_C);
+         break;
+   
+      case 2:
+         GPIO_ClearValue(GPIO_PORT_0,FND_A | FND_B);   
+         GPIO_ClearValue(GPIO_PORT_2,FND_D | FND_E);
+         GPIO_ClearValue(GPIO_PORT_3,FND_G);
+         break;
+
+      case 3:
+         GPIO_ClearValue(GPIO_PORT_0,FND_A | FND_B);
+         GPIO_ClearValue(GPIO_PORT_1,FND_C);   
+         GPIO_ClearValue(GPIO_PORT_2,FND_D);   
+         GPIO_ClearValue(GPIO_PORT_3,FND_G);   
+         break;
+
+      case 4:
+         GPIO_ClearValue(GPIO_PORT_0,FND_B);   
+         GPIO_ClearValue(GPIO_PORT_1,FND_C);   
+         GPIO_ClearValue(GPIO_PORT_2,FND_F);   
+         GPIO_ClearValue(GPIO_PORT_3,FND_G);
+         break;
+
+      case 5:
+         GPIO_ClearValue(GPIO_PORT_0,FND_A);   
+         GPIO_ClearValue(GPIO_PORT_1,FND_C);   
+         GPIO_ClearValue(GPIO_PORT_2,FND_D | FND_F);
+         GPIO_ClearValue(GPIO_PORT_3,FND_G);            
+         break;
+
+      case 6:
+         GPIO_ClearValue(GPIO_PORT_0,FND_A);
+         GPIO_ClearValue(GPIO_PORT_1,FND_C);
+         GPIO_ClearValue(GPIO_PORT_2,FND_D | FND_E | FND_F);
+         GPIO_ClearValue(GPIO_PORT_3,FND_G);
+         break;
+
+      case 7:
+         GPIO_ClearValue(GPIO_PORT_0,FND_A | FND_B);
+         GPIO_ClearValue(GPIO_PORT_1,FND_C);
+         break;
+
+      case 8:
+         GPIO_ClearValue(GPIO_PORT_0,FND_A | FND_B);
+         GPIO_ClearValue(GPIO_PORT_1,FND_C);   
+         GPIO_ClearValue(GPIO_PORT_2,FND_D | FND_E | FND_F);
+         GPIO_ClearValue(GPIO_PORT_3,FND_G);
+         break;
+
+      case 9:
+         GPIO_ClearValue(GPIO_PORT_0,FND_A | FND_B);
+         GPIO_ClearValue(GPIO_PORT_1,FND_C);
+         GPIO_ClearValue(GPIO_PORT_2,FND_F);   
+         GPIO_ClearValue(GPIO_PORT_3,FND_G);   
+         break;
+      
+      case 10:     //A
+         GPIO_ClearValue(GPIO_PORT_0,FND_A | FND_B);
+         GPIO_ClearValue(GPIO_PORT_1,FND_C);
+         GPIO_ClearValue(GPIO_PORT_2,FND_E | FND_F);   
+         GPIO_ClearValue(GPIO_PORT_3,FND_G);   
+         break;
+      
+      case 11:    //b
+         GPIO_ClearValue(GPIO_PORT_1,FND_C);   
+         GPIO_ClearValue(GPIO_PORT_2,FND_D | FND_E | FND_F);
+         GPIO_ClearValue(GPIO_PORT_3,FND_G);
+         break;
+      
+      case 12:   //C
+         GPIO_ClearValue(GPIO_PORT_0,FND_A);   
+         GPIO_ClearValue(GPIO_PORT_2,FND_D | FND_E | FND_F);
+         break;
+      
+      case 13:  //d
+         GPIO_ClearValue(GPIO_PORT_0,FND_B);
+         GPIO_ClearValue(GPIO_PORT_1,FND_C);   
+         GPIO_ClearValue(GPIO_PORT_2,FND_D | FND_E);
+         GPIO_ClearValue(GPIO_PORT_3,FND_G);
+         break;
+      
+      case 14:  //E
+         GPIO_ClearValue(GPIO_PORT_0,FND_A );   
+         GPIO_ClearValue(GPIO_PORT_2,FND_D | FND_E | FND_F);
+         GPIO_ClearValue(GPIO_PORT_3,FND_G);
+         break;
+      
+      case 15:  //F
+         GPIO_ClearValue(GPIO_PORT_0,FND_A);   
+         GPIO_ClearValue(GPIO_PORT_2,FND_E | FND_F);
+         GPIO_ClearValue(GPIO_PORT_3,FND_G);
+         break;
+      
+      case 16:  //g
+          GPIO_ClearValue(GPIO_PORT_0,FND_A | FND_B);
+         GPIO_ClearValue(GPIO_PORT_1,FND_C);   
+         GPIO_ClearValue(GPIO_PORT_2,FND_D | FND_F);
+         GPIO_ClearValue(GPIO_PORT_3,FND_G);
+         break;
+      
+      case 17:  //H
+         GPIO_ClearValue(GPIO_PORT_0,FND_B);
+         GPIO_ClearValue(GPIO_PORT_1,FND_C);   
+         GPIO_ClearValue(GPIO_PORT_2,FND_E | FND_F);
+         GPIO_ClearValue(GPIO_PORT_3,FND_G);
+         break;
+      
+      case 18:  //L   
+         GPIO_ClearValue(GPIO_PORT_2,FND_D | FND_E | FND_F);
+         break;
+      
+      case 19:  //n
+         GPIO_ClearValue(GPIO_PORT_1,FND_C);   
+         GPIO_ClearValue(GPIO_PORT_2,FND_E);
+         GPIO_ClearValue(GPIO_PORT_3,FND_G);
+         break;
+      
+      case 20:  //o
+         GPIO_ClearValue(GPIO_PORT_1,FND_C);   
+         GPIO_ClearValue(GPIO_PORT_2,FND_D | FND_E);
+         GPIO_ClearValue(GPIO_PORT_3,FND_G);
+         break;
+      
+      case 21:  //P
+         GPIO_ClearValue(GPIO_PORT_0,FND_A | FND_B);   
+         GPIO_ClearValue(GPIO_PORT_2,FND_E | FND_F);
+         GPIO_ClearValue(GPIO_PORT_3,FND_G);
+         break;
+      
+      case 22: // r
+         GPIO_ClearValue(GPIO_PORT_2,FND_E);
+         GPIO_ClearValue(GPIO_PORT_3,FND_G);
+         break;
+      
+      case 23:  // S
+         GPIO_ClearValue(GPIO_PORT_0,FND_A);
+         GPIO_ClearValue(GPIO_PORT_1,FND_C);   
+         GPIO_ClearValue(GPIO_PORT_2,FND_D | FND_F);
+         GPIO_ClearValue(GPIO_PORT_3,FND_G);
+         break;
+      
+      case 24: //U
+         GPIO_ClearValue(GPIO_PORT_0,FND_B);
+         GPIO_ClearValue(GPIO_PORT_1,FND_C);   
+         GPIO_ClearValue(GPIO_PORT_2,FND_D | FND_E | FND_F);
+         break;
+      
+      case 25:  //y
+         GPIO_ClearValue(GPIO_PORT_0,FND_B);
+         GPIO_ClearValue(GPIO_PORT_1,FND_C);   
+         GPIO_ClearValue(GPIO_PORT_2,FND_D| FND_F);
+         GPIO_ClearValue(GPIO_PORT_3,FND_G);
+         break;
+   }
+   FND_Data_CS();   //   Clock 
+}
+
+// doorLock_LCD.c
+void LCD_refresh(void) {
+   if (isNeedRepaintLCD == false) return;
+   isNeedRepaintLCD = false;
+
+   
+   GLCD_setBackColor(Blue);                          
+   GLCD_setTextColor(White);                          /* Set the Text Color */
+   GLCD_displayStringLn(Line0, "                    ");
+   GLCD_displayStringLn(Line1, "                    ");
+   GLCD_displayStringLn(Line2, "       SELECT       ");
+   GLCD_displayStringLn(Line3, "                    "); 
+   GLCD_displayStringLn(Line4, "       LOCAER       ");
+   GLCD_displayStringLn(Line5, "                    ");
+   GLCD_displayStringLn(Line6, "                    ");
+   GLCD_displayStringLn(Line7, "   PRESS # BUTTON   ");
+   GLCD_displayStringLn(Line8, "                    ");
+   GLCD_displayStringLn(Line9, "                    ");                   
+}
+
+//////////////////////////////////////////////////////////
+/*----------------------------------------------------------------------------
+ *      doorLock_LCD.c
+ *----------------------------------------------------------------------------
+ *      Name:    doorLock_LCD.c
+ *---------------------------------------------------------------------------*/
+
+
+#ifndef _doorLock_h_
+#include "doorLock_LCD.h"
+#endif // !_doorLock_h
+
+
+#define bool 							int
+#define false							0
+#define true 							1
+
+bool isNeedRepaintLCD;
+
+char cLCD_time_10h ;
+char cLCD_time_1h ;
+char cLCD_time_10m ;
+char cLCD_time_1m;
+char cLCD_time_10s;
+char cLCD_time_1s;
+
+/*
+char cLCD_lap_time_10h;
+char cLCD_lap_time_1h;
+char cLCD_lap_time_10m;
+char cLCD_lap_time_1m;
+char cLCD_lap_time_10s;
+char cLCD_lap_time_1s;
+*/
+
+char cLCD_date_1000Y;
+char cLCD_date_100Y;
+char cLCD_date_10Y;
+char cLCD_date_1Y;
+char cLCD_date_10M;
+char cLCD_date_1M;
+char cLCD_date_10D;
+char cLCD_date_1D;
+
+char cLCD_Keypad_Value;
+
+void setLCDTime(int time_10h, int time_1h, int time_10m, int time_1m, int time_10s, int time_1s){
+	cLCD_time_10h = time_10h + '0';
+	cLCD_time_1h = time_1h + '0';
+	cLCD_time_10m = time_10m + '0';
+	cLCD_time_1m = time_1m + '0';
+	cLCD_time_10s = time_10s + '0';
+	cLCD_time_1s = time_1s + '0';
+}
+
+void setLCDDate(int date_1000Y, int date_100Y, int date_10Y, int date_1Y, int date_10M, int date_1M, int date_10D, int date_1D){
+	 cLCD_date_1000Y = date_1000Y + '0';
+  cLCD_date_100Y = date_100Y + '0';
+  cLCD_date_10Y = date_10Y + '0';
+  cLCD_date_1Y =date_1Y +  '0';
+  cLCD_date_10M = date_10M + '0';
+  cLCD_date_1M = date_1M + '0';
+  cLCD_date_10D =date_10D +  '0';
+  cLCD_date_1D = date_1D + '0';
+}
+
+void setLCDkey(char  val) {
+	cLCD_Keypad_Value = val;
+}
+
+void setLCD_refresh() {
+	isNeedRepaintLCD = true;
+}
+
+void init_lcd() {
+	isNeedRepaintLCD = false;
+
+	cLCD_time_10h = '0';
+	cLCD_time_1h = '0';
+	cLCD_time_10m = '0';
+	cLCD_time_1m = '0';
+	cLCD_time_10s = '0';
+	cLCD_time_1s = '0';
+  /*
+	cLCD_lap_time_10h = '0';
+	cLCD_lap_time_1h = '0';
+	cLCD_lap_time_10m = '0';
+	cLCD_lap_time_1m = '0';
+	cLCD_lap_time_10s = '0';
+	cLCD_lap_time_1s = '0';
+	*/
+  cLCD_date_1000Y = '0';
+  cLCD_date_100Y = '0';
+  cLCD_date_10Y = '0';
+  cLCD_date_1Y = '0';
+  cLCD_date_10M = '0';
+  cLCD_date_1M = '0';
+  cLCD_date_10D = '0';
+  cLCD_date_1D = '0';
+	
+	cLCD_Keypad_Value = 'x';
+		
+	//LPC_PINCON->PINSEL9 &= ~(3 << 24);   back light on
+	GLCD_init();                              /* Initialize the GLCD           */
+	GLCD_clear(White);						/* Clear the GLCD                */
+	setLCD_refresh();
+
+	LCD_refresh();
+}
+
+void LCD_refresh(void) {
+	if (isNeedRepaintLCD == false) return;
+	isNeedRepaintLCD = false;
+
+	GLCD_setBackColor(Blue);                           /* Set the Text Color */
+	GLCD_setTextColor(White);                          /* Set the Text Color */
+	GLCD_displayStringLn(Line0, "   CortexM3_NXP     ");
+	GLCD_displayStringLn(Line1, "    RTX Blinky      ");
+	GLCD_displayStringLn(Line2, "   www.huins.com    ");
+	
+
+	GLCD_displayChar(20, 80, cLCD_date_1000Y);
+	GLCD_displayChar(40, 80, cLCD_date_100Y);
+	GLCD_displayChar(60, 80, cLCD_date_10Y);
+	GLCD_displayChar(80, 80, cLCD_date_1Y);
+	GLCD_displayChar(100, 80, cLCD_date_10M);
+	GLCD_displayChar(120, 80, cLCD_date_1M);
+	GLCD_displayChar(140, 80, cLCD_date_10D);
+	GLCD_displayChar(160, 80, cLCD_date_1D);
+
+	GLCD_displayChar(180, 80, cLCD_Keypad_Value);
+	GLCD_displayChar(200, 80, 'x');
+
+	GLCD_displayChar(20, 140, cLCD_time_10h);
+	GLCD_displayChar(40, 140, cLCD_time_1h);
+	GLCD_displayChar(60, 140, cLCD_time_10m);
+	GLCD_displayChar(80, 140, cLCD_time_1m);
+	GLCD_displayChar(100, 140, cLCD_time_10s);
+	GLCD_displayChar(120, 140, cLCD_time_1s);
+}
+
+///////////////////////////////////////////////////////////////////////
+///*----------------------------------------------------------------------------
+// *      main.c
+// *----------------------------------------------------------------------------
+// *      Name:    main.c
+// *---------------------------------------------------------------------------*/
+//
+
+/* Includes ----------------------------------------------------------------------*/
+////////////////////////////////////////////////////////////////////////////////////
+
+#ifndef _LPC17xx_H
+#include <LPC17xx.H>
+#endif // !<LPC17xx.H>
+
+#ifndef  _LPC1768_utility_h
+#include "LPC1768_utility.h"
+#endif // !"LPC1768_utility.h"
+
+#ifndef _lpc17xx_timer_h
+#include "lpc17xx_timer.h"
+#endif // !"lpc17xx_timer.h"
+
+#ifndef _LPC1768_motor_h
+#include "LPC1768_motor.h"
+#endif // !"LPC1768_motor.h"
+
+#ifndef _LPC1768_fnd_h
+#include "LPC1768_fnd.h"
+#endif // !"LPC1768_fnd.h"
+
+#ifndef _lpc17xx_gpio_h
+#include "lpc17xx_gpio.h"
+#endif // !"lpc17xx_gpio.h"
+
+#ifndef _LPC17xx_h
+#include "LPC17xx.h"
+#endif // !"LPC17xx.h"
+
+#ifndef _lpc_types_h
+#include "lpc_types.h"
+#endif // !"lpc_types.h"
+
+#ifndef _LPC1768_Huins_h
+#include "LPC1768_Huins.h"
+#endif // !"LPC1768_Huins.h"
+
+#ifndef _lpc17xx_pinsel_h
+#include "lpc17xx_pinsel.h"
+#endif // !"lpc17xx_pinsel.h"
+
+//#ifndef _debug_frmwrk_h
+//#include "debug_frmwrk.h"
+//#endif // !"debug_frmwrk.h"
+
+
+#include "doorLock_utility.h"
+#include "doorLock_LCD.h"
+#include "doorLock_MOTOR.h"
+#include "doorLock_FND.h"
+#include "doorLock_KEYPAD.h"
+#include "doorLock_UART.h"
+////////////////////////////////////////////////////////////////////////////////////
+/* end Includes --------------------------------------------------------------------- */
+
+
+/*declare function ---------------------------------------------------------------*/
+////////////////////////////////////////////////////////////////////////////////////
+
+
+//		timer0
+uint8_t time_10h = 2;
+uint8_t time_1h = 3;
+uint8_t time_10m = 5;
+uint8_t time_1m = 9;
+uint8_t time_10s = 5;
+uint8_t time_1s = 7;
+
+uint8_t date_1000Y = 9;
+uint8_t date_100Y = 9;
+uint8_t date_10Y = 9;
+uint8_t date_1Y = 9;
+uint8_t date_10M = 1;
+uint8_t date_1M = 2;
+uint8_t date_10D = 3;
+uint8_t date_1D = 1;
+
+TIM_TIMERCFG_Type TIM_ConfigStruct;
+TIM_MATCHCFG_Type TIM_MatchConfigStruct;
+void init_timer0(void);
+void time_update(void);
+void TIMER0_IRQHandler(void);
+//		end timer0
+
+// INT button pressed
+void init_EXTI(void);
+void EINT0_IRQHandler(void);
+
+// system total init leave in main.c ??
+void init(void);
+
+////////////////////////////////////////////////////////////////////////////////////////
+/*end declare function ---------------------------------------------------------------*/
+
+/* Private function ------------------------------------------------------------------*/
+////////////////////////////////////////////////////////////////////////////////////////
+//		init function
+void init() {
+	init_FND();
+	init_timer0();
+	init_lcd();
+	init_keypad();
+	init_EXTI();
+	init_stepping_motor();
+	uart_init();
+}
+//		init function
+/* end Private function --------------------------------------------------------------*/
+////////////////////////////////////////////////////////////////////////////////////////
+
+
+int main(void) {
+	init();
+	while (1) {
+		FND_blink();
+		Keypad_test();
+		LCD_refresh();
+		move_steppingMotor();
+		UART_communication();
+	}
+}
+
+/* INTERRUPT HANDLER -----------------------------------------------------------------*/
+////////////////////////////////////////////////////////////////////////////////////////
+
+// call every 1 sec
+void init_timer0() {
+	//timer0 init
+	TIM_ConfigStruct.PrescaleOption = TIM_PRESCALE_USVAL;	//	us(microsecond) ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Prescale ï¿½ï¿½ï¿½ï¿½
+	TIM_ConfigStruct.PrescaleValue = 100;	//	100us
+	TIM_MatchConfigStruct.MatchChannel = 0;	//	0ï¿½ï¿½ Ã¤ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	TIM_MatchConfigStruct.IntOnMatch = ENABLE;	//	Timerï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½  Interrupt ï¿½ß»ï¿½ Enable
+	TIM_MatchConfigStruct.ResetOnMatch = ENABLE;	//	Timerï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½  Reset Enable
+	TIM_MatchConfigStruct.StopOnMatch = DISABLE;	//	Timerï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ Timer Stop Disable
+	TIM_MatchConfigStruct.ExtMatchOutputType = TIM_EXTMATCH_NOTHING;	//	Timer ï¿½ï¿½Ä¡ï¿½Ò¶ï¿½ ï¿½Æ¹ï¿½ï¿½ï¿½ ï¿½Üºï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ (ï¿½ÜºÎ·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ GPIOï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾Æµï¿½ ï¿½ï¿½.)
+	TIM_MatchConfigStruct.MatchValue = 10000;	// Timer ï¿½ï¿½Ä¡ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 100us * 10000ï¿½ï¿½ = 1ï¿½ï¿½
+
+	TIM_Init(LPC_TIM0, TIM_TIMER_MODE, &TIM_ConfigStruct);	//  TIM_ConfigStruct ¼³Á¤ Àû¿ë
+	TIM_ConfigMatch(LPC_TIM0, &TIM_MatchConfigStruct);		// TIM_MatchConfigStruct ¼³Á¤ Àû¿ë
+	NVIC_EnableIRQ(TIMER0_IRQn);	//	TIMER0 Interrupt È°¼ºÈ­
+	TIM_Cmd(LPC_TIM0, ENABLE);	//	Timer Start
+}
+void time_update(void) {
+	time_1s++;
+	if (time_1s == 10) {
+		time_10s++;
+		time_1s = 0;
+	}
+	if (time_10s == 6) {
+		time_1m++;
+		time_10s = 0;
+	}
+	if (time_1m == 10) {
+		time_10m++;
+		time_1m = 0;
+	}
+	if (time_10m == 6) {
+		time_1h++;
+		time_10m = 0;
+		time_1m = 0;
+		time_10s = 0;
+		time_1s = 0;
+	}
+	if (time_1h == 10) {
+		time_10h++;
+		time_1h = 0;
+		time_10m = 0;
+		time_1m = 0;
+		time_10s = 0;
+		time_1s = 0;
+	}
+	if ((time_10h == 2) && (time_1h == 4) ){
+		date_1D++;
+		time_10h = 0;
+		time_1h = 0;
+		time_10m = 0;
+		time_1m = 0;
+		time_10s = 0;
+		time_1s = 0;
+	}
+	if(date_1D == 10) {
+		date_10D++;
+		date_1D = 1;
+		time_10h = 0;
+		time_1h = 0;
+		time_10m = 0;
+		time_1m = 0;
+		time_10s = 0;
+		time_1s = 0;
+	}
+	
+	///// ÀÌÇÏ ºÎºÐ ÇØ°á ¾ÈµÊ
+	
+	if(date_10D == 3 &&  date_1D == 1 && ( (date_10M+date_1M*10) == 3 || (date_10M+date_1M*10) == 5 || (date_10M+date_1M*10) == 8 || (date_10M+date_1M*10) == 10)) {
+		date_1M++;
+	  date_10D = 0;
+	date_1D = 1;
+	  time_10h = 0;
+		time_1h = 0;
+		time_10m = 0;
+		time_1m = 0;
+		time_10s = 0;
+		time_1s = 0;
+	}
+	if(date_10D == 3 &&  date_1D == 2 && ((date_10M+date_1M*10) == 1 || (date_10M+date_1M*10) == 4 || (date_10M+date_1M*10) == 6 || (date_10M+date_1M*10) == 9 || (date_10M+date_1M*10) == 11 || (date_10M+date_1M*10) == 12)) {
+		date_1M++;
+	  date_10D = 0;
+	date_1D = 1;
+	  time_10h = 0;
+		time_1h = 0;
+		time_10m = 0;
+		time_1m = 0;
+		time_10s = 0;
+		time_1s = 0;
+	}
+		if(date_10D == 2 &&  date_1D == 9 && (date_10M+date_1M*10) == 2) {
+		date_1M++;
+	  date_10D = 0;
+			date_1D = 1;
+	  time_10h = 0;
+		time_1h = 0;
+		time_10m = 0;
+		time_1m = 0;
+		time_10s = 0;
+		time_1s = 0;
+	}
+		if(date_1M == 10) {
+			date_10M++;
+			date_1M = 0;
+	  date_10D = 0;
+			date_1D = 1;
+	  time_10h = 0;
+		time_1h = 0;
+		time_10m = 0;
+		time_1m = 0;
+		time_10s = 0;
+		time_1s = 0;
+		}
+		if(date_10M == 1 && date_1M == 3) {
+			date_1Y++;
+			date_10M = 0;
+			date_1M = 1;
+			date_10D = 0;
+			date_1D = 1;
+	  time_10h = 0;
+		time_1h = 0;
+		time_10m = 0;
+		time_1m = 0;
+		time_10s = 0;
+		time_1s = 0;
+		}
+		if(date_1Y == 10) {
+			date_10Y++;
+			date_1Y = 0;
+			date_10M = 0;
+			date_1M = 1;
+			date_10D = 0;
+			date_1D = 1;
+	  time_10h = 0;
+		time_1h = 0;
+		time_10m = 0;
+		time_1m = 0;
+		time_10s = 0;
+		time_1s = 0;
+		}
+		if(date_10Y == 10) {
+			date_100Y++;
+			date_10Y = 0;
+			date_1Y = 0;
+			date_10M = 0;
+			date_1M = 1;
+			date_10D = 0;
+			date_1D = 1;
+	  time_10h = 0;
+		time_1h = 0;
+		time_10m = 0;
+		time_1m = 0;
+		time_10s = 0;
+		time_1s = 0;
+		}
+		if(date_100Y == 10){
+			date_1000Y++;
+			date_100Y = 0;
+			date_10Y = 0;
+			date_1Y = 0;
+			date_10M = 0;
+			date_1M = 1;
+			date_10D = 0;
+			date_1D = 1;
+	  time_10h = 0;
+		time_1h = 0;
+		time_10m = 0;
+		time_1m = 0;
+		time_10s = 0;
+		time_1s = 0;
+		}
+		if(date_1000Y ==10) {
+			date_1000Y = 0;
+			date_100Y = 0;
+			date_10Y = 0;
+			date_1Y = 1;
+			date_10M = 0;
+			date_1M = 1;
+			date_10D = 0;
+			date_1D = 1;
+	  time_10h = 0;
+		time_1h = 0;
+		time_10m = 0;
+		time_1m = 0;
+		time_10s = 0;
+		time_1s = 0;
+		}
+		
+		////////////
+	
+}
+void TIMER0_IRQHandler(void) {
+	TIM_ClearIntPending(LPC_TIM0, TIM_MR0_INT); //TIM0 interrupt clear
+
+	// timer for 1sec,10sec,1minute,10minute
+	time_update();
+		
+
+	//repaint
+	setLCD_refresh();
+	setLCDTime(time_10h, time_1h, time_10m, time_1m, time_10s, time_1s);
+
+	setLCDDate(date_1000Y, date_100Y, date_10Y, date_1Y, date_10M, date_1M, date_10D, date_1D);
+
+	//uart_refresh count 
+	uart_refresh_counter_up();
+}
+
+// INT button pressed
+void init_EXTI() {
+	EXTI_Init();	// EXTI ÃÊ±âÈ­
+	AF_ConfigPin(GPIO_PORT_2, PINSEL_PIN_10, PINSEL_FUNC_1);	// ´Ü¼ø GPIO ±â´ÉÀÌ ¾Æ´Ñ Alternate FunctionÀ» »ç¿ëÇÏ±â À§ÇØ ¼³Á¤
+	EXTI_ConfigPin(EXTI_EINT0); // EXTI0 ¼³Á¤
+	NVIC_EnableIRQ(EINT0_IRQn); // EXTI0 È°¼ºÈ­
+}
+void EINT0_IRQHandler(void) {
+	//clear INTERRUPT bit
+	EXTI_ClearEXTIFlag(EXTI_EINT0);
+
+	//capture current time.
+	/*
+	lap_time_10m = time_10m;
+	lap_time_1m = time_1m;
+	lap_time_1s = time_1s;
+	lap_time_10s = time_10s;
+	*/
+	setOpenDoorLock();
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+/* end INTERRUPT HANDLER -------------------------------------------------------------*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

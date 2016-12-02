@@ -52,7 +52,7 @@
 //#include "debug_frmwrk.h"
 //#endif // !"debug_frmwrk.h"
 
-
+#include "doorlock_data.h"
 #include "doorLock_utility.h"
 #include "doorLock_LCD.h"
 #include "doorLock_MOTOR.h"
@@ -66,20 +66,7 @@
 /*declare function ---------------------------------------------------------------*/
 ////////////////////////////////////////////////////////////////////////////////////
 
-//		timer0
-uint8_t time_10h = 0;
-uint8_t time_1h = 0;
-uint8_t time_10m = 0;
-uint8_t time_1m = 0;
-uint8_t time_10s = 0;
-uint8_t time_1s = 0;
-
-uint8_t lap_time_10h = 0;
-uint8_t lap_time_1h = 0;
-uint8_t lap_time_10m = 0;
-uint8_t lap_time_1m = 0;
-uint8_t lap_time_10s = 0;
-uint8_t lap_time_1s = 0;
+////		timer0
 
 TIM_TIMERCFG_Type TIM_ConfigStruct;
 TIM_MATCHCFG_Type TIM_MatchConfigStruct;
@@ -146,44 +133,20 @@ void init_timer0() {
 	NVIC_EnableIRQ(TIMER0_IRQn);	//	TIMER0 Interrupt 활성화
 	TIM_Cmd(LPC_TIM0, ENABLE);	//	Timer Start
 }
-void time_update(void) {
-	time_1s++;
-	if (time_1s == 10) {
-		time_10s++;
-		time_1s = 0;
-	}
-	if (time_10s == 6) {
-		time_1m++;
-		time_10s = 0;
-	}
-	if (time_1m == 10) {
-		time_10m++;
-		time_1m = 0;
-	}
-	if (time_10m == 6) {
-		time_10m = 0;
-		time_1m = 0;
-		time_10s = 0;
-		time_1s = 0;
-	}
 
-	
-}
+
 void TIMER0_IRQHandler(void) {
 	TIM_ClearIntPending(LPC_TIM0, TIM_MR0_INT); //TIM0 interrupt clear
 
 	// timer for 1sec,10sec,1minute,10minute
-	time_update();
-		
+	time_update();	
 
 	//repaint
 	setLCD_refresh();
-	setLCDTime(time_10h, time_1h, time_10m, time_1m, time_10s, time_1s);
-
-	setFNDTime(time_10h, time_1h, time_10m, time_1m, time_10s, time_1s);
 
 	//uart_refresh count 
 	uart_refresh_counter_up();
+	UART_liveSigal_count_up();
 }
 
 // INT button pressed
@@ -198,10 +161,6 @@ void EINT0_IRQHandler(void) {
 	EXTI_ClearEXTIFlag(EXTI_EINT0);
 
 	//capture current time.
-	lap_time_10m = time_10m;
-	lap_time_1m = time_1m;
-	lap_time_1s = time_1s;
-	lap_time_10s = time_10s;
 	setOpenDoorLock();
 }
 
