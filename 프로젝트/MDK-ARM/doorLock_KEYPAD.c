@@ -13,9 +13,9 @@
 
 LPC_GPIO_TypeDef    keypad_GPIO_SETTING[5];
 
-uint8_t iKeypad_Value = KEYPAD_UP;
-char 	cKeypad_Value = CHAR_KEYPAD_UP;
-
+uint8_t iKeypadValue	= KEYPAD_UP;
+char 	cKeypad_Value	= CHAR_KEYPAD_UP;
+int		prevKeypadValue = KEYPAD_UP;
 
 void EXT_IO_init(void) {
 	/*EXT_IO on PORT0 as Output*/
@@ -194,7 +194,7 @@ uint8_t Keypad(int8_t EXT_IO_DIR) {
 
 
 int getKEYPAD_ivalue(void) {
-	return iKeypad_Value;
+	return iKeypadValue;
 }
 char getKEYPAD_cvalue(void) {
 	return cKeypad_Value;
@@ -237,30 +237,103 @@ void init_keypad_vactor(void) {
 }
 
 void Keypad_test(void) {
+	int iKeypadValue = 0;
 	char Rev_Value = '0';																																					// To Revise Keypad #
+	int locknumber = 0;
+	int mode = getCurrentSystemMode();
 	load_LPC_GPIO_setting_to(keypad_GPIO_SETTING);
-	iKeypad_Value = Keypad(DEFAULT_KEYPAD_EXIO_NUM);
+	iKeypadValue = Keypad(DEFAULT_KEYPAD_EXIO_NUM);
+	Rev_Value = keypad_vector[iKeypadValue];
 
-	if (iKeypad_Value == KEYPAD_UP)
-		cKeypad_Value = CHAR_KEYPAD_UP;
-	else if (iKeypad_Value >= 10) {
-		cKeypad_Value = iKeypad_Value + 'A' - 10;
+	//if (iKeypadValue == prevKeypadValue) 
+	//	return;
+
+	if (iKeypadValue == KEYPAD_UP) {
+		prevKeypadValue = KEYPAD_UP;
 	}
-	else if (iKeypad_Value < 10) {
-		cKeypad_Value = iKeypad_Value + '0';
+	if (iKeypadValue != KEYPAD_UP && prevKeypadValue == KEYPAD_UP) {
+		prevKeypadValue = iKeypadValue;
+
+		if (isServerConnected() == false) {
+			return ;
+		}
+
+		switch (mode){
+		
+		case SYSTEM_MODE_ENTER_PASSWORD: {
+			if (Rev_Value >= '0' && Rev_Value <= '9') {
+				setLCD_refresh();
+				setPwd(Rev_Value - '0');
+			}
+			else if (Rev_Value == 'L') {
+				setCloseDoorLock();
+			}
+			else if (Rev_Value == 'O') {
+				setLCD_refresh();
+				setOpenDoorLock();
+			}
+			else if (Rev_Value == 'C') {
+				setLCD_refresh();
+				popbackPwd();
+			}
+			//
+			else if (Rev_Value == 'R') {
+				//check password
+				setLCD_refresh();
+				setRequsetPermission(true);
+				setCurrentSustemMode(SYSTEM_MODE_WAITING);
+
+			}
+			break;
+		}
+		case SYSTEM_MODE_SELECT_LOCKER_NUMBER: {
+			if (Rev_Value >= '0' && Rev_Value <= '9') {
+				locknumber = getSelectedLockerNumber();
+				locknumber = locknumber * 10 + Rev_Value - '0';
+				if (locknumber <= 100) {
+					setLCD_refresh();
+					setSelectedLockerNumber(locknumber);
+				}
+			}
+			else if (Rev_Value == 'C') {
+				setLCD_refresh();
+				locknumber = getSelectedLockerNumber();
+				locknumber /= 10;
+				setSelectedLockerNumber(locknumber);
+			}
+			else if (Rev_Value == 'R') {
+				setLCD_refresh();
+				setCurrentSustemMode(SYSTEM_MODE_ENTER_PASSWORD);
+			}
+			break;
+		}
+		case SYSTEM_MODE_OPEN_SUCCESS: {
+			if (Rev_Value == 'L') {
+				setLCD_refresh();
+				setCurrentSustemMode(SYSTEM_MODE_SELECT_LOCKER_NUMBER);
+				clearPwd();
+				setSelectedLockerNumber(0);
+				setCloseDoorLock();
+			}
+			break;
+		}
+		case SYSTEM_MODE_OPEN_FAIL: {
+			if (Rev_Value == 'R') {
+				setLCD_refresh();
+				setCurrentSustemMode(SYSTEM_MODE_SELECT_LOCKER_NUMBER);
+				clearPwd();
+				setSelectedLockerNumber(0);
+			}
+			break;
+		}
+		case SYSTEM_MODE_WAITING: {
+			break;
+		}
+		default:
+			break;
+		}
 	}
 
-	Rev_Value = keypad_vector[iKeypad_Value];
-
-	setLCDkey(Rev_Value);
-
-	if (Rev_Value == 'L')
-		setCloseDoorLock();
-	else if (Rev_Value == 'O')
-		setOpenDoorLock();
-
-	//입력이 필요할때만 되도록 수정
-	///if()
 }
 
 

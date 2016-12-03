@@ -78,6 +78,7 @@ def show_doorLockLog():
 			)
 
 
+
 if __name__ == "__main__":
 	Bootstrap(app)
 	app.run(host='127.0.0.1', port=8080)

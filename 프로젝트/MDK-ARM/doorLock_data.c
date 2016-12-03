@@ -14,7 +14,6 @@ int day = 31;
 int hour  = 23;
 int minute = 59;
 int second = 40  ;
-
 int dayInmonth[13] = { 1,31,28,31,30,31,30,31,31,30,31,30,31 };
 void time_update(void) {
 	int carry;
@@ -61,22 +60,18 @@ int getTime(int timeType) {
 	case MINUTE: return minute;
 	case SECOND: return second;
 	default:return  -1; 
-		break;
 	}
 }
 
 
 //request flag
-bool isRequestPermission = false;
+bool _isRequestedPermission = false;
 bool isRequestedPermission(void) {
-	return isRequestPermission;
+	return _isRequestedPermission;
 }
 void setRequsetPermission(bool value) {
-	isRequestPermission = value;
+	_isRequestedPermission = value;
 }
-
-// connection info ..?
-bool isconnected = false;
 
 //password data
 int pwd[PASSWORD_SIZE];
@@ -88,11 +83,10 @@ void clearPwd(void) {
 	pwd[3] = 0;
 	pwdSize = 0;
 }
-void setPwd_i(int index, int pwdValue) {
-	if (pwdSize == index) {
-		pwd[index] = pwdValue;
+void setPwd(int pwdValue) {
+	if (pwdSize >= 4) return;
+		pwd[pwdSize] = pwdValue;
 		pwdSize++;
-	}
 }
 int getPwd_i(int index) {
 	return pwd[index];
@@ -100,10 +94,85 @@ int getPwd_i(int index) {
 int getPwdSize(void) {
 	return pwdSize;
 }
-
+void popbackPwd(void) {
+	if (pwd > 0) {
+		pwdSize--;
+		pwd[pwdSize] = 0;
+	}
+}
 
 // log
 //50개 정도 보관함.
+//uart data
+
+bool _isServerConnected = false;
+bool isServerConnected(void) {
+	return  _isServerConnected;
+}
+void set_isServerConnected(bool flag) {
+	_isServerConnected = flag;
+}
+
+
+int connectionCounter = TOP_CONNECTION_COUNTER;
+void connectionCountDown(void) {
+	connectionCounter--;
+}
+bool isConnectionCountZero(void) {
+	if (connectionCounter <= 0)
+		return true;
+	else		
+		return false;
+}
+void resetConnectionCounter(void) {
+	connectionCounter = TOP_CONNECTION_COUNTER;
+}
+
+
+int SelectedLockerNumber = 0;
+int getSelectedLockerNumber(void) {
+	return SelectedLockerNumber;
+}
+void setSelectedLockerNumber(int num) {
+	SelectedLockerNumber = num;
+}
+
+int currentSystemMode = SYSTEM_MODE_SELECT_LOCKER_NUMBER;
+bool _isChangedCurrentSystemMode = false;
+bool isChangedCurrentSystemMode(void) {
+	if (_isChangedCurrentSystemMode == true) {
+		_isChangedCurrentSystemMode = false;
+		return true;
+	}
+	return false;
+}
+int getCurrentSystemMode(void) {
+	return currentSystemMode;
+
+}
+void setCurrentSustemMode(int mode) {
+	if (currentSystemMode != mode) {
+		currentSystemMode = mode;
+		_isChangedCurrentSystemMode = true;
+	}
+}
+
+
+
+int _requestPermissionMsgCounter = 0;
+void sendingMsgCountDown(void) {
+	_requestPermissionMsgCounter--;
+	if (_requestPermissionMsgCounter < 0)
+		_requestPermissionMsgCounter = 0;
+}
+void resetSendingMsgCounter(void) {
+	_requestPermissionMsgCounter = SENDING_MSG_COUNT_TOP;
+}
+bool isSendingMsgCounterZero(void){
+	if (_requestPermissionMsgCounter == 0)
+		return true;
+	return false;
+}
 
 
 

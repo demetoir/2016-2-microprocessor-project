@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>bae0db4f-21d7-4107-9832-3f1612bc4ffb</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>serial_connection_test.py</StartupFile>
+    <StartupFile>python_server.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -22,7 +22,6 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="flaskr.py" />
     <Compile Include="python_server.py" />
     <Compile Include="serial_connection_test.py" />
   </ItemGroup>

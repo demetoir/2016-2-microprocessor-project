@@ -27,7 +27,7 @@ void setFNDTime() {
 
 	FNDtime_10h		= hour / 10;
 	FNDtime_1h		= hour % 10;
-	FNDtime_10m		= minute / 10;
+	FNDtime_10m	= minute / 10;
 	FNDtime_1m		= minute % 10;
 	FNDtime_10s		= second / 10;
 	FNDtime_1s		= second % 10;

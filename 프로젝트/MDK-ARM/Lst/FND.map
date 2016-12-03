@@ -25,7 +25,7 @@ Section Cross References
     .\obj\main.o(.text) refers to .\obj\doorlock_lcd.o(.text) for init_lcd
     .\obj\main.o(.text) refers to .\obj\doorlock_keypad.o(.text) for init_keypad
     .\obj\main.o(.text) refers to .\obj\doorlock_motor.o(.text) for init_stepping_motor
-    .\obj\main.o(.text) refers to .\obj\doorlock_uart.o(.text) for uart_init
+    .\obj\main.o(.text) refers to .\obj\doorlock_uart.o(.text) for UART_init
     .\obj\main.o(.text) refers to .\obj\doorlock_data.o(.text) for time_update
     .\obj\main.o(.text) refers to .\obj\main.o(.data) for TIM_ConfigStruct
     .\obj\main.o(.text) refers to .\obj\main.o(.bss) for TIM_MatchConfigStruct
@@ -36,20 +36,21 @@ Section Cross References
     .\obj\doorlock_fnd.o(.text) refers to .\obj\lpc1768_utility.o(.text) for Delay
     .\obj\doorlock_fnd.o(.text) refers to .\obj\doorlock_fnd.o(.data) for FNDtime_10h
     .\obj\doorlock_fnd.o(.text) refers to .\obj\doorlock_fnd.o(.bss) for FND_GPIO_SETTING
+    .\obj\doorlock_keypad.o(.text) refers to .\obj\doorlock_data.o(.text) for getCurrentSystemMode
     .\obj\doorlock_keypad.o(.text) refers to .\obj\doorlock_utility.o(.text) for load_LPC_GPIO_setting_to
-    .\obj\doorlock_keypad.o(.text) refers to .\obj\doorlock_lcd.o(.text) for setLCDkey
-    .\obj\doorlock_keypad.o(.text) refers to .\obj\doorlock_motor.o(.text) for setCloseDoorLock
-    .\obj\doorlock_keypad.o(.text) refers to .\obj\doorlock_keypad.o(.data) for iKeypad_Value
+    .\obj\doorlock_keypad.o(.text) refers to .\obj\doorlock_lcd.o(.text) for setLCD_refresh
+    .\obj\doorlock_keypad.o(.text) refers to .\obj\doorlock_keypad.o(.data) for iKeypadValue
     .\obj\doorlock_keypad.o(.text) refers to .\obj\doorlock_keypad.o(.bss) for keypad_GPIO_SETTING
-    .\obj\doorlock_lcd.o(.text) refers to C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_pad.o)(.text) for _printf_pre_padding
+    .\obj\doorlock_keypad.o(.text) refers to .\obj\doorlock_motor.o(.text) for setCloseDoorLock
     .\obj\doorlock_lcd.o(.text) refers to C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_percent.o)(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
     .\obj\doorlock_lcd.o(.text) refers to C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_d.o)(.ARM.Collect$$_printf_percent$$00000009) for _printf_d
     .\obj\doorlock_lcd.o(.text) refers to C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_dec.o)(.text) for _printf_int_dec
+    .\obj\doorlock_lcd.o(.text) refers to C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_pad.o)(.text) for _printf_pre_padding
     .\obj\doorlock_lcd.o(.text) refers to .\obj\glcd.o(.text) for GLCD_setBackColor
     .\obj\doorlock_lcd.o(.text) refers to C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rt_memclr_w.o)(.text) for __aeabi_memclr4
-    .\obj\doorlock_lcd.o(.text) refers to .\obj\doorlock_data.o(.text) for getTime
     .\obj\doorlock_lcd.o(.text) refers to C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(noretval__2sprintf.o)(.text) for __2sprintf
-    .\obj\doorlock_lcd.o(.text) refers to .\obj\doorlock_lcd.o(.data) for cLCD_Keypad_Value
+    .\obj\doorlock_lcd.o(.text) refers to .\obj\doorlock_data.o(.text) for getSelectedLockerNumber
+    .\obj\doorlock_lcd.o(.text) refers to .\obj\doorlock_lcd.o(.data) for isNeedRepaintLCD
     .\obj\doorlock_motor.o(.text) refers to .\obj\doorlock_utility.o(.text) for set_EXT_IO_DIRECTION
     .\obj\doorlock_motor.o(.text) refers to .\obj\lpc1768_motor.o(.text) for Motor_Init
     .\obj\doorlock_motor.o(.text) refers to .\obj\lpc17xx_gpio.o(.text) for GPIO_SetValue
@@ -60,15 +61,18 @@ Section Cross References
     .\obj\doorlock_uart.o(.text) refers to C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_percent.o)(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
     .\obj\doorlock_uart.o(.text) refers to C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_s.o)(.ARM.Collect$$_printf_percent$$00000014) for _printf_s
     .\obj\doorlock_uart.o(.text) refers to C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_str.o)(.text) for _printf_str
+    .\obj\doorlock_uart.o(.text) refers to C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_d.o)(.ARM.Collect$$_printf_percent$$00000009) for _printf_d
+    .\obj\doorlock_uart.o(.text) refers to C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_dec.o)(.text) for _printf_int_dec
     .\obj\doorlock_uart.o(.text) refers to .\obj\lpc17xx_uart.o(.text) for Uart0_Init
     .\obj\doorlock_uart.o(.text) refers to .\obj\debug_frmwrk.o(.text) for UARTPuts
+    .\obj\doorlock_uart.o(.text) refers to .\obj\doorlock_data.o(.text) for set_isServerConnected
     .\obj\doorlock_uart.o(.text) refers to C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rt_memclr.o)(.text) for __aeabi_memclr
     .\obj\doorlock_uart.o(.text) refers to C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(noretval__2sprintf.o)(.text) for __2sprintf
     .\obj\doorlock_uart.o(.text) refers to C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rt_memclr_w.o)(.text) for __aeabi_memclr4
-    .\obj\doorlock_uart.o(.text) refers to C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strcmpv7m.o)(.text) for strcmp
     .\obj\doorlock_uart.o(.text) refers to C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strcpy.o)(.text) for strcpy
-    .\obj\doorlock_uart.o(.text) refers to .\obj\doorlock_data.o(.text) for setTimer
-    .\obj\doorlock_uart.o(.text) refers to .\obj\doorlock_uart.o(.data) for UART_refresh
+    .\obj\doorlock_uart.o(.text) refers to C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strtok.o)(.text) for strtok
+    .\obj\doorlock_uart.o(.text) refers to C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strcmpv7m.o)(.text) for strcmp
+    .\obj\doorlock_uart.o(.text) refers to .\obj\doorlock_uart.o(.data) for UART_handShake_time_count
     .\obj\doorlock_uart.o(.text) refers to .\obj\doorlock_uart.o(.bss) for aTxBuffer
     .\obj\doorlock_uart.o(.text) refers to .\obj\doorlock_motor.o(.text) for setOpenDoorLock
     .\obj\doorlock_uart.o(.text) refers to .\obj\doorlock_lcd.o(.text) for setLCD_refresh
@@ -145,6 +149,8 @@ Section Cross References
     C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_s.o)(.ARM.Collect$$_printf_percent$$00000014) refers (Weak) to C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_char.o)(.text) for _printf_string
     C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_d.o)(.ARM.Collect$$_printf_percent$$00000009) refers (Weak) to C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_dec.o)(.text) for _printf_int_dec
     C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_percent.o)(.ARM.Collect$$_printf_percent$$00000000) refers (Special) to C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_percent_end.o)(.ARM.Collect$$_printf_percent$$00000017) for _printf_percent_end
+    C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strtok.o)(.text) refers to C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strtok_int.o)(.text) for __strtok_internal
+    C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strtok.o)(.text) refers to C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strtok.o)(.data) for .data
     C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rt_memclr.o)(.text) refers to C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rt_memclr_w.o)(.text) for _memset_w
     C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__main.o)(!!!main) refers to C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__rtentry.o)(.ARM.Collect$$rtentry$$00000000) for __rt_entry
     C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__rtentry.o)(.ARM.Collect$$rtentry$$00000000) refers (Special) to C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__rtentry2.o)(.ARM.Collect$$rtentry$$0000000A) for __rt_entry_li
@@ -159,6 +165,8 @@ Section Cross References
     C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_intcommon.o)(.text) refers (Weak) to C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_pad.o)(.text) for _printf_post_padding
     C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_char_common.o)(.text) refers to C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__printf_wp.o)(.text) for __printf
     C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_char.o)(.text) refers (Weak) to C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_str.o)(.text) for _printf_str
+    C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strtok_int.o)(.text) refers to C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strspn.o)(.text) for strspn
+    C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strtok_int.o)(.text) refers to C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strcspn.o)(.text) for strcspn
     C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__rtentry2.o)(.ARM.Collect$$rtentry$$00000008) refers to C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(boardinit2.o)(.text) for _platform_post_stackheap_init
     C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__rtentry2.o)(.ARM.Collect$$rtentry$$0000000A) refers to C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit.o)(.ARM.Collect$$libinit$$00000000) for __rt_lib_init
     C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__rtentry2.o)(.ARM.Collect$$rtentry$$0000000B) refers to C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(boardinit3.o)(.text) for _platform_post_lib_init
@@ -351,86 +359,90 @@ Image Symbol Table
     Symbol Name                              Value     Ov Type        Size  Object(Section)
 
     RESET                                    0x00000000   Section      204  .\obj\startup_lpc17xx.o(RESET)
-    ../clib/angel/boardlib.s                 0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(boardshut.o) ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(boardinit1.o) ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(boardinit2.o) ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(boardinit3.o) ABSOLUTE
+    ../clib/angel/boardlib.s                 0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(boardshut.o) ABSOLUTE
     ../clib/angel/dclz77c.s                  0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__dclz77c.o) ABSOLUTE
     ../clib/angel/handlers.s                 0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__scatter_zi.o) ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__rtentry4.o) ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rtexit2.o) ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__rtentry2.o) ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rtexit.o) ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__rtentry.o) ABSOLUTE
-    ../clib/angel/rt.s                       0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rt_raise.o) ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rtexit2.o) ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rtexit.o) ABSOLUTE
     ../clib/angel/rt.s                       0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rt_div0.o) ABSOLUTE
+    ../clib/angel/rt.s                       0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rt_raise.o) ABSOLUTE
     ../clib/angel/rt.s                       0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(aeabi_ldiv0_sigfpe.o) ABSOLUTE
     ../clib/angel/rt.s                       0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(aeabi_ldiv0.o) ABSOLUTE
     ../clib/angel/scatter.s                  0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__scatter.o) ABSOLUTE
     ../clib/angel/startup.s                  0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__main.o) ABSOLUTE
-    ../clib/angel/sys.s                      0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(indicate_semi.o) ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(sys_stackheap_outer.o) ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libspace.o) ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(indicate_semi.o) ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(use_no_semi.o) ABSOLUTE
-    ../clib/angel/sysapp.c                   0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(sys_exit.o) ABSOLUTE
-    ../clib/angel/sysapp.c                   0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(sys_wrch.o) ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(sys_command.o) ABSOLUTE
-    ../clib/armsys.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(argv_veneer.o) ABSOLUTE
-    ../clib/armsys.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(argv_veneer.o) ABSOLUTE
+    ../clib/angel/sysapp.c                   0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(sys_wrch.o) ABSOLUTE
+    ../clib/angel/sysapp.c                   0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(sys_exit.o) ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(no_argv.o) ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_get_argv_nomalloc.o) ABSOLUTE
+    ../clib/armsys.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(argv_veneer.o) ABSOLUTE
+    ../clib/armsys.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(argv_veneer.o) ABSOLUTE
     ../clib/heapalloc.c                      0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(hrguard.o) ABSOLUTE
     ../clib/heapaux.c                        0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(heapauxi.o) ABSOLUTE
-    ../clib/libinit.s                        0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o) ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libshutdown.o) ABSOLUTE
-    ../clib/libinit.s                        0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit.o) ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libshutdown2.o) ABSOLUTE
+    ../clib/libinit.s                        0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit.o) ABSOLUTE
+    ../clib/libinit.s                        0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o) ABSOLUTE
     ../clib/longlong.s                       0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(lludivv7m.o) ABSOLUTE
-    ../clib/memcpset.s                       0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strcmpv7m.o) ABSOLUTE
-    ../clib/memcpset.s                       0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rt_memclr_w.o) ABSOLUTE
     ../clib/memcpset.s                       0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rt_memclr.o) ABSOLUTE
+    ../clib/memcpset.s                       0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rt_memclr_w.o) ABSOLUTE
+    ../clib/memcpset.s                       0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strcmpv7m.o) ABSOLUTE
     ../clib/misc.s                           0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(printf_stubs.o) ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__printf_nopercent.o) ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__printf_ss.o) ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_pad.o) ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__printf_flags_ss.o) ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__printf_wp.o) ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__printf.o) ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(noretval__2sprintf.o) ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__2sprintf.o) ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_str.o) ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_sputc.o) ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_dec.o) ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__printf_nopercent.o) ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__printf_flags_wp.o) ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__printf_ss_wp.o) ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_char.o) ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_char_common.o) ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_intcommon.o) ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__printf_wp.o) ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__printf_ss.o) ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__printf_flags.o) ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_dec.o) ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_pad.o) ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__printf_flags_ss.o) ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_sputc.o) ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__printf_flags_ss_wp.o) ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__printf_ss_wp.o) ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__2sprintf.o) ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(noretval__2sprintf.o) ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__printf_flags_wp.o) ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__printf.o) ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__printf_flags.o) ABSOLUTE
     ../clib/printf_percent.s                 0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_s.o) ABSOLUTE
+    ../clib/printf_percent.s                 0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_d.o) ABSOLUTE
     ../clib/printf_percent.s                 0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_percent.o) ABSOLUTE
     ../clib/printf_percent.s                 0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_percent_end.o) ABSOLUTE
-    ../clib/printf_percent.s                 0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_d.o) ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(defsig_other.o) ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(defsig_general.o) ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(defsig_fpe_inner.o) ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(defsig_fpe_outer.o) ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(defsig_abrt_inner.o) ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(defsig_rtmem_formal.o) ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(defsig_general.o) ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__raise.o) ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(defsig_exit.o) ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(defsig_rtred_inner.o) ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(defsig_fpe_formal.o) ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(defsig_fpe_outer.o) ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(defsig_other.o) ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(defsig_segv_inner.o) ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(defsig_cppl_inner.o) ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(defsig_pvfn_inner.o) ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(defsig_stak_inner.o) ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(defsig_fpe_inner.o) ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(defsig_rtmem_outer.o) ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(defsig_rtmem_inner.o) ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__raise.o) ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(defsig_rtmem_formal.o) ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(defsig_stak_inner.o) ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(defsig_pvfn_inner.o) ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(defsig_cppl_inner.o) ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(defsig_segv_inner.o) ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(defsig_fpe_formal.o) ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(defsig_rtred_inner.o) ABSOLUTE
     ../clib/signal.s                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(defsig.o) ABSOLUTE
     ../clib/stdlib.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(exit.o) ABSOLUTE
+    ../clib/string.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strcspn.o) ABSOLUTE
+    ../clib/string.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strtok.o) ABSOLUTE
     ../clib/string.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strcpy.o) ABSOLUTE
+    ../clib/string.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strspn.o) ABSOLUTE
+    ../clib/string.c                         0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strtok_int.o) ABSOLUTE
     ../fplib/fpinit.s                        0x00000000   Number         0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\fz_ws.l(fpinit.o) ABSOLUTE
     ..\Src\startup_LPC17xx.s                 0x00000000   Number         0  .\obj\startup_lpc17xx.o ABSOLUTE
     ..\Src\system_LPC17xx.c                  0x00000000   Number         0  .\obj\system_lpc17xx.o ABSOLUTE
@@ -546,94 +558,100 @@ Image Symbol Table
     .ARM.Collect$$rtexit$$00000003           0x000001b4   Section        4  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rtexit2.o)(.ARM.Collect$$rtexit$$00000003)
     .ARM.Collect$$rtexit$$00000004           0x000001b8   Section        6  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rtexit2.o)(.ARM.Collect$$rtexit$$00000004)
     .text                                    0x000001c0   Section       60  .\obj\startup_lpc17xx.o(.text)
-    .text                                    0x000001fc   Section        0  .\obj\main.o(.text)
-    NVIC_EnableIRQ                           0x000002cf   Thumb Code    22  .\obj\main.o(.text)
-    .text                                    0x000002ec   Section        0  .\obj\lpc17xx_libcfg_default.o(.text)
-    .text                                    0x000002f0   Section        0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(heapauxi.o)(.text)
-    .text                                    0x000002f6   Section        2  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(use_no_semi.o)(.text)
-    .text                                    0x000002f8   Section        0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(indicate_semi.o)(.text)
+    .text                                    0x000001fc   Section        0  .\obj\lpc17xx_exti.o(.text)
+    .text                                    0x000002c0   Section        0  .\obj\lpc17xx_libcfg_default.o(.text)
+    .text                                    0x000002c4   Section        0  .\obj\lpc1768_motor.o(.text)
+    .text                                    0x000002f8   Section        2  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(use_no_semi.o)(.text)
+    .text                                    0x000002fa   Section        0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(indicate_semi.o)(.text)
     .ARM.__at_0x02FC                         0x000002fc   Section        4  .\obj\startup_lpc17xx.o(.ARM.__at_0x02FC)
     .text                                    0x00000300   Section        0  .\obj\system_lpc17xx.o(.text)
-    .text                                    0x000005ec   Section        0  .\obj\glcd.o(.text)
-    delay                                    0x000005ed   Thumb Code    14  .\obj\glcd.o(.text)
-    wr_cmd                                   0x000005fb   Thumb Code    36  .\obj\glcd.o(.text)
-    wr_dat                                   0x0000061f   Thumb Code    38  .\obj\glcd.o(.text)
-    wr_pixel                                 0x00000645   Thumb Code    50  .\obj\glcd.o(.text)
-    GLCD_SetX                                0x0000092d   Thumb Code    50  .\obj\glcd.o(.text)
-    GLCD_SetY                                0x0000095f   Thumb Code    50  .\obj\glcd.o(.text)
-    ssp_send                                 0x00000b15   Thumb Code    32  .\obj\glcd.o(.text)
-    .text                                    0x00000b5c   Section        0  .\obj\doorlock_fnd.o(.text)
-    .text                                    0x00000cbc   Section        0  .\obj\doorlock_keypad.o(.text)
-    .text                                    0x00001138   Section        0  .\obj\doorlock_lcd.o(.text)
-    .text                                    0x00001330   Section        0  .\obj\doorlock_motor.o(.text)
-    .text                                    0x000015b0   Section        0  .\obj\doorlock_uart.o(.text)
-    .text                                    0x00001bdc   Section        0  .\obj\doorlock_utility.o(.text)
-    .text                                    0x00001cf0   Section        0  .\obj\doorlock_data.o(.text)
-    .text                                    0x00001eac   Section        0  .\obj\debug_frmwrk.o(.text)
-    .text                                    0x000022d0   Section        0  .\obj\lpc17xx_clkpwr.o(.text)
-    .text                                    0x00002410   Section        0  .\obj\lpc17xx_exti.o(.text)
-    .text                                    0x000024d4   Section        0  .\obj\lpc17xx_gpio.o(.text)
-    GPIO_GetPointer                          0x000024d5   Thumb Code    52  .\obj\lpc17xx_gpio.o(.text)
-    FIO_HalfWordGetPointer                   0x00002509   Thumb Code    52  .\obj\lpc17xx_gpio.o(.text)
-    FIO_ByteGetPointer                       0x0000253d   Thumb Code    52  .\obj\lpc17xx_gpio.o(.text)
-    .text                                    0x000028e0   Section        0  .\obj\lpc17xx_pinsel.o(.text)
-    set_PinFunc                              0x000028e1   Thumb Code    60  .\obj\lpc17xx_pinsel.o(.text)
-    set_ResistorMode                         0x0000291d   Thumb Code    62  .\obj\lpc17xx_pinsel.o(.text)
-    set_OpenDrainMode                        0x0000295b   Thumb Code    44  .\obj\lpc17xx_pinsel.o(.text)
-    .text                                    0x00002a00   Section        0  .\obj\lpc17xx_timer.o(.text)
-    getPClock                                0x00002a01   Thumb Code    66  .\obj\lpc17xx_timer.o(.text)
-    converUSecToVal                          0x00002a43   Thumb Code    50  .\obj\lpc17xx_timer.o(.text)
-    converPtrToTimeNum                       0x00002a75   Thumb Code    46  .\obj\lpc17xx_timer.o(.text)
-    .text                                    0x00003054   Section        0  .\obj\lpc17xx_uart.o(.text)
-    uart_set_divisors                        0x00003055   Thumb Code   464  .\obj\lpc17xx_uart.o(.text)
-    .text                                    0x00003ee0   Section        0  .\obj\lpc1768_fnd.o(.text)
-    .text                                    0x0000422c   Section        0  .\obj\lpc1768_motor.o(.text)
-    .text                                    0x00004260   Section        0  .\obj\lpc1768_utility.o(.text)
-    .text                                    0x00004618   Section      238  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(lludivv7m.o)(.text)
-    .text                                    0x00004708   Section        0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(noretval__2sprintf.o)(.text)
-    .text                                    0x00004730   Section        0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_pad.o)(.text)
-    .text                                    0x0000477e   Section        0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_str.o)(.text)
-    .text                                    0x000047d0   Section        0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_dec.o)(.text)
-    .text                                    0x00004848   Section        0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__printf_wp.o)(.text)
-    .text                                    0x00004956   Section        0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strcpy.o)(.text)
-    .text                                    0x0000499e   Section       68  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rt_memclr.o)(.text)
-    .text                                    0x000049e2   Section       78  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rt_memclr_w.o)(.text)
-    .text                                    0x00004a30   Section      128  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strcmpv7m.o)(.text)
-    .text                                    0x00004ab0   Section        0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_intcommon.o)(.text)
-    .text                                    0x00004b64   Section        0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_char_common.o)(.text)
-    _printf_input_char                       0x00004b65   Thumb Code    10  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_char_common.o)(.text)
-    .text                                    0x00004b94   Section        0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_sputc.o)(.text)
-    .text                                    0x00004b9e   Section        0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_char.o)(.text)
-    .text                                    0x00004bca   Section       74  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(sys_stackheap_outer.o)(.text)
-    .text                                    0x00004c14   Section        0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(exit.o)(.text)
-    .text                                    0x00004c28   Section        8  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libspace.o)(.text)
-    .text                                    0x00004c30   Section        0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(sys_exit.o)(.text)
-    i._is_digit                              0x00004c3c   Section        0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__printf_wp.o)(i._is_digit)
+    .text                                    0x000005ec   Section        0  .\obj\main.o(.text)
+    NVIC_EnableIRQ                           0x000006d3   Thumb Code    22  .\obj\main.o(.text)
+    .text                                    0x000006f0   Section        0  .\obj\glcd.o(.text)
+    delay                                    0x000006f1   Thumb Code    14  .\obj\glcd.o(.text)
+    wr_cmd                                   0x000006ff   Thumb Code    36  .\obj\glcd.o(.text)
+    wr_dat                                   0x00000723   Thumb Code    38  .\obj\glcd.o(.text)
+    wr_pixel                                 0x00000749   Thumb Code    50  .\obj\glcd.o(.text)
+    GLCD_SetX                                0x00000a31   Thumb Code    50  .\obj\glcd.o(.text)
+    GLCD_SetY                                0x00000a63   Thumb Code    50  .\obj\glcd.o(.text)
+    ssp_send                                 0x00000c19   Thumb Code    32  .\obj\glcd.o(.text)
+    .text                                    0x00000c60   Section        0  .\obj\doorlock_fnd.o(.text)
+    .text                                    0x00000dc0   Section        0  .\obj\doorlock_keypad.o(.text)
+    .text                                    0x00001314   Section        0  .\obj\doorlock_lcd.o(.text)
+    .text                                    0x000017d8   Section        0  .\obj\doorlock_motor.o(.text)
+    .text                                    0x00001a58   Section        0  .\obj\doorlock_uart.o(.text)
+    .text                                    0x000020b4   Section        0  .\obj\doorlock_utility.o(.text)
+    .text                                    0x000021c8   Section        0  .\obj\doorlock_data.o(.text)
+    .text                                    0x0000245c   Section        0  .\obj\debug_frmwrk.o(.text)
+    .text                                    0x00002880   Section        0  .\obj\lpc17xx_clkpwr.o(.text)
+    .text                                    0x000029c0   Section        0  .\obj\lpc17xx_gpio.o(.text)
+    GPIO_GetPointer                          0x000029c1   Thumb Code    52  .\obj\lpc17xx_gpio.o(.text)
+    FIO_HalfWordGetPointer                   0x000029f5   Thumb Code    52  .\obj\lpc17xx_gpio.o(.text)
+    FIO_ByteGetPointer                       0x00002a29   Thumb Code    52  .\obj\lpc17xx_gpio.o(.text)
+    .text                                    0x00002dcc   Section        0  .\obj\lpc17xx_pinsel.o(.text)
+    set_PinFunc                              0x00002dcd   Thumb Code    60  .\obj\lpc17xx_pinsel.o(.text)
+    set_ResistorMode                         0x00002e09   Thumb Code    62  .\obj\lpc17xx_pinsel.o(.text)
+    set_OpenDrainMode                        0x00002e47   Thumb Code    44  .\obj\lpc17xx_pinsel.o(.text)
+    .text                                    0x00002eec   Section        0  .\obj\lpc17xx_timer.o(.text)
+    getPClock                                0x00002eed   Thumb Code    66  .\obj\lpc17xx_timer.o(.text)
+    converUSecToVal                          0x00002f2f   Thumb Code    50  .\obj\lpc17xx_timer.o(.text)
+    converPtrToTimeNum                       0x00002f61   Thumb Code    46  .\obj\lpc17xx_timer.o(.text)
+    .text                                    0x00003540   Section        0  .\obj\lpc17xx_uart.o(.text)
+    uart_set_divisors                        0x00003541   Thumb Code   464  .\obj\lpc17xx_uart.o(.text)
+    .text                                    0x000043cc   Section        0  .\obj\lpc1768_fnd.o(.text)
+    .text                                    0x00004718   Section        0  .\obj\lpc1768_utility.o(.text)
+    .text                                    0x00004ad0   Section      238  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(lludivv7m.o)(.text)
+    .text                                    0x00004bc0   Section        0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(noretval__2sprintf.o)(.text)
+    .text                                    0x00004be8   Section        0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_pad.o)(.text)
+    .text                                    0x00004c36   Section        0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_str.o)(.text)
+    .text                                    0x00004c88   Section        0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_dec.o)(.text)
+    .text                                    0x00004d00   Section        0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__printf_wp.o)(.text)
+    .text                                    0x00004e10   Section        0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strtok.o)(.text)
+    .text                                    0x00004e1c   Section        0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strcpy.o)(.text)
+    .text                                    0x00004e64   Section       68  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rt_memclr.o)(.text)
+    .text                                    0x00004ea8   Section       78  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rt_memclr_w.o)(.text)
+    .text                                    0x00004ef8   Section      128  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strcmpv7m.o)(.text)
+    .text                                    0x00004f78   Section        0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(heapauxi.o)(.text)
+    .text                                    0x00004f7e   Section        0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_intcommon.o)(.text)
+    .text                                    0x00005030   Section        0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_char_common.o)(.text)
+    _printf_input_char                       0x00005031   Thumb Code    10  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_char_common.o)(.text)
+    .text                                    0x00005060   Section        0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_sputc.o)(.text)
+    .text                                    0x0000506a   Section        0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_char.o)(.text)
+    .text                                    0x00005098   Section        0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strtok_int.o)(.text)
+    .text                                    0x000050dc   Section        0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strcspn.o)(.text)
+    .text                                    0x000050fc   Section        0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strspn.o)(.text)
+    .text                                    0x00005118   Section       74  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(sys_stackheap_outer.o)(.text)
+    .text                                    0x00005162   Section        0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(exit.o)(.text)
+    .text                                    0x00005174   Section        8  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libspace.o)(.text)
+    .text                                    0x0000517c   Section        0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(sys_exit.o)(.text)
+    i._is_digit                              0x00005188   Section        0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__printf_wp.o)(i._is_digit)
     .data                                    0x10000000   Section        4  .\obj\system_lpc17xx.o(.data)
     .data                                    0x10000004   Section        8  .\obj\main.o(.data)
     .data                                    0x1000000c   Section     5380  .\obj\glcd.o(.data)
     TextColor                                0x1000150c   Data           2  .\obj\glcd.o(.data)
     BackColor                                0x1000150e   Data           2  .\obj\glcd.o(.data)
     .data                                    0x10001510   Section       24  .\obj\doorlock_fnd.o(.data)
-    .data                                    0x10001528   Section        2  .\obj\doorlock_keypad.o(.data)
-    .data                                    0x1000152c   Section        6  .\obj\doorlock_lcd.o(.data)
-    .data                                    0x10001534   Section        8  .\obj\doorlock_motor.o(.data)
-    .data                                    0x1000153c   Section       28  .\obj\doorlock_uart.o(.data)
-    .data                                    0x10001558   Section       88  .\obj\doorlock_data.o(.data)
-    .data                                    0x100015b0   Section       40  .\obj\debug_frmwrk.o(.data)
-    .data                                    0x100015d8   Section        8  .\obj\lpc1768_utility.o(.data)
-    .bss                                     0x100015e0   Section       12  .\obj\main.o(.bss)
-    .bss                                     0x100015ec   Section      160  .\obj\doorlock_fnd.o(.bss)
-    .bss                                     0x1000168c   Section      176  .\obj\doorlock_keypad.o(.bss)
-    .bss                                     0x1000173c   Section      160  .\obj\doorlock_motor.o(.bss)
-    .bss                                     0x100017dc   Section      100  .\obj\doorlock_uart.o(.bss)
-    .bss                                     0x10001840   Section       16  .\obj\doorlock_data.o(.bss)
-    .bss                                     0x10001850   Section       96  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libspace.o)(.bss)
-    HEAP                                     0x100018b0   Section        0  .\obj\startup_lpc17xx.o(HEAP)
-    STACK                                    0x100018b0   Section      512  .\obj\startup_lpc17xx.o(STACK)
-    Heap_Mem                                 0x100018b0   Data           0  .\obj\startup_lpc17xx.o(HEAP)
-    Stack_Mem                                0x100018b0   Data         512  .\obj\startup_lpc17xx.o(STACK)
-    __initial_sp                             0x10001ab0   Data           0  .\obj\startup_lpc17xx.o(STACK)
+    .data                                    0x10001528   Section        8  .\obj\doorlock_keypad.o(.data)
+    .data                                    0x10001530   Section        9  .\obj\doorlock_lcd.o(.data)
+    .data                                    0x1000153c   Section        8  .\obj\doorlock_motor.o(.data)
+    .data                                    0x10001544   Section       20  .\obj\doorlock_uart.o(.data)
+    .data                                    0x10001558   Section      108  .\obj\doorlock_data.o(.data)
+    .data                                    0x100015c4   Section       40  .\obj\debug_frmwrk.o(.data)
+    .data                                    0x100015ec   Section        8  .\obj\lpc1768_utility.o(.data)
+    .data                                    0x100015f4   Section        4  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strtok.o)(.data)
+    _strtok_saves1                           0x100015f4   Data           4  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strtok.o)(.data)
+    .bss                                     0x100015f8   Section       12  .\obj\main.o(.bss)
+    .bss                                     0x10001604   Section      160  .\obj\doorlock_fnd.o(.bss)
+    .bss                                     0x100016a4   Section      176  .\obj\doorlock_keypad.o(.bss)
+    .bss                                     0x10001754   Section      160  .\obj\doorlock_motor.o(.bss)
+    .bss                                     0x100017f4   Section      100  .\obj\doorlock_uart.o(.bss)
+    .bss                                     0x10001858   Section       16  .\obj\doorlock_data.o(.bss)
+    .bss                                     0x10001868   Section       96  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libspace.o)(.bss)
+    HEAP                                     0x100018c8   Section        0  .\obj\startup_lpc17xx.o(HEAP)
+    STACK                                    0x100018c8   Section      512  .\obj\startup_lpc17xx.o(STACK)
+    Heap_Mem                                 0x100018c8   Data           0  .\obj\startup_lpc17xx.o(HEAP)
+    Stack_Mem                                0x100018c8   Data         512  .\obj\startup_lpc17xx.o(STACK)
+    __initial_sp                             0x10001ac8   Data           0  .\obj\startup_lpc17xx.o(STACK)
 
     Global Symbols
 
@@ -774,241 +792,268 @@ Image Symbol Table
     USB_IRQHandler                           0x000001db   Thumb Code     0  .\obj\startup_lpc17xx.o(.text)
     WDT_IRQHandler                           0x000001db   Thumb Code     0  .\obj\startup_lpc17xx.o(.text)
     __user_initial_stackheap                 0x000001dd   Thumb Code     0  .\obj\startup_lpc17xx.o(.text)
-    init_EXTI                                0x000001fd   Thumb Code    30  .\obj\main.o(.text)
-    init_timer0                              0x0000021b   Thumb Code    76  .\obj\main.o(.text)
-    init                                     0x00000267   Thumb Code    32  .\obj\main.o(.text)
-    main                                     0x00000287   Thumb Code    28  .\obj\main.o(.text)
-    TIMER0_IRQHandler                        0x000002a3   Thumb Code    30  .\obj\main.o(.text)
-    EINT0_IRQHandler                         0x000002c1   Thumb Code    14  .\obj\main.o(.text)
-    check_failed                             0x000002ed   Thumb Code     4  .\obj\lpc17xx_libcfg_default.o(.text)
-    __use_two_region_memory                  0x000002f1   Thumb Code     2  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(heapauxi.o)(.text)
-    __rt_heap_escrow$2region                 0x000002f3   Thumb Code     2  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(heapauxi.o)(.text)
-    __rt_heap_expand$2region                 0x000002f5   Thumb Code     2  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(heapauxi.o)(.text)
-    __I$use$semihosting                      0x000002f7   Thumb Code     0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(use_no_semi.o)(.text)
-    __use_no_semihosting_swi                 0x000002f7   Thumb Code     2  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(use_no_semi.o)(.text)
-    __semihosting_library_function           0x000002f9   Thumb Code     0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(indicate_semi.o)(.text)
+    EXTI_Init                                0x000001fd   Thumb Code    20  .\obj\lpc17xx_exti.o(.text)
+    EXTI_DeInit                              0x00000211   Thumb Code     2  .\obj\lpc17xx_exti.o(.text)
+    EXTI_SetPolarity                         0x00000213   Thumb Code    46  .\obj\lpc17xx_exti.o(.text)
+    EXTI_SetMode                             0x00000241   Thumb Code    46  .\obj\lpc17xx_exti.o(.text)
+    EXTI_Config                              0x0000026f   Thumb Code    28  .\obj\lpc17xx_exti.o(.text)
+    EXTI_ClearEXTIFlag                       0x0000028b   Thumb Code    10  .\obj\lpc17xx_exti.o(.text)
+    EXTI_ConfigPin                           0x00000295   Thumb Code    36  .\obj\lpc17xx_exti.o(.text)
+    check_failed                             0x000002c1   Thumb Code     4  .\obj\lpc17xx_libcfg_default.o(.text)
+    Motor_Init                               0x000002c5   Thumb Code    48  .\obj\lpc1768_motor.o(.text)
+    __I$use$semihosting                      0x000002f9   Thumb Code     0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(use_no_semi.o)(.text)
+    __use_no_semihosting_swi                 0x000002f9   Thumb Code     2  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(use_no_semi.o)(.text)
+    __semihosting_library_function           0x000002fb   Thumb Code     0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(indicate_semi.o)(.text)
     SystemCoreClockUpdate                    0x00000301   Thumb Code   408  .\obj\system_lpc17xx.o(.text)
     SystemInit                               0x00000499   Thumb Code   314  .\obj\system_lpc17xx.o(.text)
-    GLCD_init                                0x00000677   Thumb Code   694  .\obj\glcd.o(.text)
-    GLCD_putPixel                            0x00000991   Thumb Code    38  .\obj\glcd.o(.text)
-    GLCD_setTextColor                        0x000009b7   Thumb Code     6  .\obj\glcd.o(.text)
-    GLCD_setBackColor                        0x000009bd   Thumb Code     6  .\obj\glcd.o(.text)
-    GLCD_clear                               0x000009c3   Thumb Code    74  .\obj\glcd.o(.text)
-    GLCD_drawChar                            0x00000a0d   Thumb Code    90  .\obj\glcd.o(.text)
-    GLCD_displayChar                         0x00000a67   Thumb Code    34  .\obj\glcd.o(.text)
-    GLCD_displayStringLn                     0x00000a89   Thumb Code    60  .\obj\glcd.o(.text)
-    GLCD_clearLn                             0x00000ac5   Thumb Code    14  .\obj\glcd.o(.text)
-    GLCD_bitmap                              0x00000ad3   Thumb Code    66  .\obj\glcd.o(.text)
-    setFNDTime                               0x00000b5d   Thumb Code   100  .\obj\doorlock_fnd.o(.text)
-    FND_blink                                0x00000bc1   Thumb Code   174  .\obj\doorlock_fnd.o(.text)
-    init_FND                                 0x00000c6f   Thumb Code    50  .\obj\doorlock_fnd.o(.text)
-    EXT_IO_init                              0x00000cbd   Thumb Code    34  .\obj\doorlock_keypad.o(.text)
-    Keypad_DIR_Output                        0x00000cdf   Thumb Code    44  .\obj\doorlock_keypad.o(.text)
-    Keypad_DIR_Input                         0x00000d0b   Thumb Code    54  .\obj\doorlock_keypad.o(.text)
-    EXT_IO_A_CS                              0x00000d41   Thumb Code    34  .\obj\doorlock_keypad.o(.text)
-    EXT_IO_B_CS                              0x00000d63   Thumb Code    34  .\obj\doorlock_keypad.o(.text)
-    EXT_IO_C_CS                              0x00000d85   Thumb Code    34  .\obj\doorlock_keypad.o(.text)
-    Keypad_Output_Row_1                      0x00000da7   Thumb Code    70  .\obj\doorlock_keypad.o(.text)
-    Keypad_Output_Row_2                      0x00000ded   Thumb Code    70  .\obj\doorlock_keypad.o(.text)
-    Keypad_Output_Row_3                      0x00000e33   Thumb Code    70  .\obj\doorlock_keypad.o(.text)
-    Keypad_Output_Row_4                      0x00000e79   Thumb Code    70  .\obj\doorlock_keypad.o(.text)
-    Keypad_Input                             0x00000ebf   Thumb Code   110  .\obj\doorlock_keypad.o(.text)
-    Keypad                                   0x00000f2d   Thumb Code   274  .\obj\doorlock_keypad.o(.text)
-    getKEYPAD_ivalue                         0x0000103f   Thumb Code     6  .\obj\doorlock_keypad.o(.text)
-    getKEYPAD_cvalue                         0x00001045   Thumb Code     6  .\obj\doorlock_keypad.o(.text)
-    Keypad_test                              0x0000104b   Thumb Code   132  .\obj\doorlock_keypad.o(.text)
-    init_keypad_vactor                       0x000010cf   Thumb Code    68  .\obj\doorlock_keypad.o(.text)
-    init_keypad                              0x00001113   Thumb Code    28  .\obj\doorlock_keypad.o(.text)
-    setLCDkey                                0x00001139   Thumb Code     6  .\obj\doorlock_lcd.o(.text)
-    setLCD_refresh                           0x0000113f   Thumb Code     8  .\obj\doorlock_lcd.o(.text)
-    setLCDMode                               0x00001147   Thumb Code     6  .\obj\doorlock_lcd.o(.text)
-    showLabel                                0x0000114d   Thumb Code   156  .\obj\doorlock_lcd.o(.text)
-    showInit                                 0x000011e9   Thumb Code    48  .\obj\doorlock_lcd.o(.text)
-    showServerDisconnection                  0x00001219   Thumb Code    48  .\obj\doorlock_lcd.o(.text)
-    LCD_refresh                              0x00001249   Thumb Code    70  .\obj\doorlock_lcd.o(.text)
-    init_lcd                                 0x0000128f   Thumb Code    46  .\obj\doorlock_lcd.o(.text)
-    init_stepping_motor                      0x00001331   Thumb Code    20  .\obj\doorlock_motor.o(.text)
-    set_motor_output                         0x00001345   Thumb Code   108  .\obj\doorlock_motor.o(.text)
-    StepMotor_Cycle                          0x000013b1   Thumb Code   248  .\obj\doorlock_motor.o(.text)
-    stepMotor_move_cw                        0x000014a9   Thumb Code   136  .\obj\doorlock_motor.o(.text)
-    stepMotor_move_ccw                       0x00001531   Thumb Code    10  .\obj\doorlock_motor.o(.text)
-    setOpenDoorLock                          0x0000153b   Thumb Code    22  .\obj\doorlock_motor.o(.text)
-    setCloseDoorLock                         0x00001551   Thumb Code    22  .\obj\doorlock_motor.o(.text)
-    move_steppingMotor                       0x00001567   Thumb Code    58  .\obj\doorlock_motor.o(.text)
-    uart_init                                0x000015b1   Thumb Code    36  .\obj\doorlock_uart.o(.text)
-    uart_clearBuffer                         0x000015d5   Thumb Code    18  .\obj\doorlock_uart.o(.text)
-    uart_sendMsg                             0x000015e7   Thumb Code    14  .\obj\doorlock_uart.o(.text)
-    uart_receiveMsg                          0x000015f5   Thumb Code   116  .\obj\doorlock_uart.o(.text)
-    uart_makeHandShakeMsg                    0x00001669   Thumb Code    70  .\obj\doorlock_uart.o(.text)
-    uart_makeDisconnectionMsg                0x000016af   Thumb Code    22  .\obj\doorlock_uart.o(.text)
-    makeRequestPermssionMsg                  0x000016c5   Thumb Code    58  .\obj\doorlock_uart.o(.text)
-    ishandShakeMsg                           0x000016ff   Thumb Code    96  .\obj\doorlock_uart.o(.text)
-    isDisconnectMsg                          0x0000175f   Thumb Code    46  .\obj\doorlock_uart.o(.text)
-    isTimeSycMsg                             0x0000178d   Thumb Code    48  .\obj\doorlock_uart.o(.text)
-    isReseponsePermissionMsg                 0x000017bd   Thumb Code    58  .\obj\doorlock_uart.o(.text)
-    isResponsePemissionOK                    0x000017f7   Thumb Code    50  .\obj\doorlock_uart.o(.text)
-    sycTime                                  0x00001829   Thumb Code   170  .\obj\doorlock_uart.o(.text)
-    UART_communication                       0x000018d3   Thumb Code   668  .\obj\doorlock_uart.o(.text)
-    uart_refresh_counter_up                  0x00001b6f   Thumb Code    30  .\obj\doorlock_uart.o(.text)
-    UART_liveSigal_count_up                  0x00001b8d   Thumb Code    12  .\obj\doorlock_uart.o(.text)
-    copy_GPIOn_setting                       0x00001bdd   Thumb Code    22  .\obj\doorlock_utility.o(.text)
-    load_LPC_GPIO_setting_to                 0x00001bf3   Thumb Code    62  .\obj\doorlock_utility.o(.text)
-    save_LCP_GPIO_setting_to                 0x00001c31   Thumb Code    62  .\obj\doorlock_utility.o(.text)
-    set_EXT_IO_DIRECTION                     0x00001c6f   Thumb Code   126  .\obj\doorlock_utility.o(.text)
-    time_update                              0x00001cf1   Thumb Code   242  .\obj\doorlock_data.o(.text)
-    setTimer                                 0x00001de3   Thumb Code    32  .\obj\doorlock_data.o(.text)
-    getTime                                  0x00001e03   Thumb Code    58  .\obj\doorlock_data.o(.text)
-    isRequestedPermission                    0x00001e3d   Thumb Code     6  .\obj\doorlock_data.o(.text)
-    setRequsetPermission                     0x00001e43   Thumb Code     6  .\obj\doorlock_data.o(.text)
-    clearPwd                                 0x00001e49   Thumb Code    18  .\obj\doorlock_data.o(.text)
-    setPwd_i                                 0x00001e5b   Thumb Code    26  .\obj\doorlock_data.o(.text)
-    getPwd_i                                 0x00001e75   Thumb Code    10  .\obj\doorlock_data.o(.text)
-    getPwdSize                               0x00001e7f   Thumb Code     6  .\obj\doorlock_data.o(.text)
-    UARTPutChar                              0x00001ead   Thumb Code    18  .\obj\debug_frmwrk.o(.text)
-    UARTGetChar                              0x00001ebf   Thumb Code    26  .\obj\debug_frmwrk.o(.text)
-    UARTPuts                                 0x00001ed9   Thumb Code    28  .\obj\debug_frmwrk.o(.text)
-    UARTPuts_                                0x00001ef5   Thumb Code    24  .\obj\debug_frmwrk.o(.text)
-    UARTPutDec                               0x00001f0d   Thumb Code    96  .\obj\debug_frmwrk.o(.text)
-    UARTPutDec16                             0x00001f6d   Thumb Code   160  .\obj\debug_frmwrk.o(.text)
-    UARTPutDec32                             0x0000200d   Thumb Code   280  .\obj\debug_frmwrk.o(.text)
-    UARTPutHex                               0x00002125   Thumb Code    66  .\obj\debug_frmwrk.o(.text)
-    UARTPutHex16                             0x00002167   Thumb Code    66  .\obj\debug_frmwrk.o(.text)
-    UARTPutHex32                             0x000021a9   Thumb Code    66  .\obj\debug_frmwrk.o(.text)
-    debug_frmwrk_init                        0x000021eb   Thumb Code   158  .\obj\debug_frmwrk.o(.text)
-    CLKPWR_SetPCLKDiv                        0x000022d1   Thumb Code    94  .\obj\lpc17xx_clkpwr.o(.text)
-    CLKPWR_GetPCLKSEL                        0x0000232f   Thumb Code    34  .\obj\lpc17xx_clkpwr.o(.text)
-    CLKPWR_GetPCLK                           0x00002351   Thumb Code    58  .\obj\lpc17xx_clkpwr.o(.text)
-    CLKPWR_ConfigPPWR                        0x0000238b   Thumb Code    46  .\obj\lpc17xx_clkpwr.o(.text)
-    CLKPWR_Sleep                             0x000023b9   Thumb Code    12  .\obj\lpc17xx_clkpwr.o(.text)
-    CLKPWR_DeepSleep                         0x000023c5   Thumb Code    18  .\obj\lpc17xx_clkpwr.o(.text)
-    CLKPWR_PowerDown                         0x000023d7   Thumb Code    18  .\obj\lpc17xx_clkpwr.o(.text)
-    CLKPWR_DeepPowerDown                     0x000023e9   Thumb Code    18  .\obj\lpc17xx_clkpwr.o(.text)
-    EXTI_Init                                0x00002411   Thumb Code    20  .\obj\lpc17xx_exti.o(.text)
-    EXTI_DeInit                              0x00002425   Thumb Code     2  .\obj\lpc17xx_exti.o(.text)
-    EXTI_SetPolarity                         0x00002427   Thumb Code    46  .\obj\lpc17xx_exti.o(.text)
-    EXTI_SetMode                             0x00002455   Thumb Code    46  .\obj\lpc17xx_exti.o(.text)
-    EXTI_Config                              0x00002483   Thumb Code    28  .\obj\lpc17xx_exti.o(.text)
-    EXTI_ClearEXTIFlag                       0x0000249f   Thumb Code    10  .\obj\lpc17xx_exti.o(.text)
-    EXTI_ConfigPin                           0x000024a9   Thumb Code    36  .\obj\lpc17xx_exti.o(.text)
-    GPIO_SetDir                              0x00002571   Thumb Code    40  .\obj\lpc17xx_gpio.o(.text)
-    GPIO_SetValue                            0x00002599   Thumb Code    20  .\obj\lpc17xx_gpio.o(.text)
-    GPIO_ClearValue                          0x000025ad   Thumb Code    20  .\obj\lpc17xx_gpio.o(.text)
-    GPIO_ReadValue                           0x000025c1   Thumb Code    22  .\obj\lpc17xx_gpio.o(.text)
-    GPIO_IntCmd                              0x000025d7   Thumb Code    60  .\obj\lpc17xx_gpio.o(.text)
-    GPIO_GetIntStatus                        0x00002613   Thumb Code    86  .\obj\lpc17xx_gpio.o(.text)
-    GPIO_ClearInt                            0x00002669   Thumb Code    28  .\obj\lpc17xx_gpio.o(.text)
-    FIO_SetDir                               0x00002685   Thumb Code    20  .\obj\lpc17xx_gpio.o(.text)
-    FIO_SetValue                             0x00002699   Thumb Code    16  .\obj\lpc17xx_gpio.o(.text)
-    FIO_ClearValue                           0x000026a9   Thumb Code    16  .\obj\lpc17xx_gpio.o(.text)
-    FIO_ReadValue                            0x000026b9   Thumb Code    12  .\obj\lpc17xx_gpio.o(.text)
-    FIO_IntCmd                               0x000026c5   Thumb Code    20  .\obj\lpc17xx_gpio.o(.text)
-    FIO_GetIntStatus                         0x000026d9   Thumb Code    20  .\obj\lpc17xx_gpio.o(.text)
-    FIO_ClearInt                             0x000026ed   Thumb Code    16  .\obj\lpc17xx_gpio.o(.text)
-    FIO_SetMask                              0x000026fd   Thumb Code    40  .\obj\lpc17xx_gpio.o(.text)
-    FIO_HalfWordSetDir                       0x00002725   Thumb Code    62  .\obj\lpc17xx_gpio.o(.text)
-    FIO_HalfWordSetMask                      0x00002763   Thumb Code    62  .\obj\lpc17xx_gpio.o(.text)
-    FIO_HalfWordSetValue                     0x000027a1   Thumb Code    32  .\obj\lpc17xx_gpio.o(.text)
-    FIO_HalfWordClearValue                   0x000027c1   Thumb Code    32  .\obj\lpc17xx_gpio.o(.text)
-    FIO_HalfWordReadValue                    0x000027e1   Thumb Code    30  .\obj\lpc17xx_gpio.o(.text)
-    FIO_ByteSetDir                           0x000027ff   Thumb Code    50  .\obj\lpc17xx_gpio.o(.text)
-    FIO_ByteSetMask                          0x00002831   Thumb Code    66  .\obj\lpc17xx_gpio.o(.text)
-    FIO_ByteSetValue                         0x00002873   Thumb Code    34  .\obj\lpc17xx_gpio.o(.text)
-    FIO_ByteClearValue                       0x00002895   Thumb Code    34  .\obj\lpc17xx_gpio.o(.text)
-    FIO_ByteReadValue                        0x000028b7   Thumb Code    42  .\obj\lpc17xx_gpio.o(.text)
-    PINSEL_ConfigTraceFunc                   0x00002987   Thumb Code    34  .\obj\lpc17xx_pinsel.o(.text)
-    PINSEL_SetI2C0Pins                       0x000029a9   Thumb Code    16  .\obj\lpc17xx_pinsel.o(.text)
-    PINSEL_ConfigPin                         0x000029b9   Thumb Code    36  .\obj\lpc17xx_pinsel.o(.text)
-    AF_ConfigPin                             0x000029dd   Thumb Code    30  .\obj\lpc17xx_pinsel.o(.text)
-    TIM_GetIntStatus                         0x00002aa3   Thumb Code    92  .\obj\lpc17xx_timer.o(.text)
-    TIM_GetIntCaptureStatus                  0x00002aff   Thumb Code    94  .\obj\lpc17xx_timer.o(.text)
-    TIM_ClearIntPending                      0x00002b5d   Thumb Code    80  .\obj\lpc17xx_timer.o(.text)
-    TIM_ClearIntCapturePending               0x00002bad   Thumb Code    82  .\obj\lpc17xx_timer.o(.text)
-    TIM_ConfigStructInit                     0x00002bff   Thumb Code    22  .\obj\lpc17xx_timer.o(.text)
-    TIM_Init                                 0x00002c15   Thumb Code   272  .\obj\lpc17xx_timer.o(.text)
-    TIM_DeInit                               0x00002d25   Thumb Code   112  .\obj\lpc17xx_timer.o(.text)
-    TIM_Cmd                                  0x00002d95   Thumb Code    66  .\obj\lpc17xx_timer.o(.text)
-    TIM_ResetCounter                         0x00002dd7   Thumb Code    58  .\obj\lpc17xx_timer.o(.text)
-    TIM_ConfigMatch                          0x00002e11   Thumb Code   282  .\obj\lpc17xx_timer.o(.text)
-    TIM_UpdateMatchValue                     0x00002f2b   Thumb Code    86  .\obj\lpc17xx_timer.o(.text)
-    TIM_ConfigCapture                        0x00002f81   Thumb Code   126  .\obj\lpc17xx_timer.o(.text)
-    TIM_GetCaptureValue                      0x00002fff   Thumb Code    74  .\obj\lpc17xx_timer.o(.text)
-    UART_Init                                0x00003225   Thumb Code   490  .\obj\lpc17xx_uart.o(.text)
-    UART_TxCmd                               0x0000340f   Thumb Code   162  .\obj\lpc17xx_uart.o(.text)
-    UART_DeInit                              0x000034b1   Thumb Code   112  .\obj\lpc17xx_uart.o(.text)
-    UART_ConfigStructInit                    0x00003521   Thumb Code    18  .\obj\lpc17xx_uart.o(.text)
-    UART_SendByte                            0x00003533   Thumb Code    58  .\obj\lpc17xx_uart.o(.text)
-    UART_ReceiveByte                         0x0000356d   Thumb Code    56  .\obj\lpc17xx_uart.o(.text)
-    UART_Send                                0x000035a5   Thumb Code   152  .\obj\lpc17xx_uart.o(.text)
-    UART_Receive                             0x0000363d   Thumb Code   124  .\obj\lpc17xx_uart.o(.text)
-    UART_ForceBreak                          0x000036b9   Thumb Code    68  .\obj\lpc17xx_uart.o(.text)
-    UART_IntConfig                           0x000036fd   Thumb Code   260  .\obj\lpc17xx_uart.o(.text)
-    UART_GetLineStatus                       0x00003801   Thumb Code    56  .\obj\lpc17xx_uart.o(.text)
-    UART_GetIntId                            0x00003839   Thumb Code    70  .\obj\lpc17xx_uart.o(.text)
-    UART_CheckBusy                           0x0000387f   Thumb Code    18  .\obj\lpc17xx_uart.o(.text)
-    UART_FIFOConfig                          0x00003891   Thumb Code   254  .\obj\lpc17xx_uart.o(.text)
-    UART_FIFOConfigStructInit                0x0000398f   Thumb Code    14  .\obj\lpc17xx_uart.o(.text)
-    UART_ABCmd                               0x0000399d   Thumb Code   192  .\obj\lpc17xx_uart.o(.text)
-    UART_ABClearIntPending                   0x00003a5d   Thumb Code    66  .\obj\lpc17xx_uart.o(.text)
-    UART_IrDAInvtInputCmd                    0x00003a9f   Thumb Code    80  .\obj\lpc17xx_uart.o(.text)
-    UART_IrDACmd                             0x00003aef   Thumb Code    78  .\obj\lpc17xx_uart.o(.text)
-    UART_IrDAPulseDivConfig                  0x00003b3d   Thumb Code   102  .\obj\lpc17xx_uart.o(.text)
-    UART_FullModemForcePinState              0x00003ba3   Thumb Code   118  .\obj\lpc17xx_uart.o(.text)
-    UART_FullModemConfigMode                 0x00003c19   Thumb Code   146  .\obj\lpc17xx_uart.o(.text)
-    UART_FullModemGetStatus                  0x00003cab   Thumb Code    28  .\obj\lpc17xx_uart.o(.text)
-    UART_RS485Config                         0x00003cc7   Thumb Code   300  .\obj\lpc17xx_uart.o(.text)
-    UART_RS485ReceiverCmd                    0x00003df3   Thumb Code    32  .\obj\lpc17xx_uart.o(.text)
-    UART_RS485Send                           0x00003e13   Thumb Code    88  .\obj\lpc17xx_uart.o(.text)
-    UART_RS485SendSlvAddr                    0x00003e6b   Thumb Code    18  .\obj\lpc17xx_uart.o(.text)
-    UART_RS485SendData                       0x00003e7d   Thumb Code    22  .\obj\lpc17xx_uart.o(.text)
-    Uart0_Init                               0x00003e93   Thumb Code    68  .\obj\lpc17xx_uart.o(.text)
-    FND_Init                                 0x00003ee1   Thumb Code    48  .\obj\lpc1768_fnd.o(.text)
-    FND_COM_Init                             0x00003f11   Thumb Code    84  .\obj\lpc1768_fnd.o(.text)
-    FND_Data_CS                              0x00003f65   Thumb Code    20  .\obj\lpc1768_fnd.o(.text)
-    FND_COM_CS                               0x00003f79   Thumb Code    24  .\obj\lpc1768_fnd.o(.text)
-    FND_Data_Reset                           0x00003f91   Thumb Code   116  .\obj\lpc1768_fnd.o(.text)
-    FND_DATA_Select                          0x00004005   Thumb Code   394  .\obj\lpc1768_fnd.o(.text)
-    FND_COM_Select                           0x0000418f   Thumb Code   130  .\obj\lpc1768_fnd.o(.text)
-    FND_COM_DATA_Select                      0x00004211   Thumb Code    20  .\obj\lpc1768_fnd.o(.text)
-    Motor_Init                               0x0000422d   Thumb Code    48  .\obj\lpc1768_motor.o(.text)
-    Delay                                    0x00004261   Thumb Code    12  .\obj\lpc1768_utility.o(.text)
-    Led_Init                                 0x0000426d   Thumb Code   216  .\obj\lpc1768_utility.o(.text)
-    Led_On                                   0x00004345   Thumb Code   132  .\obj\lpc1768_utility.o(.text)
-    Led_Off                                  0x000043c9   Thumb Code   112  .\obj\lpc1768_utility.o(.text)
-    Led_Toggle                               0x00004439   Thumb Code   298  .\obj\lpc1768_utility.o(.text)
-    Led_All_On                               0x00004563   Thumb Code    74  .\obj\lpc1768_utility.o(.text)
-    Led_All_Off                              0x000045ad   Thumb Code    74  .\obj\lpc1768_utility.o(.text)
-    __aeabi_uldivmod                         0x00004619   Thumb Code     0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(lludivv7m.o)(.text)
-    _ll_udiv                                 0x00004619   Thumb Code   238  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(lludivv7m.o)(.text)
-    __2sprintf                               0x00004709   Thumb Code    34  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(noretval__2sprintf.o)(.text)
-    _printf_pre_padding                      0x00004731   Thumb Code    44  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_pad.o)(.text)
-    _printf_post_padding                     0x0000475d   Thumb Code    34  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_pad.o)(.text)
-    _printf_str                              0x0000477f   Thumb Code    82  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_str.o)(.text)
-    _printf_int_dec                          0x000047d1   Thumb Code   104  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_dec.o)(.text)
-    __printf                                 0x00004849   Thumb Code   270  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__printf_wp.o)(.text)
-    strcpy                                   0x00004957   Thumb Code    72  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strcpy.o)(.text)
-    __aeabi_memclr                           0x0000499f   Thumb Code     0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rt_memclr.o)(.text)
-    __rt_memclr                              0x0000499f   Thumb Code    68  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rt_memclr.o)(.text)
-    _memset                                  0x000049a3   Thumb Code     0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rt_memclr.o)(.text)
-    __aeabi_memclr4                          0x000049e3   Thumb Code     0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rt_memclr_w.o)(.text)
-    __aeabi_memclr8                          0x000049e3   Thumb Code     0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rt_memclr_w.o)(.text)
-    __rt_memclr_w                            0x000049e3   Thumb Code    78  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rt_memclr_w.o)(.text)
-    _memset_w                                0x000049e7   Thumb Code     0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rt_memclr_w.o)(.text)
-    strcmp                                   0x00004a31   Thumb Code   128  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strcmpv7m.o)(.text)
-    _printf_int_common                       0x00004ab1   Thumb Code   178  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_intcommon.o)(.text)
-    _printf_char_common                      0x00004b6f   Thumb Code    32  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_char_common.o)(.text)
-    _sputc                                   0x00004b95   Thumb Code    10  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_sputc.o)(.text)
-    _printf_cs_common                        0x00004b9f   Thumb Code    20  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_char.o)(.text)
-    _printf_char                             0x00004bb3   Thumb Code    16  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_char.o)(.text)
-    _printf_string                           0x00004bc3   Thumb Code     8  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_char.o)(.text)
-    __user_setup_stackheap                   0x00004bcb   Thumb Code    74  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(sys_stackheap_outer.o)(.text)
-    exit                                     0x00004c15   Thumb Code    18  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(exit.o)(.text)
-    __user_libspace                          0x00004c29   Thumb Code     8  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libspace.o)(.text)
-    __user_perproc_libspace                  0x00004c29   Thumb Code     0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libspace.o)(.text)
-    __user_perthread_libspace                0x00004c29   Thumb Code     0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libspace.o)(.text)
-    _sys_exit                                0x00004c31   Thumb Code     8  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(sys_exit.o)(.text)
-    _is_digit                                0x00004c3d   Thumb Code    14  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__printf_wp.o)(i._is_digit)
-    Region$$Table$$Base                      0x00004c4c   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x00004c6c   Number         0  anon$$obj.o(Region$$Table)
+    init_EXTI                                0x000005ed   Thumb Code    30  .\obj\main.o(.text)
+    init_timer0                              0x0000060b   Thumb Code    76  .\obj\main.o(.text)
+    init                                     0x00000657   Thumb Code    32  .\obj\main.o(.text)
+    main                                     0x00000677   Thumb Code    28  .\obj\main.o(.text)
+    TIMER0_IRQHandler                        0x00000693   Thumb Code    50  .\obj\main.o(.text)
+    EINT0_IRQHandler                         0x000006c5   Thumb Code    14  .\obj\main.o(.text)
+    GLCD_init                                0x0000077b   Thumb Code   694  .\obj\glcd.o(.text)
+    GLCD_putPixel                            0x00000a95   Thumb Code    38  .\obj\glcd.o(.text)
+    GLCD_setTextColor                        0x00000abb   Thumb Code     6  .\obj\glcd.o(.text)
+    GLCD_setBackColor                        0x00000ac1   Thumb Code     6  .\obj\glcd.o(.text)
+    GLCD_clear                               0x00000ac7   Thumb Code    74  .\obj\glcd.o(.text)
+    GLCD_drawChar                            0x00000b11   Thumb Code    90  .\obj\glcd.o(.text)
+    GLCD_displayChar                         0x00000b6b   Thumb Code    34  .\obj\glcd.o(.text)
+    GLCD_displayStringLn                     0x00000b8d   Thumb Code    60  .\obj\glcd.o(.text)
+    GLCD_clearLn                             0x00000bc9   Thumb Code    14  .\obj\glcd.o(.text)
+    GLCD_bitmap                              0x00000bd7   Thumb Code    66  .\obj\glcd.o(.text)
+    setFNDTime                               0x00000c61   Thumb Code   100  .\obj\doorlock_fnd.o(.text)
+    FND_blink                                0x00000cc5   Thumb Code   174  .\obj\doorlock_fnd.o(.text)
+    init_FND                                 0x00000d73   Thumb Code    50  .\obj\doorlock_fnd.o(.text)
+    EXT_IO_init                              0x00000dc1   Thumb Code    34  .\obj\doorlock_keypad.o(.text)
+    Keypad_DIR_Output                        0x00000de3   Thumb Code    44  .\obj\doorlock_keypad.o(.text)
+    Keypad_DIR_Input                         0x00000e0f   Thumb Code    54  .\obj\doorlock_keypad.o(.text)
+    EXT_IO_A_CS                              0x00000e45   Thumb Code    34  .\obj\doorlock_keypad.o(.text)
+    EXT_IO_B_CS                              0x00000e67   Thumb Code    34  .\obj\doorlock_keypad.o(.text)
+    EXT_IO_C_CS                              0x00000e89   Thumb Code    34  .\obj\doorlock_keypad.o(.text)
+    Keypad_Output_Row_1                      0x00000eab   Thumb Code    70  .\obj\doorlock_keypad.o(.text)
+    Keypad_Output_Row_2                      0x00000ef1   Thumb Code    70  .\obj\doorlock_keypad.o(.text)
+    Keypad_Output_Row_3                      0x00000f37   Thumb Code    70  .\obj\doorlock_keypad.o(.text)
+    Keypad_Output_Row_4                      0x00000f7d   Thumb Code    70  .\obj\doorlock_keypad.o(.text)
+    Keypad_Input                             0x00000fc3   Thumb Code   110  .\obj\doorlock_keypad.o(.text)
+    Keypad                                   0x00001031   Thumb Code   274  .\obj\doorlock_keypad.o(.text)
+    getKEYPAD_ivalue                         0x00001143   Thumb Code     6  .\obj\doorlock_keypad.o(.text)
+    getKEYPAD_cvalue                         0x00001149   Thumb Code     6  .\obj\doorlock_keypad.o(.text)
+    Keypad_test                              0x0000114f   Thumb Code   350  .\obj\doorlock_keypad.o(.text)
+    init_keypad_vactor                       0x000012ad   Thumb Code    68  .\obj\doorlock_keypad.o(.text)
+    init_keypad                              0x000012f1   Thumb Code    28  .\obj\doorlock_keypad.o(.text)
+    showWaitingPage                          0x00001315   Thumb Code    48  .\obj\doorlock_lcd.o(.text)
+    showWrongPasswordPage                    0x00001345   Thumb Code    48  .\obj\doorlock_lcd.o(.text)
+    showOpenLockerPage                       0x00001375   Thumb Code    56  .\obj\doorlock_lcd.o(.text)
+    showEnterPasswordPage                    0x000013ad   Thumb Code   138  .\obj\doorlock_lcd.o(.text)
+    showSelectLockerPage                     0x00001437   Thumb Code   164  .\obj\doorlock_lcd.o(.text)
+    clearPage                                0x000014db   Thumb Code    46  .\obj\doorlock_lcd.o(.text)
+    showServerDisconnection                  0x00001509   Thumb Code    62  .\obj\doorlock_lcd.o(.text)
+    showLabel                                0x00001547   Thumb Code   156  .\obj\doorlock_lcd.o(.text)
+    LCD_refresh                              0x000015e3   Thumb Code    94  .\obj\doorlock_lcd.o(.text)
+    setLCD_refresh                           0x00001641   Thumb Code     8  .\obj\doorlock_lcd.o(.text)
+    init_lcd                                 0x00001649   Thumb Code    42  .\obj\doorlock_lcd.o(.text)
+    setLCDkey                                0x00001673   Thumb Code     6  .\obj\doorlock_lcd.o(.text)
+    setLCDMode                               0x00001679   Thumb Code     6  .\obj\doorlock_lcd.o(.text)
+    showInit                                 0x0000167f   Thumb Code    48  .\obj\doorlock_lcd.o(.text)
+    init_stepping_motor                      0x000017d9   Thumb Code    20  .\obj\doorlock_motor.o(.text)
+    set_motor_output                         0x000017ed   Thumb Code   108  .\obj\doorlock_motor.o(.text)
+    StepMotor_Cycle                          0x00001859   Thumb Code   248  .\obj\doorlock_motor.o(.text)
+    stepMotor_move_cw                        0x00001951   Thumb Code   136  .\obj\doorlock_motor.o(.text)
+    stepMotor_move_ccw                       0x000019d9   Thumb Code    10  .\obj\doorlock_motor.o(.text)
+    setOpenDoorLock                          0x000019e3   Thumb Code    22  .\obj\doorlock_motor.o(.text)
+    setCloseDoorLock                         0x000019f9   Thumb Code    22  .\obj\doorlock_motor.o(.text)
+    move_steppingMotor                       0x00001a0f   Thumb Code    58  .\obj\doorlock_motor.o(.text)
+    UART_init                                0x00001a59   Thumb Code    30  .\obj\doorlock_uart.o(.text)
+    UART_clearBuffer                         0x00001a77   Thumb Code    18  .\obj\doorlock_uart.o(.text)
+    UART_sendMsg                             0x00001a89   Thumb Code    14  .\obj\doorlock_uart.o(.text)
+    UART_receiveMsg                          0x00001a97   Thumb Code   116  .\obj\doorlock_uart.o(.text)
+    UART_makeHandShakeMsg                    0x00001b0b   Thumb Code    22  .\obj\doorlock_uart.o(.text)
+    UART_makeCheckConnectionMsg              0x00001b21   Thumb Code    22  .\obj\doorlock_uart.o(.text)
+    UART_makeDisconnectionMsg                0x00001b37   Thumb Code    26  .\obj\doorlock_uart.o(.text)
+    UART_makeRequestPermssionMsg             0x00001b51   Thumb Code   100  .\obj\doorlock_uart.o(.text)
+    UART_isEnd                               0x00001bb5   Thumb Code    88  .\obj\doorlock_uart.o(.text)
+    UART_ishandShakeMsg                      0x00001c0d   Thumb Code    46  .\obj\doorlock_uart.o(.text)
+    UART_isDisconnectMsg                     0x00001c3b   Thumb Code    46  .\obj\doorlock_uart.o(.text)
+    UART_isTimeSycMsg                        0x00001c69   Thumb Code    90  .\obj\doorlock_uart.o(.text)
+    Uart_isCheckConnectionMsg                0x00001cc3   Thumb Code    46  .\obj\doorlock_uart.o(.text)
+    UART_isReseponsePermissionMsg            0x00001cf1   Thumb Code    58  .\obj\doorlock_uart.o(.text)
+    UART_isResponsePemissionOK               0x00001d2b   Thumb Code    50  .\obj\doorlock_uart.o(.text)
+    UART_sycTime                             0x00001d5d   Thumb Code   170  .\obj\doorlock_uart.o(.text)
+    UART_communication                       0x00001e07   Thumb Code   620  .\obj\doorlock_uart.o(.text)
+    uart_refresh_counter_up                  0x00002073   Thumb Code    30  .\obj\doorlock_uart.o(.text)
+    UART_liveSigal_count_up                  0x00002091   Thumb Code    12  .\obj\doorlock_uart.o(.text)
+    copy_GPIOn_setting                       0x000020b5   Thumb Code    22  .\obj\doorlock_utility.o(.text)
+    load_LPC_GPIO_setting_to                 0x000020cb   Thumb Code    62  .\obj\doorlock_utility.o(.text)
+    save_LCP_GPIO_setting_to                 0x00002109   Thumb Code    62  .\obj\doorlock_utility.o(.text)
+    set_EXT_IO_DIRECTION                     0x00002147   Thumb Code   126  .\obj\doorlock_utility.o(.text)
+    time_update                              0x000021c9   Thumb Code   242  .\obj\doorlock_data.o(.text)
+    setTimer                                 0x000022bb   Thumb Code    32  .\obj\doorlock_data.o(.text)
+    getTime                                  0x000022db   Thumb Code    58  .\obj\doorlock_data.o(.text)
+    isRequestedPermission                    0x00002315   Thumb Code     6  .\obj\doorlock_data.o(.text)
+    setRequsetPermission                     0x0000231b   Thumb Code     6  .\obj\doorlock_data.o(.text)
+    clearPwd                                 0x00002321   Thumb Code    18  .\obj\doorlock_data.o(.text)
+    setPwd                                   0x00002333   Thumb Code    34  .\obj\doorlock_data.o(.text)
+    getPwd_i                                 0x00002355   Thumb Code    10  .\obj\doorlock_data.o(.text)
+    getPwdSize                               0x0000235f   Thumb Code     6  .\obj\doorlock_data.o(.text)
+    popbackPwd                               0x00002365   Thumb Code    28  .\obj\doorlock_data.o(.text)
+    isServerConnected                        0x00002381   Thumb Code     6  .\obj\doorlock_data.o(.text)
+    set_isServerConnected                    0x00002387   Thumb Code     6  .\obj\doorlock_data.o(.text)
+    connectionCountDown                      0x0000238d   Thumb Code    12  .\obj\doorlock_data.o(.text)
+    isConnectionCountZero                    0x00002399   Thumb Code    16  .\obj\doorlock_data.o(.text)
+    resetConnectionCounter                   0x000023a9   Thumb Code     8  .\obj\doorlock_data.o(.text)
+    getSelectedLockerNumber                  0x000023b1   Thumb Code     6  .\obj\doorlock_data.o(.text)
+    setSelectedLockerNumber                  0x000023b7   Thumb Code     6  .\obj\doorlock_data.o(.text)
+    isChangedCurrentSystemMode               0x000023bd   Thumb Code    22  .\obj\doorlock_data.o(.text)
+    getCurrentSystemMode                     0x000023d3   Thumb Code     6  .\obj\doorlock_data.o(.text)
+    setCurrentSustemMode                     0x000023d9   Thumb Code    20  .\obj\doorlock_data.o(.text)
+    sendingMsgCountDown                      0x000023ed   Thumb Code    24  .\obj\doorlock_data.o(.text)
+    resetSendingMsgCounter                   0x00002405   Thumb Code     8  .\obj\doorlock_data.o(.text)
+    isSendingMsgCounterZero                  0x0000240d   Thumb Code    14  .\obj\doorlock_data.o(.text)
+    UARTPutChar                              0x0000245d   Thumb Code    18  .\obj\debug_frmwrk.o(.text)
+    UARTGetChar                              0x0000246f   Thumb Code    26  .\obj\debug_frmwrk.o(.text)
+    UARTPuts                                 0x00002489   Thumb Code    28  .\obj\debug_frmwrk.o(.text)
+    UARTPuts_                                0x000024a5   Thumb Code    24  .\obj\debug_frmwrk.o(.text)
+    UARTPutDec                               0x000024bd   Thumb Code    96  .\obj\debug_frmwrk.o(.text)
+    UARTPutDec16                             0x0000251d   Thumb Code   160  .\obj\debug_frmwrk.o(.text)
+    UARTPutDec32                             0x000025bd   Thumb Code   280  .\obj\debug_frmwrk.o(.text)
+    UARTPutHex                               0x000026d5   Thumb Code    66  .\obj\debug_frmwrk.o(.text)
+    UARTPutHex16                             0x00002717   Thumb Code    66  .\obj\debug_frmwrk.o(.text)
+    UARTPutHex32                             0x00002759   Thumb Code    66  .\obj\debug_frmwrk.o(.text)
+    debug_frmwrk_init                        0x0000279b   Thumb Code   158  .\obj\debug_frmwrk.o(.text)
+    CLKPWR_SetPCLKDiv                        0x00002881   Thumb Code    94  .\obj\lpc17xx_clkpwr.o(.text)
+    CLKPWR_GetPCLKSEL                        0x000028df   Thumb Code    34  .\obj\lpc17xx_clkpwr.o(.text)
+    CLKPWR_GetPCLK                           0x00002901   Thumb Code    58  .\obj\lpc17xx_clkpwr.o(.text)
+    CLKPWR_ConfigPPWR                        0x0000293b   Thumb Code    46  .\obj\lpc17xx_clkpwr.o(.text)
+    CLKPWR_Sleep                             0x00002969   Thumb Code    12  .\obj\lpc17xx_clkpwr.o(.text)
+    CLKPWR_DeepSleep                         0x00002975   Thumb Code    18  .\obj\lpc17xx_clkpwr.o(.text)
+    CLKPWR_PowerDown                         0x00002987   Thumb Code    18  .\obj\lpc17xx_clkpwr.o(.text)
+    CLKPWR_DeepPowerDown                     0x00002999   Thumb Code    18  .\obj\lpc17xx_clkpwr.o(.text)
+    GPIO_SetDir                              0x00002a5d   Thumb Code    40  .\obj\lpc17xx_gpio.o(.text)
+    GPIO_SetValue                            0x00002a85   Thumb Code    20  .\obj\lpc17xx_gpio.o(.text)
+    GPIO_ClearValue                          0x00002a99   Thumb Code    20  .\obj\lpc17xx_gpio.o(.text)
+    GPIO_ReadValue                           0x00002aad   Thumb Code    22  .\obj\lpc17xx_gpio.o(.text)
+    GPIO_IntCmd                              0x00002ac3   Thumb Code    60  .\obj\lpc17xx_gpio.o(.text)
+    GPIO_GetIntStatus                        0x00002aff   Thumb Code    86  .\obj\lpc17xx_gpio.o(.text)
+    GPIO_ClearInt                            0x00002b55   Thumb Code    28  .\obj\lpc17xx_gpio.o(.text)
+    FIO_SetDir                               0x00002b71   Thumb Code    20  .\obj\lpc17xx_gpio.o(.text)
+    FIO_SetValue                             0x00002b85   Thumb Code    16  .\obj\lpc17xx_gpio.o(.text)
+    FIO_ClearValue                           0x00002b95   Thumb Code    16  .\obj\lpc17xx_gpio.o(.text)
+    FIO_ReadValue                            0x00002ba5   Thumb Code    12  .\obj\lpc17xx_gpio.o(.text)
+    FIO_IntCmd                               0x00002bb1   Thumb Code    20  .\obj\lpc17xx_gpio.o(.text)
+    FIO_GetIntStatus                         0x00002bc5   Thumb Code    20  .\obj\lpc17xx_gpio.o(.text)
+    FIO_ClearInt                             0x00002bd9   Thumb Code    16  .\obj\lpc17xx_gpio.o(.text)
+    FIO_SetMask                              0x00002be9   Thumb Code    40  .\obj\lpc17xx_gpio.o(.text)
+    FIO_HalfWordSetDir                       0x00002c11   Thumb Code    62  .\obj\lpc17xx_gpio.o(.text)
+    FIO_HalfWordSetMask                      0x00002c4f   Thumb Code    62  .\obj\lpc17xx_gpio.o(.text)
+    FIO_HalfWordSetValue                     0x00002c8d   Thumb Code    32  .\obj\lpc17xx_gpio.o(.text)
+    FIO_HalfWordClearValue                   0x00002cad   Thumb Code    32  .\obj\lpc17xx_gpio.o(.text)
+    FIO_HalfWordReadValue                    0x00002ccd   Thumb Code    30  .\obj\lpc17xx_gpio.o(.text)
+    FIO_ByteSetDir                           0x00002ceb   Thumb Code    50  .\obj\lpc17xx_gpio.o(.text)
+    FIO_ByteSetMask                          0x00002d1d   Thumb Code    66  .\obj\lpc17xx_gpio.o(.text)
+    FIO_ByteSetValue                         0x00002d5f   Thumb Code    34  .\obj\lpc17xx_gpio.o(.text)
+    FIO_ByteClearValue                       0x00002d81   Thumb Code    34  .\obj\lpc17xx_gpio.o(.text)
+    FIO_ByteReadValue                        0x00002da3   Thumb Code    42  .\obj\lpc17xx_gpio.o(.text)
+    PINSEL_ConfigTraceFunc                   0x00002e73   Thumb Code    34  .\obj\lpc17xx_pinsel.o(.text)
+    PINSEL_SetI2C0Pins                       0x00002e95   Thumb Code    16  .\obj\lpc17xx_pinsel.o(.text)
+    PINSEL_ConfigPin                         0x00002ea5   Thumb Code    36  .\obj\lpc17xx_pinsel.o(.text)
+    AF_ConfigPin                             0x00002ec9   Thumb Code    30  .\obj\lpc17xx_pinsel.o(.text)
+    TIM_GetIntStatus                         0x00002f8f   Thumb Code    92  .\obj\lpc17xx_timer.o(.text)
+    TIM_GetIntCaptureStatus                  0x00002feb   Thumb Code    94  .\obj\lpc17xx_timer.o(.text)
+    TIM_ClearIntPending                      0x00003049   Thumb Code    80  .\obj\lpc17xx_timer.o(.text)
+    TIM_ClearIntCapturePending               0x00003099   Thumb Code    82  .\obj\lpc17xx_timer.o(.text)
+    TIM_ConfigStructInit                     0x000030eb   Thumb Code    22  .\obj\lpc17xx_timer.o(.text)
+    TIM_Init                                 0x00003101   Thumb Code   272  .\obj\lpc17xx_timer.o(.text)
+    TIM_DeInit                               0x00003211   Thumb Code   112  .\obj\lpc17xx_timer.o(.text)
+    TIM_Cmd                                  0x00003281   Thumb Code    66  .\obj\lpc17xx_timer.o(.text)
+    TIM_ResetCounter                         0x000032c3   Thumb Code    58  .\obj\lpc17xx_timer.o(.text)
+    TIM_ConfigMatch                          0x000032fd   Thumb Code   282  .\obj\lpc17xx_timer.o(.text)
+    TIM_UpdateMatchValue                     0x00003417   Thumb Code    86  .\obj\lpc17xx_timer.o(.text)
+    TIM_ConfigCapture                        0x0000346d   Thumb Code   126  .\obj\lpc17xx_timer.o(.text)
+    TIM_GetCaptureValue                      0x000034eb   Thumb Code    74  .\obj\lpc17xx_timer.o(.text)
+    UART_Init                                0x00003711   Thumb Code   490  .\obj\lpc17xx_uart.o(.text)
+    UART_TxCmd                               0x000038fb   Thumb Code   162  .\obj\lpc17xx_uart.o(.text)
+    UART_DeInit                              0x0000399d   Thumb Code   112  .\obj\lpc17xx_uart.o(.text)
+    UART_ConfigStructInit                    0x00003a0d   Thumb Code    18  .\obj\lpc17xx_uart.o(.text)
+    UART_SendByte                            0x00003a1f   Thumb Code    58  .\obj\lpc17xx_uart.o(.text)
+    UART_ReceiveByte                         0x00003a59   Thumb Code    56  .\obj\lpc17xx_uart.o(.text)
+    UART_Send                                0x00003a91   Thumb Code   152  .\obj\lpc17xx_uart.o(.text)
+    UART_Receive                             0x00003b29   Thumb Code   124  .\obj\lpc17xx_uart.o(.text)
+    UART_ForceBreak                          0x00003ba5   Thumb Code    68  .\obj\lpc17xx_uart.o(.text)
+    UART_IntConfig                           0x00003be9   Thumb Code   260  .\obj\lpc17xx_uart.o(.text)
+    UART_GetLineStatus                       0x00003ced   Thumb Code    56  .\obj\lpc17xx_uart.o(.text)
+    UART_GetIntId                            0x00003d25   Thumb Code    70  .\obj\lpc17xx_uart.o(.text)
+    UART_CheckBusy                           0x00003d6b   Thumb Code    18  .\obj\lpc17xx_uart.o(.text)
+    UART_FIFOConfig                          0x00003d7d   Thumb Code   254  .\obj\lpc17xx_uart.o(.text)
+    UART_FIFOConfigStructInit                0x00003e7b   Thumb Code    14  .\obj\lpc17xx_uart.o(.text)
+    UART_ABCmd                               0x00003e89   Thumb Code   192  .\obj\lpc17xx_uart.o(.text)
+    UART_ABClearIntPending                   0x00003f49   Thumb Code    66  .\obj\lpc17xx_uart.o(.text)
+    UART_IrDAInvtInputCmd                    0x00003f8b   Thumb Code    80  .\obj\lpc17xx_uart.o(.text)
+    UART_IrDACmd                             0x00003fdb   Thumb Code    78  .\obj\lpc17xx_uart.o(.text)
+    UART_IrDAPulseDivConfig                  0x00004029   Thumb Code   102  .\obj\lpc17xx_uart.o(.text)
+    UART_FullModemForcePinState              0x0000408f   Thumb Code   118  .\obj\lpc17xx_uart.o(.text)
+    UART_FullModemConfigMode                 0x00004105   Thumb Code   146  .\obj\lpc17xx_uart.o(.text)
+    UART_FullModemGetStatus                  0x00004197   Thumb Code    28  .\obj\lpc17xx_uart.o(.text)
+    UART_RS485Config                         0x000041b3   Thumb Code   300  .\obj\lpc17xx_uart.o(.text)
+    UART_RS485ReceiverCmd                    0x000042df   Thumb Code    32  .\obj\lpc17xx_uart.o(.text)
+    UART_RS485Send                           0x000042ff   Thumb Code    88  .\obj\lpc17xx_uart.o(.text)
+    UART_RS485SendSlvAddr                    0x00004357   Thumb Code    18  .\obj\lpc17xx_uart.o(.text)
+    UART_RS485SendData                       0x00004369   Thumb Code    22  .\obj\lpc17xx_uart.o(.text)
+    Uart0_Init                               0x0000437f   Thumb Code    68  .\obj\lpc17xx_uart.o(.text)
+    FND_Init                                 0x000043cd   Thumb Code    48  .\obj\lpc1768_fnd.o(.text)
+    FND_COM_Init                             0x000043fd   Thumb Code    84  .\obj\lpc1768_fnd.o(.text)
+    FND_Data_CS                              0x00004451   Thumb Code    20  .\obj\lpc1768_fnd.o(.text)
+    FND_COM_CS                               0x00004465   Thumb Code    24  .\obj\lpc1768_fnd.o(.text)
+    FND_Data_Reset                           0x0000447d   Thumb Code   116  .\obj\lpc1768_fnd.o(.text)
+    FND_DATA_Select                          0x000044f1   Thumb Code   394  .\obj\lpc1768_fnd.o(.text)
+    FND_COM_Select                           0x0000467b   Thumb Code   130  .\obj\lpc1768_fnd.o(.text)
+    FND_COM_DATA_Select                      0x000046fd   Thumb Code    20  .\obj\lpc1768_fnd.o(.text)
+    Delay                                    0x00004719   Thumb Code    12  .\obj\lpc1768_utility.o(.text)
+    Led_Init                                 0x00004725   Thumb Code   216  .\obj\lpc1768_utility.o(.text)
+    Led_On                                   0x000047fd   Thumb Code   132  .\obj\lpc1768_utility.o(.text)
+    Led_Off                                  0x00004881   Thumb Code   112  .\obj\lpc1768_utility.o(.text)
+    Led_Toggle                               0x000048f1   Thumb Code   298  .\obj\lpc1768_utility.o(.text)
+    Led_All_On                               0x00004a1b   Thumb Code    74  .\obj\lpc1768_utility.o(.text)
+    Led_All_Off                              0x00004a65   Thumb Code    74  .\obj\lpc1768_utility.o(.text)
+    __aeabi_uldivmod                         0x00004ad1   Thumb Code     0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(lludivv7m.o)(.text)
+    _ll_udiv                                 0x00004ad1   Thumb Code   238  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(lludivv7m.o)(.text)
+    __2sprintf                               0x00004bc1   Thumb Code    34  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(noretval__2sprintf.o)(.text)
+    _printf_pre_padding                      0x00004be9   Thumb Code    44  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_pad.o)(.text)
+    _printf_post_padding                     0x00004c15   Thumb Code    34  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_pad.o)(.text)
+    _printf_str                              0x00004c37   Thumb Code    82  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_str.o)(.text)
+    _printf_int_dec                          0x00004c89   Thumb Code   104  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_dec.o)(.text)
+    __printf                                 0x00004d01   Thumb Code   270  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__printf_wp.o)(.text)
+    strtok                                   0x00004e11   Thumb Code     6  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strtok.o)(.text)
+    strcpy                                   0x00004e1d   Thumb Code    72  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strcpy.o)(.text)
+    __aeabi_memclr                           0x00004e65   Thumb Code     0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rt_memclr.o)(.text)
+    __rt_memclr                              0x00004e65   Thumb Code    68  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rt_memclr.o)(.text)
+    _memset                                  0x00004e69   Thumb Code     0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rt_memclr.o)(.text)
+    __aeabi_memclr4                          0x00004ea9   Thumb Code     0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rt_memclr_w.o)(.text)
+    __aeabi_memclr8                          0x00004ea9   Thumb Code     0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rt_memclr_w.o)(.text)
+    __rt_memclr_w                            0x00004ea9   Thumb Code    78  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rt_memclr_w.o)(.text)
+    _memset_w                                0x00004ead   Thumb Code     0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rt_memclr_w.o)(.text)
+    strcmp                                   0x00004ef9   Thumb Code   128  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strcmpv7m.o)(.text)
+    __use_two_region_memory                  0x00004f79   Thumb Code     2  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(heapauxi.o)(.text)
+    __rt_heap_escrow$2region                 0x00004f7b   Thumb Code     2  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(heapauxi.o)(.text)
+    __rt_heap_expand$2region                 0x00004f7d   Thumb Code     2  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(heapauxi.o)(.text)
+    _printf_int_common                       0x00004f7f   Thumb Code   178  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_intcommon.o)(.text)
+    _printf_char_common                      0x0000503b   Thumb Code    32  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_char_common.o)(.text)
+    _sputc                                   0x00005061   Thumb Code    10  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_sputc.o)(.text)
+    _printf_cs_common                        0x0000506b   Thumb Code    20  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_char.o)(.text)
+    _printf_char                             0x0000507f   Thumb Code    16  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_char.o)(.text)
+    _printf_string                           0x0000508f   Thumb Code     8  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_char.o)(.text)
+    __strtok_internal                        0x00005099   Thumb Code    64  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strtok_int.o)(.text)
+    strcspn                                  0x000050dd   Thumb Code    32  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strcspn.o)(.text)
+    strspn                                   0x000050fd   Thumb Code    28  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strspn.o)(.text)
+    __user_setup_stackheap                   0x00005119   Thumb Code    74  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(sys_stackheap_outer.o)(.text)
+    exit                                     0x00005163   Thumb Code    18  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(exit.o)(.text)
+    __user_libspace                          0x00005175   Thumb Code     8  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libspace.o)(.text)
+    __user_perproc_libspace                  0x00005175   Thumb Code     0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libspace.o)(.text)
+    __user_perthread_libspace                0x00005175   Thumb Code     0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libspace.o)(.text)
+    _sys_exit                                0x0000517d   Thumb Code     8  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(sys_exit.o)(.text)
+    _is_digit                                0x00005189   Thumb Code    14  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__printf_wp.o)(i._is_digit)
+    Region$$Table$$Base                      0x00005198   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x000051b8   Number         0  anon$$obj.o(Region$$Table)
     SystemCoreClock                          0x10000000   Data           4  .\obj\system_lpc17xx.o(.data)
     TIM_ConfigStruct                         0x10000004   Data           8  .\obj\main.o(.data)
     ASCII_Table                              0x1000000c   Data        5376  .\obj\glcd.o(.data)
@@ -1018,21 +1063,19 @@ Image Symbol Table
     FNDtime_1m                               0x1000151c   Data           4  .\obj\doorlock_fnd.o(.data)
     FNDtime_10s                              0x10001520   Data           4  .\obj\doorlock_fnd.o(.data)
     FNDtime_1s                               0x10001524   Data           4  .\obj\doorlock_fnd.o(.data)
-    iKeypad_Value                            0x10001528   Data           1  .\obj\doorlock_keypad.o(.data)
+    iKeypadValue                             0x10001528   Data           1  .\obj\doorlock_keypad.o(.data)
     cKeypad_Value                            0x10001529   Data           1  .\obj\doorlock_keypad.o(.data)
-    isNeedRepaintLCD                         0x1000152c   Data           4  .\obj\doorlock_lcd.o(.data)
+    prevKeypadValue                          0x1000152c   Data           4  .\obj\doorlock_keypad.o(.data)
     lcdMode                                  0x10001530   Data           1  .\obj\doorlock_lcd.o(.data)
-    cLCD_Keypad_Value                        0x10001531   Data           1  .\obj\doorlock_lcd.o(.data)
-    motor_state                              0x10001534   Data           4  .\obj\doorlock_motor.o(.data)
-    isNeed_doorLock_motor_move               0x10001538   Data           4  .\obj\doorlock_motor.o(.data)
-    is_UART_connected                        0x1000153c   Data           4  .\obj\doorlock_uart.o(.data)
-    UART_current_state                       0x10001540   Data           1  .\obj\doorlock_uart.o(.data)
-    char_UART_input                          0x10001541   Data           1  .\obj\doorlock_uart.o(.data)
-    ch                                       0x10001542   Data           1  .\obj\doorlock_uart.o(.data)
-    buffer_count                             0x10001543   Data           1  .\obj\doorlock_uart.o(.data)
-    UART_refresh                             0x10001544   Data           4  .\obj\doorlock_uart.o(.data)
-    UART_refresh_time_count                  0x10001548   Data           4  .\obj\doorlock_uart.o(.data)
-    UART_seq_num                             0x1000154c   Data           4  .\obj\doorlock_uart.o(.data)
+    isNeedRepaintLCD                         0x10001534   Data           4  .\obj\doorlock_lcd.o(.data)
+    cLCD_Keypad_Value                        0x10001538   Data           1  .\obj\doorlock_lcd.o(.data)
+    motor_state                              0x1000153c   Data           4  .\obj\doorlock_motor.o(.data)
+    isNeed_doorLock_motor_move               0x10001540   Data           4  .\obj\doorlock_motor.o(.data)
+    UART_current_state                       0x10001544   Data           1  .\obj\doorlock_uart.o(.data)
+    ch                                       0x10001545   Data           1  .\obj\doorlock_uart.o(.data)
+    buffer_count                             0x10001546   Data           1  .\obj\doorlock_uart.o(.data)
+    UART_refresh                             0x10001548   Data           4  .\obj\doorlock_uart.o(.data)
+    UART_refresh_time_count                  0x1000154c   Data           4  .\obj\doorlock_uart.o(.data)
     UART_handShake_time_count                0x10001550   Data           4  .\obj\doorlock_uart.o(.data)
     UART_LiveMsgTimer                        0x10001554   Data           4  .\obj\doorlock_uart.o(.data)
     year                                     0x10001558   Data           4  .\obj\doorlock_data.o(.data)
@@ -1042,36 +1085,41 @@ Image Symbol Table
     minute                                   0x10001568   Data           4  .\obj\doorlock_data.o(.data)
     second                                   0x1000156c   Data           4  .\obj\doorlock_data.o(.data)
     dayInmonth                               0x10001570   Data          52  .\obj\doorlock_data.o(.data)
-    isRequestPermission                      0x100015a4   Data           4  .\obj\doorlock_data.o(.data)
-    isconnected                              0x100015a8   Data           4  .\obj\doorlock_data.o(.data)
-    pwdSize                                  0x100015ac   Data           4  .\obj\doorlock_data.o(.data)
-    _db_msg                                  0x100015b0   Data           4  .\obj\debug_frmwrk.o(.data)
-    _db_msg_                                 0x100015b4   Data           4  .\obj\debug_frmwrk.o(.data)
-    _db_char                                 0x100015b8   Data           4  .\obj\debug_frmwrk.o(.data)
-    _db_dec                                  0x100015bc   Data           4  .\obj\debug_frmwrk.o(.data)
-    _db_dec_16                               0x100015c0   Data           4  .\obj\debug_frmwrk.o(.data)
-    _db_dec_32                               0x100015c4   Data           4  .\obj\debug_frmwrk.o(.data)
-    _db_hex                                  0x100015c8   Data           4  .\obj\debug_frmwrk.o(.data)
-    _db_hex_16                               0x100015cc   Data           4  .\obj\debug_frmwrk.o(.data)
-    _db_hex_32                               0x100015d0   Data           4  .\obj\debug_frmwrk.o(.data)
-    _db_get_char                             0x100015d4   Data           4  .\obj\debug_frmwrk.o(.data)
-    ledStatus1                               0x100015d8   Data           1  .\obj\lpc1768_utility.o(.data)
-    ledStatus2                               0x100015d9   Data           1  .\obj\lpc1768_utility.o(.data)
-    ledStatus3                               0x100015da   Data           1  .\obj\lpc1768_utility.o(.data)
-    ledStatus4                               0x100015db   Data           1  .\obj\lpc1768_utility.o(.data)
-    ledStatus5                               0x100015dc   Data           1  .\obj\lpc1768_utility.o(.data)
-    ledStatus6                               0x100015dd   Data           1  .\obj\lpc1768_utility.o(.data)
-    ledStatus7                               0x100015de   Data           1  .\obj\lpc1768_utility.o(.data)
-    ledStatus8                               0x100015df   Data           1  .\obj\lpc1768_utility.o(.data)
-    TIM_MatchConfigStruct                    0x100015e0   Data          12  .\obj\main.o(.bss)
-    FND_GPIO_SETTING                         0x100015ec   Data         160  .\obj\doorlock_fnd.o(.bss)
-    keypad_GPIO_SETTING                      0x1000168c   Data         160  .\obj\doorlock_keypad.o(.bss)
-    keypad_vector                            0x1000172c   Data          16  .\obj\doorlock_keypad.o(.bss)
-    step_motor_GPIO_SETTING                  0x1000173c   Data         160  .\obj\doorlock_motor.o(.bss)
-    aTxBuffer                                0x100017dc   Data         100  .\obj\doorlock_uart.o(.bss)
-    pwd                                      0x10001840   Data          16  .\obj\doorlock_data.o(.bss)
-    __libspace_start                         0x10001850   Data          96  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libspace.o)(.bss)
-    __temporary_stack_top$libspace           0x100018b0   Data           0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libspace.o)(.bss)
+    _isRequestedPermission                   0x100015a4   Data           4  .\obj\doorlock_data.o(.data)
+    pwdSize                                  0x100015a8   Data           4  .\obj\doorlock_data.o(.data)
+    _isServerConnected                       0x100015ac   Data           4  .\obj\doorlock_data.o(.data)
+    connectionCounter                        0x100015b0   Data           4  .\obj\doorlock_data.o(.data)
+    SelectedLockerNumber                     0x100015b4   Data           4  .\obj\doorlock_data.o(.data)
+    currentSystemMode                        0x100015b8   Data           4  .\obj\doorlock_data.o(.data)
+    _isChangedCurrentSystemMode              0x100015bc   Data           4  .\obj\doorlock_data.o(.data)
+    _requestPermissionMsgCounter             0x100015c0   Data           4  .\obj\doorlock_data.o(.data)
+    _db_msg                                  0x100015c4   Data           4  .\obj\debug_frmwrk.o(.data)
+    _db_msg_                                 0x100015c8   Data           4  .\obj\debug_frmwrk.o(.data)
+    _db_char                                 0x100015cc   Data           4  .\obj\debug_frmwrk.o(.data)
+    _db_dec                                  0x100015d0   Data           4  .\obj\debug_frmwrk.o(.data)
+    _db_dec_16                               0x100015d4   Data           4  .\obj\debug_frmwrk.o(.data)
+    _db_dec_32                               0x100015d8   Data           4  .\obj\debug_frmwrk.o(.data)
+    _db_hex                                  0x100015dc   Data           4  .\obj\debug_frmwrk.o(.data)
+    _db_hex_16                               0x100015e0   Data           4  .\obj\debug_frmwrk.o(.data)
+    _db_hex_32                               0x100015e4   Data           4  .\obj\debug_frmwrk.o(.data)
+    _db_get_char                             0x100015e8   Data           4  .\obj\debug_frmwrk.o(.data)
+    ledStatus1                               0x100015ec   Data           1  .\obj\lpc1768_utility.o(.data)
+    ledStatus2                               0x100015ed   Data           1  .\obj\lpc1768_utility.o(.data)
+    ledStatus3                               0x100015ee   Data           1  .\obj\lpc1768_utility.o(.data)
+    ledStatus4                               0x100015ef   Data           1  .\obj\lpc1768_utility.o(.data)
+    ledStatus5                               0x100015f0   Data           1  .\obj\lpc1768_utility.o(.data)
+    ledStatus6                               0x100015f1   Data           1  .\obj\lpc1768_utility.o(.data)
+    ledStatus7                               0x100015f2   Data           1  .\obj\lpc1768_utility.o(.data)
+    ledStatus8                               0x100015f3   Data           1  .\obj\lpc1768_utility.o(.data)
+    TIM_MatchConfigStruct                    0x100015f8   Data          12  .\obj\main.o(.bss)
+    FND_GPIO_SETTING                         0x10001604   Data         160  .\obj\doorlock_fnd.o(.bss)
+    keypad_GPIO_SETTING                      0x100016a4   Data         160  .\obj\doorlock_keypad.o(.bss)
+    keypad_vector                            0x10001744   Data          16  .\obj\doorlock_keypad.o(.bss)
+    step_motor_GPIO_SETTING                  0x10001754   Data         160  .\obj\doorlock_motor.o(.bss)
+    aTxBuffer                                0x100017f4   Data         100  .\obj\doorlock_uart.o(.bss)
+    pwd                                      0x10001858   Data          16  .\obj\doorlock_data.o(.bss)
+    __libspace_start                         0x10001868   Data          96  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libspace.o)(.bss)
+    __temporary_stack_top$libspace           0x100018c8   Data           0  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libspace.o)(.bss)
 
 
 
@@ -1081,117 +1129,122 @@ Memory Map of the image
 
   Image Entry point : 0x000000cd
 
-  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x0000624c, Max: 0x00080000, ABSOLUTE, COMPRESSED[0x00005428])
+  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x000067b0, Max: 0x00080000, ABSOLUTE, COMPRESSED[0x00005978])
 
-    Execution Region ER_IROM1 (Base: 0x00000000, Size: 0x00004c6c, Max: 0x00080000, ABSOLUTE)
+    Execution Region ER_IROM1 (Base: 0x00000000, Size: 0x000051b8, Max: 0x00080000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x00000000   0x000000cc   Data   RO           48    RESET               .\obj\startup_lpc17xx.o
-    0x000000cc   0x00000008   Code   RO          952  * !!!main             C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__main.o)
-    0x000000d4   0x00000034   Code   RO         1132    !!!scatter          C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__scatter.o)
-    0x00000108   0x00000064   Code   RO         1130    !!dclz77c           C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__dclz77c.o)
-    0x0000016c   0x0000001c   Code   RO         1134    !!handler_zi        C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__scatter_zi.o)
+    0x000000cc   0x00000008   Code   RO          955  * !!!main             C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__main.o)
+    0x000000d4   0x00000034   Code   RO         1141    !!!scatter          C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__scatter.o)
+    0x00000108   0x00000064   Code   RO         1139    !!dclz77c           C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__dclz77c.o)
+    0x0000016c   0x0000001c   Code   RO         1143    !!handler_zi        C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__scatter_zi.o)
     0x00000188   0x00000000   Code   RO          941    .ARM.Collect$$_printf_percent$$00000000  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_percent.o)
     0x00000188   0x00000006   Code   RO          940    .ARM.Collect$$_printf_percent$$00000009  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_d.o)
     0x0000018e   0x00000006   Code   RO          939    .ARM.Collect$$_printf_percent$$00000014  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_s.o)
-    0x00000194   0x00000004   Code   RO          967    .ARM.Collect$$_printf_percent$$00000017  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_percent_end.o)
-    0x00000198   0x00000002   Code   RO         1000    .ARM.Collect$$libinit$$00000000  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit.o)
-    0x0000019a   0x00000000   Code   RO         1013    .ARM.Collect$$libinit$$00000002  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
-    0x0000019a   0x00000000   Code   RO         1015    .ARM.Collect$$libinit$$00000004  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
-    0x0000019a   0x00000000   Code   RO         1018    .ARM.Collect$$libinit$$0000000A  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
-    0x0000019a   0x00000000   Code   RO         1020    .ARM.Collect$$libinit$$0000000C  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
-    0x0000019a   0x00000000   Code   RO         1022    .ARM.Collect$$libinit$$0000000E  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
-    0x0000019a   0x00000000   Code   RO         1025    .ARM.Collect$$libinit$$00000011  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
-    0x0000019a   0x00000000   Code   RO         1027    .ARM.Collect$$libinit$$00000013  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
-    0x0000019a   0x00000000   Code   RO         1029    .ARM.Collect$$libinit$$00000015  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
-    0x0000019a   0x00000000   Code   RO         1031    .ARM.Collect$$libinit$$00000017  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
-    0x0000019a   0x00000000   Code   RO         1033    .ARM.Collect$$libinit$$00000019  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
-    0x0000019a   0x00000000   Code   RO         1035    .ARM.Collect$$libinit$$0000001B  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
-    0x0000019a   0x00000000   Code   RO         1037    .ARM.Collect$$libinit$$0000001D  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
-    0x0000019a   0x00000000   Code   RO         1039    .ARM.Collect$$libinit$$0000001F  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
-    0x0000019a   0x00000000   Code   RO         1041    .ARM.Collect$$libinit$$00000021  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
-    0x0000019a   0x00000000   Code   RO         1043    .ARM.Collect$$libinit$$00000023  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
-    0x0000019a   0x00000000   Code   RO         1045    .ARM.Collect$$libinit$$00000025  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
-    0x0000019a   0x00000000   Code   RO         1049    .ARM.Collect$$libinit$$0000002C  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
-    0x0000019a   0x00000000   Code   RO         1051    .ARM.Collect$$libinit$$0000002E  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
-    0x0000019a   0x00000000   Code   RO         1053    .ARM.Collect$$libinit$$00000030  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
-    0x0000019a   0x00000000   Code   RO         1055    .ARM.Collect$$libinit$$00000032  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
-    0x0000019a   0x00000002   Code   RO         1056    .ARM.Collect$$libinit$$00000033  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
-    0x0000019c   0x00000002   Code   RO         1087    .ARM.Collect$$libshutdown$$00000000  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libshutdown.o)
-    0x0000019e   0x00000000   Code   RO         1113    .ARM.Collect$$libshutdown$$00000002  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libshutdown2.o)
-    0x0000019e   0x00000000   Code   RO         1115    .ARM.Collect$$libshutdown$$00000004  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libshutdown2.o)
-    0x0000019e   0x00000000   Code   RO         1118    .ARM.Collect$$libshutdown$$00000007  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libshutdown2.o)
-    0x0000019e   0x00000000   Code   RO         1121    .ARM.Collect$$libshutdown$$0000000A  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libshutdown2.o)
-    0x0000019e   0x00000000   Code   RO         1123    .ARM.Collect$$libshutdown$$0000000C  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libshutdown2.o)
-    0x0000019e   0x00000000   Code   RO         1126    .ARM.Collect$$libshutdown$$0000000F  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libshutdown2.o)
-    0x0000019e   0x00000002   Code   RO         1127    .ARM.Collect$$libshutdown$$00000010  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libshutdown2.o)
-    0x000001a0   0x00000000   Code   RO          954    .ARM.Collect$$rtentry$$00000000  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__rtentry.o)
-    0x000001a0   0x00000000   Code   RO          969    .ARM.Collect$$rtentry$$00000002  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__rtentry2.o)
-    0x000001a0   0x00000006   Code   RO          981    .ARM.Collect$$rtentry$$00000004  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__rtentry4.o)
-    0x000001a6   0x00000000   Code   RO          971    .ARM.Collect$$rtentry$$00000009  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__rtentry2.o)
-    0x000001a6   0x00000004   Code   RO          972    .ARM.Collect$$rtentry$$0000000A  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__rtentry2.o)
-    0x000001aa   0x00000000   Code   RO          974    .ARM.Collect$$rtentry$$0000000C  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__rtentry2.o)
-    0x000001aa   0x00000008   Code   RO          975    .ARM.Collect$$rtentry$$0000000D  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__rtentry2.o)
-    0x000001b2   0x00000002   Code   RO         1004    .ARM.Collect$$rtexit$$00000000  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rtexit.o)
-    0x000001b4   0x00000000   Code   RO         1060    .ARM.Collect$$rtexit$$00000002  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rtexit2.o)
-    0x000001b4   0x00000004   Code   RO         1061    .ARM.Collect$$rtexit$$00000003  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rtexit2.o)
-    0x000001b8   0x00000006   Code   RO         1062    .ARM.Collect$$rtexit$$00000004  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rtexit2.o)
+    0x00000194   0x00000004   Code   RO          970    .ARM.Collect$$_printf_percent$$00000017  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_percent_end.o)
+    0x00000198   0x00000002   Code   RO         1009    .ARM.Collect$$libinit$$00000000  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit.o)
+    0x0000019a   0x00000000   Code   RO         1022    .ARM.Collect$$libinit$$00000002  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
+    0x0000019a   0x00000000   Code   RO         1024    .ARM.Collect$$libinit$$00000004  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
+    0x0000019a   0x00000000   Code   RO         1027    .ARM.Collect$$libinit$$0000000A  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
+    0x0000019a   0x00000000   Code   RO         1029    .ARM.Collect$$libinit$$0000000C  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
+    0x0000019a   0x00000000   Code   RO         1031    .ARM.Collect$$libinit$$0000000E  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
+    0x0000019a   0x00000000   Code   RO         1034    .ARM.Collect$$libinit$$00000011  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
+    0x0000019a   0x00000000   Code   RO         1036    .ARM.Collect$$libinit$$00000013  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
+    0x0000019a   0x00000000   Code   RO         1038    .ARM.Collect$$libinit$$00000015  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
+    0x0000019a   0x00000000   Code   RO         1040    .ARM.Collect$$libinit$$00000017  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
+    0x0000019a   0x00000000   Code   RO         1042    .ARM.Collect$$libinit$$00000019  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
+    0x0000019a   0x00000000   Code   RO         1044    .ARM.Collect$$libinit$$0000001B  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
+    0x0000019a   0x00000000   Code   RO         1046    .ARM.Collect$$libinit$$0000001D  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
+    0x0000019a   0x00000000   Code   RO         1048    .ARM.Collect$$libinit$$0000001F  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
+    0x0000019a   0x00000000   Code   RO         1050    .ARM.Collect$$libinit$$00000021  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
+    0x0000019a   0x00000000   Code   RO         1052    .ARM.Collect$$libinit$$00000023  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
+    0x0000019a   0x00000000   Code   RO         1054    .ARM.Collect$$libinit$$00000025  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
+    0x0000019a   0x00000000   Code   RO         1058    .ARM.Collect$$libinit$$0000002C  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
+    0x0000019a   0x00000000   Code   RO         1060    .ARM.Collect$$libinit$$0000002E  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
+    0x0000019a   0x00000000   Code   RO         1062    .ARM.Collect$$libinit$$00000030  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
+    0x0000019a   0x00000000   Code   RO         1064    .ARM.Collect$$libinit$$00000032  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
+    0x0000019a   0x00000002   Code   RO         1065    .ARM.Collect$$libinit$$00000033  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libinit2.o)
+    0x0000019c   0x00000002   Code   RO         1096    .ARM.Collect$$libshutdown$$00000000  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libshutdown.o)
+    0x0000019e   0x00000000   Code   RO         1122    .ARM.Collect$$libshutdown$$00000002  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libshutdown2.o)
+    0x0000019e   0x00000000   Code   RO         1124    .ARM.Collect$$libshutdown$$00000004  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libshutdown2.o)
+    0x0000019e   0x00000000   Code   RO         1127    .ARM.Collect$$libshutdown$$00000007  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libshutdown2.o)
+    0x0000019e   0x00000000   Code   RO         1130    .ARM.Collect$$libshutdown$$0000000A  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libshutdown2.o)
+    0x0000019e   0x00000000   Code   RO         1132    .ARM.Collect$$libshutdown$$0000000C  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libshutdown2.o)
+    0x0000019e   0x00000000   Code   RO         1135    .ARM.Collect$$libshutdown$$0000000F  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libshutdown2.o)
+    0x0000019e   0x00000002   Code   RO         1136    .ARM.Collect$$libshutdown$$00000010  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libshutdown2.o)
+    0x000001a0   0x00000000   Code   RO          957    .ARM.Collect$$rtentry$$00000000  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__rtentry.o)
+    0x000001a0   0x00000000   Code   RO          974    .ARM.Collect$$rtentry$$00000002  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__rtentry2.o)
+    0x000001a0   0x00000006   Code   RO          986    .ARM.Collect$$rtentry$$00000004  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__rtentry4.o)
+    0x000001a6   0x00000000   Code   RO          976    .ARM.Collect$$rtentry$$00000009  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__rtentry2.o)
+    0x000001a6   0x00000004   Code   RO          977    .ARM.Collect$$rtentry$$0000000A  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__rtentry2.o)
+    0x000001aa   0x00000000   Code   RO          979    .ARM.Collect$$rtentry$$0000000C  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__rtentry2.o)
+    0x000001aa   0x00000008   Code   RO          980    .ARM.Collect$$rtentry$$0000000D  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__rtentry2.o)
+    0x000001b2   0x00000002   Code   RO         1013    .ARM.Collect$$rtexit$$00000000  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rtexit.o)
+    0x000001b4   0x00000000   Code   RO         1069    .ARM.Collect$$rtexit$$00000002  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rtexit2.o)
+    0x000001b4   0x00000004   Code   RO         1070    .ARM.Collect$$rtexit$$00000003  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rtexit2.o)
+    0x000001b8   0x00000006   Code   RO         1071    .ARM.Collect$$rtexit$$00000004  C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rtexit2.o)
     0x000001be   0x00000002   PAD
     0x000001c0   0x0000003c   Code   RO           50    .text               .\obj\startup_lpc17xx.o
-    0x000001fc   0x000000f0   Code   RO           58    .text               .\obj\main.o
-    0x000002ec   0x00000004   Code   RO          627    .text               .\obj\lpc17xx_libcfg_default.o
-    0x000002f0   0x00000006   Code   RO          950    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(heapauxi.o)
-    0x000002f6   0x00000002   Code   RO         1076    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(use_no_semi.o)
-    0x000002f8   0x00000000   Code   RO         1078    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(indicate_semi.o)
-    0x000002f8   0x00000004   PAD
+    0x000001fc   0x000000c4   Code   RO          487    .text               .\obj\lpc17xx_exti.o
+    0x000002c0   0x00000004   Code   RO          627    .text               .\obj\lpc17xx_libcfg_default.o
+    0x000002c4   0x00000034   Code   RO          862    .text               .\obj\lpc1768_motor.o
+    0x000002f8   0x00000002   Code   RO         1085    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(use_no_semi.o)
+    0x000002fa   0x00000000   Code   RO         1087    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(indicate_semi.o)
+    0x000002fa   0x00000002   PAD
     0x000002fc   0x00000004   Code   RO           49    .ARM.__at_0x02FC    .\obj\startup_lpc17xx.o
     0x00000300   0x000002ec   Code   RO            3    .text               .\obj\system_lpc17xx.o
-    0x000005ec   0x00000570   Code   RO          164    .text               .\obj\glcd.o
-    0x00000b5c   0x00000160   Code   RO          200    .text               .\obj\doorlock_fnd.o
-    0x00000cbc   0x0000047c   Code   RO          239    .text               .\obj\doorlock_keypad.o
-    0x00001138   0x000001f8   Code   RO          284    .text               .\obj\doorlock_lcd.o
-    0x00001330   0x00000280   Code   RO          307    .text               .\obj\doorlock_motor.o
-    0x000015b0   0x0000062c   Code   RO          331    .text               .\obj\doorlock_uart.o
-    0x00001bdc   0x00000114   Code   RO          361    .text               .\obj\doorlock_utility.o
-    0x00001cf0   0x000001bc   Code   RO          381    .text               .\obj\doorlock_data.o
-    0x00001eac   0x00000424   Code   RO          405    .text               .\obj\debug_frmwrk.o
-    0x000022d0   0x00000140   Code   RO          437    .text               .\obj\lpc17xx_clkpwr.o
-    0x00002410   0x000000c4   Code   RO          487    .text               .\obj\lpc17xx_exti.o
-    0x000024d4   0x0000040c   Code   RO          534    .text               .\obj\lpc17xx_gpio.o
-    0x000028e0   0x00000120   Code   RO          687    .text               .\obj\lpc17xx_pinsel.o
-    0x00002a00   0x00000654   Code   RO          776    .text               .\obj\lpc17xx_timer.o
-    0x00003054   0x00000e8c   Code   RO          796    .text               .\obj\lpc17xx_uart.o
-    0x00003ee0   0x0000034c   Code   RO          842    .text               .\obj\lpc1768_fnd.o
-    0x0000422c   0x00000034   Code   RO          862    .text               .\obj\lpc1768_motor.o
-    0x00004260   0x000003b8   Code   RO          882    .text               .\obj\lpc1768_utility.o
-    0x00004618   0x000000ee   Code   RO          905    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(lludivv7m.o)
-    0x00004706   0x00000002   PAD
-    0x00004708   0x00000028   Code   RO          909    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(noretval__2sprintf.o)
-    0x00004730   0x0000004e   Code   RO          913    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_pad.o)
-    0x0000477e   0x00000052   Code   RO          915    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_str.o)
-    0x000047d0   0x00000078   Code   RO          917    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_dec.o)
-    0x00004848   0x0000010e   Code   RO          927    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__printf_wp.o)
-    0x00004956   0x00000048   Code   RO          942    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strcpy.o)
-    0x0000499e   0x00000044   Code   RO          944    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rt_memclr.o)
-    0x000049e2   0x0000004e   Code   RO          946    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rt_memclr_w.o)
-    0x00004a30   0x00000080   Code   RO          948    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strcmpv7m.o)
-    0x00004ab0   0x000000b2   Code   RO          959    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_intcommon.o)
-    0x00004b62   0x00000002   PAD
-    0x00004b64   0x00000030   Code   RO          961    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_char_common.o)
-    0x00004b94   0x0000000a   Code   RO          963    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_sputc.o)
-    0x00004b9e   0x0000002c   Code   RO          965    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_char.o)
-    0x00004bca   0x0000004a   Code   RO          987    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(sys_stackheap_outer.o)
-    0x00004c14   0x00000012   Code   RO          989    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(exit.o)
-    0x00004c26   0x00000002   PAD
-    0x00004c28   0x00000008   Code   RO         1001    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libspace.o)
-    0x00004c30   0x0000000c   Code   RO         1057    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(sys_exit.o)
-    0x00004c3c   0x0000000e   Code   RO          929    i._is_digit         C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__printf_wp.o)
-    0x00004c4a   0x00000002   PAD
-    0x00004c4c   0x00000020   Data   RO         1128    Region$$Table       anon$$obj.o
+    0x000005ec   0x00000104   Code   RO           58    .text               .\obj\main.o
+    0x000006f0   0x00000570   Code   RO          164    .text               .\obj\glcd.o
+    0x00000c60   0x00000160   Code   RO          200    .text               .\obj\doorlock_fnd.o
+    0x00000dc0   0x00000554   Code   RO          239    .text               .\obj\doorlock_keypad.o
+    0x00001314   0x000004c4   Code   RO          284    .text               .\obj\doorlock_lcd.o
+    0x000017d8   0x00000280   Code   RO          307    .text               .\obj\doorlock_motor.o
+    0x00001a58   0x0000065c   Code   RO          331    .text               .\obj\doorlock_uart.o
+    0x000020b4   0x00000114   Code   RO          361    .text               .\obj\doorlock_utility.o
+    0x000021c8   0x00000294   Code   RO          381    .text               .\obj\doorlock_data.o
+    0x0000245c   0x00000424   Code   RO          405    .text               .\obj\debug_frmwrk.o
+    0x00002880   0x00000140   Code   RO          437    .text               .\obj\lpc17xx_clkpwr.o
+    0x000029c0   0x0000040c   Code   RO          534    .text               .\obj\lpc17xx_gpio.o
+    0x00002dcc   0x00000120   Code   RO          687    .text               .\obj\lpc17xx_pinsel.o
+    0x00002eec   0x00000654   Code   RO          776    .text               .\obj\lpc17xx_timer.o
+    0x00003540   0x00000e8c   Code   RO          796    .text               .\obj\lpc17xx_uart.o
+    0x000043cc   0x0000034c   Code   RO          842    .text               .\obj\lpc1768_fnd.o
+    0x00004718   0x000003b8   Code   RO          882    .text               .\obj\lpc1768_utility.o
+    0x00004ad0   0x000000ee   Code   RO          905    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(lludivv7m.o)
+    0x00004bbe   0x00000002   PAD
+    0x00004bc0   0x00000028   Code   RO          909    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(noretval__2sprintf.o)
+    0x00004be8   0x0000004e   Code   RO          913    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_pad.o)
+    0x00004c36   0x00000052   Code   RO          915    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_str.o)
+    0x00004c88   0x00000078   Code   RO          917    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_dec.o)
+    0x00004d00   0x0000010e   Code   RO          927    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__printf_wp.o)
+    0x00004e0e   0x00000002   PAD
+    0x00004e10   0x0000000c   Code   RO          942    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strtok.o)
+    0x00004e1c   0x00000048   Code   RO          945    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strcpy.o)
+    0x00004e64   0x00000044   Code   RO          947    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rt_memclr.o)
+    0x00004ea8   0x0000004e   Code   RO          949    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rt_memclr_w.o)
+    0x00004ef6   0x00000002   PAD
+    0x00004ef8   0x00000080   Code   RO          951    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strcmpv7m.o)
+    0x00004f78   0x00000006   Code   RO          953    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(heapauxi.o)
+    0x00004f7e   0x000000b2   Code   RO          962    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_intcommon.o)
+    0x00005030   0x00000030   Code   RO          964    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_char_common.o)
+    0x00005060   0x0000000a   Code   RO          966    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_sputc.o)
+    0x0000506a   0x0000002c   Code   RO          968    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(_printf_char.o)
+    0x00005096   0x00000002   PAD
+    0x00005098   0x00000044   Code   RO          971    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strtok_int.o)
+    0x000050dc   0x00000020   Code   RO          992    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strcspn.o)
+    0x000050fc   0x0000001c   Code   RO          994    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strspn.o)
+    0x00005118   0x0000004a   Code   RO          996    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(sys_stackheap_outer.o)
+    0x00005162   0x00000012   Code   RO          998    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(exit.o)
+    0x00005174   0x00000008   Code   RO         1010    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libspace.o)
+    0x0000517c   0x0000000c   Code   RO         1066    .text               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(sys_exit.o)
+    0x00005188   0x0000000e   Code   RO          929    i._is_digit         C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(__printf_wp.o)
+    0x00005196   0x00000002   PAD
+    0x00005198   0x00000020   Data   RO         1137    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Base: 0x10000000, Size: 0x00001ab0, Max: 0x00008000, ABSOLUTE, COMPRESSED[0x000007bc])
+    Execution Region RW_IRAM1 (Base: 0x10000000, Size: 0x00001ac8, Max: 0x00008000, ABSOLUTE, COMPRESSED[0x000007c0])
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -1199,24 +1252,24 @@ Memory Map of the image
     0x10000004   0x00000008   Data   RW           60    .data               .\obj\main.o
     0x1000000c   0x00001504   Data   RW          165    .data               .\obj\glcd.o
     0x10001510   0x00000018   Data   RW          202    .data               .\obj\doorlock_fnd.o
-    0x10001528   0x00000002   Data   RW          241    .data               .\obj\doorlock_keypad.o
-    0x1000152a   0x00000002   PAD
-    0x1000152c   0x00000006   Data   RW          285    .data               .\obj\doorlock_lcd.o
-    0x10001532   0x00000002   PAD
-    0x10001534   0x00000008   Data   RW          309    .data               .\obj\doorlock_motor.o
-    0x1000153c   0x0000001c   Data   RW          333    .data               .\obj\doorlock_uart.o
-    0x10001558   0x00000058   Data   RW          383    .data               .\obj\doorlock_data.o
-    0x100015b0   0x00000028   Data   RW          406    .data               .\obj\debug_frmwrk.o
-    0x100015d8   0x00000008   Data   RW          883    .data               .\obj\lpc1768_utility.o
-    0x100015e0   0x0000000c   Zero   RW           59    .bss                .\obj\main.o
-    0x100015ec   0x000000a0   Zero   RW          201    .bss                .\obj\doorlock_fnd.o
-    0x1000168c   0x000000b0   Zero   RW          240    .bss                .\obj\doorlock_keypad.o
-    0x1000173c   0x000000a0   Zero   RW          308    .bss                .\obj\doorlock_motor.o
-    0x100017dc   0x00000064   Zero   RW          332    .bss                .\obj\doorlock_uart.o
-    0x10001840   0x00000010   Zero   RW          382    .bss                .\obj\doorlock_data.o
-    0x10001850   0x00000060   Zero   RW         1002    .bss                C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libspace.o)
-    0x100018b0   0x00000000   Zero   RW           47    HEAP                .\obj\startup_lpc17xx.o
-    0x100018b0   0x00000200   Zero   RW           46    STACK               .\obj\startup_lpc17xx.o
+    0x10001528   0x00000008   Data   RW          241    .data               .\obj\doorlock_keypad.o
+    0x10001530   0x00000009   Data   RW          285    .data               .\obj\doorlock_lcd.o
+    0x10001539   0x00000003   PAD
+    0x1000153c   0x00000008   Data   RW          309    .data               .\obj\doorlock_motor.o
+    0x10001544   0x00000014   Data   RW          333    .data               .\obj\doorlock_uart.o
+    0x10001558   0x0000006c   Data   RW          383    .data               .\obj\doorlock_data.o
+    0x100015c4   0x00000028   Data   RW          406    .data               .\obj\debug_frmwrk.o
+    0x100015ec   0x00000008   Data   RW          883    .data               .\obj\lpc1768_utility.o
+    0x100015f4   0x00000004   Data   RW          943    .data               C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strtok.o)
+    0x100015f8   0x0000000c   Zero   RW           59    .bss                .\obj\main.o
+    0x10001604   0x000000a0   Zero   RW          201    .bss                .\obj\doorlock_fnd.o
+    0x100016a4   0x000000b0   Zero   RW          240    .bss                .\obj\doorlock_keypad.o
+    0x10001754   0x000000a0   Zero   RW          308    .bss                .\obj\doorlock_motor.o
+    0x100017f4   0x00000064   Zero   RW          332    .bss                .\obj\doorlock_uart.o
+    0x10001858   0x00000010   Zero   RW          382    .bss                .\obj\doorlock_data.o
+    0x10001868   0x00000060   Zero   RW         1011    .bss                C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(libspace.o)
+    0x100018c8   0x00000000   Zero   RW           47    HEAP                .\obj\startup_lpc17xx.o
+    0x100018c8   0x00000200   Zero   RW           46    STACK               .\obj\startup_lpc17xx.o
 
 
 ==============================================================================
@@ -1227,12 +1280,12 @@ Image component sizes
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
       1060         72          0         40          0       4406   .\obj\debug_frmwrk.o
-       444         46          0         88         16       2799   .\obj\doorlock_data.o
+       660         72          0        108         16       5053   .\obj\doorlock_data.o
        352         28          0         24        160       1620   .\obj\doorlock_fnd.o
-      1148         34          0          2        176       3962   .\obj\doorlock_keypad.o
-       504        124          0          6          0       2467   .\obj\doorlock_lcd.o
+      1364         42          0          8        176       4361   .\obj\doorlock_keypad.o
+      1220        304          0          9          0       3945   .\obj\doorlock_lcd.o
        640         16          0          8        160       2549   .\obj\doorlock_motor.o
-      1580        342          0         28        100       5919   .\obj\doorlock_uart.o
+      1628        268          0         20        100       6644   .\obj\doorlock_uart.o
        276          4          0          0          0       1504   .\obj\doorlock_utility.o
       1392         66          0       5380          0       5360   .\obj\glcd.o
        844         28          0          0          0       1845   .\obj\lpc1768_fnd.o
@@ -1245,14 +1298,14 @@ Image component sizes
        288          6          0          0          0       2514   .\obj\lpc17xx_pinsel.o
       1620         46          0          0          0       5511   .\obj\lpc17xx_timer.o
       3724         86          0          0          0      11160   .\obj\lpc17xx_uart.o
-       240          8          0          8         12      59465   .\obj\main.o
+       260          8          0          8         12      59489   .\obj\main.o
         64         26        204          0        512       1012   .\obj\startup_lpc17xx.o
        748         26          0          4          0      22305   .\obj\system_lpc17xx.o
 
     ----------------------------------------------------------------------
-     17484       1094        236       5600       1136     150540   Object Totals
+     18700       1234        236       5620       1136     155420   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-         0          0          0          4          0          0   (incl. Padding)
+         0          0          0          3          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -1293,22 +1346,26 @@ Image component sizes
         10          0          0          0          0          0   C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(rtexit2.o)
        128          0          0          0          0         68   C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strcmpv7m.o)
         72          0          0          0          0         80   C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strcpy.o)
+        32          0          0          0          0         80   C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strcspn.o)
+        28          0          0          0          0         80   C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strspn.o)
+        12          6          0          4          0         68   C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strtok.o)
+        68          4          0          0          0         84   C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(strtok_int.o)
         12          4          0          0          0         68   C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(sys_exit.o)
         74          0          0          0          0         80   C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(sys_stackheap_outer.o)
          2          0          0          0          0         68   C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l(use_no_semi.o)
 
     ----------------------------------------------------------------------
-      1844         44          0          0         96       1860   Library Totals
+      1984         54          0          4         96       2172   Library Totals
         14          0          0          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Name
 
-      1830         44          0          0         96       1860   C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l
+      1970         54          0          4         96       2172   C:\Keil_v5\ARM\ARMCC\Bin\..\lib\armlib\c_w.l
 
     ----------------------------------------------------------------------
-      1844         44          0          0         96       1860   Library Totals
+      1984         54          0          4         96       2172   Library Totals
 
     ----------------------------------------------------------------------
 
@@ -1317,15 +1374,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     19328       1138        236       5600       1232     149588   Grand Totals
-     19328       1138        236       1980       1232     149588   ELF Image Totals (compressed)
-     19328       1138        236       1980          0          0   ROM Totals
+     20684       1288        236       5624       1232     154520   Grand Totals
+     20684       1288        236       1984       1232     154520   ELF Image Totals (compressed)
+     20684       1288        236       1984          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                19564 (  19.11kB)
-    Total RW  Size (RW Data + ZI Data)              6832 (   6.67kB)
-    Total ROM Size (Code + RO Data + RW Data)      21544 (  21.04kB)
+    Total RO  Size (Code + RO Data)                20920 (  20.43kB)
+    Total RW  Size (RW Data + ZI Data)              6856 (   6.70kB)
+    Total ROM Size (Code + RO Data + RW Data)      22904 (  22.37kB)
 
 ==============================================================================
 

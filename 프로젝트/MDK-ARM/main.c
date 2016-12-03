@@ -95,7 +95,7 @@ void init() {
 	init_keypad();
 	init_EXTI();
 	init_stepping_motor();
-	uart_init();
+	UART_init();
 }
 //		init function
 /* end Private function --------------------------------------------------------------*/
@@ -147,6 +147,12 @@ void TIMER0_IRQHandler(void) {
 	//uart_refresh count 
 	uart_refresh_counter_up();
 	UART_liveSigal_count_up();
+
+	if (isServerConnected())
+		connectionCountDown();
+
+	if (isRequestedPermission())
+		sendingMsgCountDown();
 }
 
 // INT button pressed

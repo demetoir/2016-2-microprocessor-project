@@ -19,8 +19,6 @@
 
 bool isRequestedPermission(void);
 
- 
-
 void time_update(void);
 void setTimer(int YYYY, int MM, int DD, int hh, int mm, int ss);
 int getTime(int timeType);
@@ -34,9 +32,40 @@ void setRequsetPermission(bool value);
 #define PASSWORD_SIZE 4
 #define	MAX_PASSWORD_FAIL 3
 void clearPwd(void);
-void setPwd_i(int index, int pwdValue);
+void setPwd(int pwdValue);
 int getPwd_i(int index);
 int getPwdSize(void);
+void popbackPwd(void);
+
+bool isServerConnected(void);
+void set_isServerConnected(bool flag);
+
+#define TOP_CONNECTION_COUNTER 100
+void connectionCountDown(void);
+bool isConnectionCountZero(void);
+void resetConnectionCounter(void);
+
+
+int getSelectedLockerNumber(void);
+void setSelectedLockerNumber(int num);
+
+
+
+#define SYSTEM_MODE_SELECT_LOCKER_NUMBER		0
+#define SYSTEM_MODE_ENTER_PASSWORD				1
+#define SYSTEM_MODE_OPEN_FAIL					2
+#define SYSTEM_MODE_OPEN_SUCCESS				3
+#define SYSTEM_MODE_UNUSINGLOCKER				4
+#define SYSTEM_MODE_WAITING						5
+int getCurrentSystemMode(void);
+void setCurrentSustemMode(int mode);
+bool isChangedCurrentSystemMode(void);
+
+#define SENDING_MSG_COUNT_TOP			1
+void sendingMsgCountDown(void);
+void resetSendingMsgCounter(void);
+bool isSendingMsgCounterZero(void);
+
 
 
 
