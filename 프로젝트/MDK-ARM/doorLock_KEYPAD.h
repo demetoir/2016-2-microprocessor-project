@@ -39,6 +39,11 @@
 #define CHAR_KEYPAD_UP					'X'
 #define	DEFAULT_KEYPAD_EXIO_NUM			'C'
 
+#define KEY_CLEAR						'C'
+#define KEY_GO_NEXT						'R'
+#define KEY_GO_BACK						'E'
+#define KEY_CLOSE						'F'
+
 //////////////////// Mapping //////////////////////////////
 //
 // cKeypad_Value       Rev_Value

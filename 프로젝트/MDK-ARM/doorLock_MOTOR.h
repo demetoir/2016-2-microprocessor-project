@@ -23,18 +23,14 @@
 #define false							0
 #define true 							1
 
-#define FORWARD_MOTOR_TIME 150
-#define BACKWARD_MOTOR_TIME 150
-#define MOTOR_DELAY_TIME 200
+#define CCW_MOVE_MOTOR_TIME 100
+#define CW_MOVE_MOTOR_TIME 100
+#define MOTOR_DELAY_TIME 100
 
 #define move 0
 #define stop 1
-#define DOORLOCK_OPEN 2
-#define DOORLOCK_CLOSE 3
-
-
-//typedef enum { move, stop, DOORLOCK_OPEN, DOORLOCK_CLOSE} DOOR_LOCK_MOTOR_STATE;
-
+#define DOORLOCK_CLOSE 0
+#define DOORLOCK_OPEN 1
 
 void init_stepping_motor(void);
 void set_motor_output(int a, int na, int b, int nb);

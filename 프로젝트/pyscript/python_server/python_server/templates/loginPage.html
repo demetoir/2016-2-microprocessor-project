@@ -1,15 +1,32 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Bootstrap Template with login</title>
-    </head>
-    <body>
-            <form method ='post' action = '/login'>
-                <h3> login Page </h3>
-                <input type ='text' name ='userName' placeholder = 'userName' />
-                <input type ='password' name ='password' placeholder = 'password' />
-                <button type ='submit'> login</button>
-            </form>
+<head>
+    <title>Bootstrap Template with login</title>
+</head>
+<body>
+    <div>
+        <h1>Fridge Locker</h1>
+    </div>
+    <div>
+        <form method='Post' action='/checkLogin'>
+            <div>
+                <h3>Login Page </h3>
+            </div>
+            <div>
+                <input type='text' name='userId' placeholder='userId' />
+            </div>
+            <div>
+                <input type='password' name='password' placeholder='password' />
+            </div>
+            <button type='submit'>login</button>
+        </form>
+    </div>
+    <br />
+    <div>
+        <form method="post" action="/makeNewAccountPage">
+            <button type='submit'>make new Account </button>
+        </form>
 
-    </body>
+    </div>
+</body>
 </html>

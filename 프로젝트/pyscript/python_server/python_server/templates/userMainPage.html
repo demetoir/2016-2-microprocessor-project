@@ -1,0 +1,71 @@
+<html>
+<head>
+    <title>mainPage </title>
+</head>
+<body>
+    <div>
+        <h1>Fridge Locker</h1>
+    </div>
+    <div>
+        <h3>user profile</h3>
+    </div>
+
+    <div>
+        userID : {{userId}}
+    </div>
+
+    <div>
+        update time : {{ time }}<br />
+    </div>
+    <div>
+        {% for key in userDB:%}
+           key : {{ key }} value : {{ userDb[key] }}
+        {% endfor %}
+    </div>
+    <br />
+    <div>
+        using locker information <br />
+        {% for i in range(1,18 +1) :%}
+              {% if  lockerDb[str(i)]['userID'] == userId : %}
+                <div>
+                    lockerNumber : {{ str(i)  }} password : {{ lockerDb[str(i)]['lockerPassword'] }} 
+                    <form method="post" action="/returnLocker">
+                        <button type='submit'>returnLocker</button>
+                        <input type="hidden" name="userId" value="{{ userId }}" />
+                        <input type="hidden" name="lockerNumber" value="{{ str(i) }}" />
+                    </form>
+                </div>
+              {% endif%}
+        {%endfor%}
+        <br />
+    </div>
+
+
+    <form method="post" action="/makeNewLockerPage">
+        <button type='submit'>makeNewLocker</button>
+        <input type="hidden" name="id" value="{{userId}}" />
+    </form>
+
+    <form method="post" action="/logoutPage">
+        <button type='submit'>logout</button>
+        <input type="hidden" name="id" value="{{userId}}" />
+    </form>
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

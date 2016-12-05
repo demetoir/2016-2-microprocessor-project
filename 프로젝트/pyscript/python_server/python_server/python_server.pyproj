@@ -5,13 +5,14 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>bae0db4f-21d7-4107-9832-3f1612bc4ffb</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>python_server.py</StartupFile>
+    <StartupFile>flask_server.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>python_server</Name>
     <RootNamespace>python_server</RootNamespace>
+    <IsWindowsApplication>False</IsWindowsApplication>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,8 +23,11 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="python_server.py" />
-    <Compile Include="serial_connection_test.py" />
+    <Compile Include="flask_server.py" />
+    <Compile Include="arm_m3_kit_server.py" />
+    <Compile Include="threading test.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

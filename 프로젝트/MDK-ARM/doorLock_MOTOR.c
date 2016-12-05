@@ -9,7 +9,7 @@
 #include "doorLock_MOTOR.h"
 #endif // !doorLock_MOTOR_H
 
-int motor_state = stop;
+int motor_state = DOORLOCK_CLOSE;
 bool isNeed_doorLock_motor_move = false;
 
 LPC_GPIO_TypeDef    step_motor_GPIO_SETTING[5];
@@ -18,6 +18,17 @@ void init_stepping_motor() {
 	set_EXT_IO_DIRECTION('A');
 	Motor_Init();
 	//move_steppingMotor();
+
+	stepMotor_move_ccw(); 
+	Delay(SEC_1 / CCW_MOVE_MOTOR_TIME);
+	stepMotor_move_ccw();
+	Delay(SEC_1 / CCW_MOVE_MOTOR_TIME);
+	stepMotor_move_ccw();
+	Delay(SEC_1 / CCW_MOVE_MOTOR_TIME);
+	stepMotor_move_ccw();
+	Delay(SEC_1 / CCW_MOVE_MOTOR_TIME);
+
+
 	save_LCP_GPIO_setting_to(step_motor_GPIO_SETTING);
 }
 
@@ -70,13 +81,13 @@ void stepMotor_move_cw() {
 	//GPIO_SetValue(GPIO_PORT_3, GPIO_PIN_26);
 	for (count = 0; count < 6; count++) {
 		set_motor_output(1, 1, 0, 0);
-		Delay(SEC_1 / BACKWARD_MOTOR_TIME);
+		Delay(SEC_1 / CW_MOVE_MOTOR_TIME);
 		set_motor_output(0, 1, 1, 0);
-		Delay(SEC_1 / BACKWARD_MOTOR_TIME);
+		Delay(SEC_1 / CW_MOVE_MOTOR_TIME);
 		set_motor_output(0, 0, 1, 1);
-		Delay(SEC_1 / BACKWARD_MOTOR_TIME);
+		Delay(SEC_1 / CW_MOVE_MOTOR_TIME);
 		set_motor_output(1, 0, 0, 1);
-		Delay(SEC_1 / BACKWARD_MOTOR_TIME);
+		Delay(SEC_1 / CW_MOVE_MOTOR_TIME);
 	}
 }
 
@@ -102,12 +113,12 @@ void move_steppingMotor() {
 
 	load_LPC_GPIO_setting_to(step_motor_GPIO_SETTING);
 	if (motor_state == DOORLOCK_OPEN) {
-		stepMotor_move_cw();
+		stepMotor_move_ccw();
 		isNeed_doorLock_motor_move = false;
 	}
 	else if (motor_state == DOORLOCK_CLOSE) {
 		//back ward cycle
-		stepMotor_move_ccw();
+		stepMotor_move_cw();
 		isNeed_doorLock_motor_move = false;
 	}
 }

@@ -1,0 +1,90 @@
+<html>
+<head>
+    <title>rootPage </title>
+</head>
+<body>
+
+    <div>
+        <h1>Fridge Locker</h1>
+    </div>
+
+
+    <div>
+        <h3>root page </h3>
+    </div>
+    <div>
+        user id : {{userId}}
+    </div>
+    <div>
+        update time : {{ time }}<br />
+    </div>
+    <br />
+    <div>
+        using locker information
+        <br />
+        {% for i in range(1,18 +1) :%}
+          {% if lockerDb[str(i)] == None : %}
+                    lockerNumber : {{ str(i)  }} not using
+        <br />
+        {%  else : %}
+                    lockerNumber : {{ str(i)  }} using<br />
+        userID : {{ lockerDb[str(i)]['userID'] }} 
+                    locker password : {{ lockerDb[str(i)]['lockerPassword'] }} 
+                    <form method="post" action="/returnLocker">
+                        <button type='submit'>returnLocker</button>
+                        <input type="hidden" name="userId" value="{{ userId }}" />
+                        <input type="hidden" name="lockerNumber" value="{{ str(i) }}" />
+                    </form>
+        <br />
+        {% endif %}
+            <br />
+        {%endfor%}
+        <br />
+    </div>
+
+    <br />
+    <div>
+        doorLocker connection : {{doorLockConnection}} 
+    </div>
+
+    <div>
+        <div>
+            this will make you logout
+        </div>
+        <div>
+            <form method="post" action="/killAllSession">
+                <button type='submit'>kill all session </button>
+                <input type="hidden" name="id" value="{{userId}}" />
+            </form>
+        </div>
+    </div>
+
+
+    <form method="post" action="/logout">
+        <button type='submit'>logout</button>
+        <input type="hidden" name="id" value="{{userId}}" />
+    </form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Obj\FND.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Obj\FND.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Sat Dec 03 18:44:09 2016
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060422: Last Updated: Mon Dec 05 00:15:02 2016
 <BR><P>
 <H3>Maximum Stack Usage =        360 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -804,21 +804,20 @@ Global Symbols
 
 <P><STRONG><a name="[167]"></a>getKEYPAD_cvalue</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, .\obj\doorlock_keypad.o(.text), UNUSED)
 
-<P><STRONG><a name="[5f]"></a>Keypad_test</STRONG> (Thumb, 350 bytes, Stack size 24 bytes, .\obj\doorlock_keypad.o(.text))
+<P><STRONG><a name="[5f]"></a>Keypad_test</STRONG> (Thumb, 374 bytes, Stack size 24 bytes, .\obj\doorlock_keypad.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = Keypad_test &rArr; Keypad &rArr; Keypad_Output_Row_4
 </UL>
-<BR>[Calls]<UL><LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setSelectedLockerNumber
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setRequsetPermission
-<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setPwd
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setCurrentSustemMode
-<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setCloseDoorLock
-<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;popbackPwd
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSelectedLockerNumber
+<BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setSelectedLockerNumber
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setRequsetPermission
+<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setPwd
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setCurrentSustemMode
+<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setCloseDoorLock
+<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;popbackPwd
+<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSelectedLockerNumber
 <LI><a href="#[93]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getCurrentSystemMode
-<LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clearPwd
+<LI><a href="#[9a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;clearPwd
 <LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Keypad
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;load_LPC_GPIO_setting_to
-<LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setOpenDoorLock
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setLCD_refresh
 <LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;isServerConnected
 </UL>
@@ -855,7 +854,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_refresh
 </UL>
 
-<P><STRONG><a name="[a3]"></a>showWrongPasswordPage</STRONG> (Thumb, 48 bytes, Stack size 32 bytes, .\obj\doorlock_lcd.o(.text))
+<P><STRONG><a name="[a3]"></a>showWrongPasswordPage</STRONG> (Thumb, 46 bytes, Stack size 32 bytes, .\obj\doorlock_lcd.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160 + Unknown Stack Size
 <LI>Call Chain = showWrongPasswordPage &rArr; __2sprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
@@ -872,7 +871,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 160 + Unknown Stack Size
 <LI>Call Chain = showOpenLockerPage &rArr; __2sprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSelectedLockerNumber
+<BR>[Calls]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSelectedLockerNumber
 <LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GLCD_displayStringLn
 <LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GLCD_setBackColor
 <LI><a href="#[a0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GLCD_setTextColor
@@ -897,11 +896,11 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_refresh
 </UL>
 
-<P><STRONG><a name="[a7]"></a>showSelectLockerPage</STRONG> (Thumb, 164 bytes, Stack size 32 bytes, .\obj\doorlock_lcd.o(.text))
+<P><STRONG><a name="[a7]"></a>showSelectLockerPage</STRONG> (Thumb, 186 bytes, Stack size 32 bytes, .\obj\doorlock_lcd.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160 + Unknown Stack Size
 <LI>Call Chain = showSelectLockerPage &rArr; __2sprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
-<BR>[Calls]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSelectedLockerNumber
+<BR>[Calls]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSelectedLockerNumber
 <LI><a href="#[7b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GLCD_clearLn
 <LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GLCD_displayStringLn
 <LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GLCD_setBackColor
@@ -920,7 +919,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_refresh
 </UL>
 
-<P><STRONG><a name="[a9]"></a>showServerDisconnection</STRONG> (Thumb, 62 bytes, Stack size 32 bytes, .\obj\doorlock_lcd.o(.text))
+<P><STRONG><a name="[a9]"></a>showServerDisconnection</STRONG> (Thumb, 60 bytes, Stack size 32 bytes, .\obj\doorlock_lcd.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160 + Unknown Stack Size
 <LI>Call Chain = showServerDisconnection &rArr; __2sprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
@@ -999,67 +998,69 @@ Global Symbols
 <LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 </UL>
 
-<P><STRONG><a name="[5c]"></a>init_stepping_motor</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, .\obj\doorlock_motor.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = init_stepping_motor &rArr; Motor_Init &rArr; GPIO_SetDir
-</UL>
-<BR>[Calls]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_Init
-<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_EXT_IO_DIRECTION
-<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_LCP_GPIO_setting_to
-</UL>
-<BR>[Called By]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init
-</UL>
-
-<P><STRONG><a name="[ad]"></a>set_motor_output</STRONG> (Thumb, 108 bytes, Stack size 24 bytes, .\obj\doorlock_motor.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = set_motor_output &rArr; GPIO_SetValue
-</UL>
-<BR>[Calls]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetValue
-<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ClearValue
-</UL>
-<BR>[Called By]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stepMotor_move_cw
-</UL>
-
-<P><STRONG><a name="[b0]"></a>StepMotor_Cycle</STRONG> (Thumb, 248 bytes, Stack size 16 bytes, .\obj\doorlock_motor.o(.text))
+<P><STRONG><a name="[ad]"></a>StepMotor_Cycle</STRONG> (Thumb, 248 bytes, Stack size 16 bytes, .\obj\doorlock_motor.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = StepMotor_Cycle &rArr; GPIO_SetValue
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetValue
 <LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ClearValue
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stepMotor_move_ccw
+<BR>[Called By]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stepMotor_move_ccw
 </UL>
 
-<P><STRONG><a name="[b1]"></a>stepMotor_move_cw</STRONG> (Thumb, 136 bytes, Stack size 16 bytes, .\obj\doorlock_motor.o(.text))
+<P><STRONG><a name="[b0]"></a>stepMotor_move_ccw</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, .\obj\doorlock_motor.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = stepMotor_move_ccw &rArr; StepMotor_Cycle &rArr; GPIO_SetValue
+</UL>
+<BR>[Calls]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StepMotor_Cycle
+</UL>
+<BR>[Called By]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_steppingMotor
+<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_stepping_motor
+</UL>
+
+<P><STRONG><a name="[5c]"></a>init_stepping_motor</STRONG> (Thumb, 108 bytes, Stack size 8 bytes, .\obj\doorlock_motor.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = init_stepping_motor &rArr; stepMotor_move_ccw &rArr; StepMotor_Cycle &rArr; GPIO_SetValue
+</UL>
+<BR>[Calls]<UL><LI><a href="#[4c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_Init
+<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stepMotor_move_ccw
+<LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_EXT_IO_DIRECTION
+<LI><a href="#[88]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;save_LCP_GPIO_setting_to
+<LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay
+</UL>
+<BR>[Called By]<UL><LI><a href="#[58]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init
+</UL>
+
+<P><STRONG><a name="[b1]"></a>set_motor_output</STRONG> (Thumb, 108 bytes, Stack size 24 bytes, .\obj\doorlock_motor.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = set_motor_output &rArr; GPIO_SetValue
+</UL>
+<BR>[Calls]<UL><LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetValue
+<LI><a href="#[af]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ClearValue
+</UL>
+<BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stepMotor_move_cw
+</UL>
+
+<P><STRONG><a name="[b2]"></a>stepMotor_move_cw</STRONG> (Thumb, 136 bytes, Stack size 16 bytes, .\obj\doorlock_motor.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = stepMotor_move_cw &rArr; set_motor_output &rArr; GPIO_SetValue
 </UL>
-<BR>[Calls]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_motor_output
+<BR>[Calls]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_motor_output
 <LI><a href="#[81]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay
 </UL>
 <BR>[Called By]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_steppingMotor
 </UL>
 
-<P><STRONG><a name="[b2]"></a>stepMotor_move_ccw</STRONG> (Thumb, 10 bytes, Stack size 8 bytes, .\obj\doorlock_motor.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = stepMotor_move_ccw &rArr; StepMotor_Cycle &rArr; GPIO_SetValue
-</UL>
-<BR>[Calls]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StepMotor_Cycle
-</UL>
-<BR>[Called By]<UL><LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;move_steppingMotor
-</UL>
-
-<P><STRONG><a name="[6d]"></a>setOpenDoorLock</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, .\obj\doorlock_motor.o(.text))
+<P><STRONG><a name="[6d]"></a>setOpenDoorLock</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, .\obj\doorlock_motor.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_communication
-<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Keypad_test
 <LI><a href="#[20]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EINT0_IRQHandler
 </UL>
 
-<P><STRONG><a name="[95]"></a>setCloseDoorLock</STRONG> (Thumb, 22 bytes, Stack size 0 bytes, .\obj\doorlock_motor.o(.text))
+<P><STRONG><a name="[9b]"></a>setCloseDoorLock</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, .\obj\doorlock_motor.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Keypad_test
 </UL>
 
-<P><STRONG><a name="[61]"></a>move_steppingMotor</STRONG> (Thumb, 58 bytes, Stack size 8 bytes, .\obj\doorlock_motor.o(.text))
+<P><STRONG><a name="[61]"></a>move_steppingMotor</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, .\obj\doorlock_motor.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = move_steppingMotor &rArr; stepMotor_move_cw &rArr; set_motor_output &rArr; GPIO_SetValue
 </UL>
-<BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stepMotor_move_ccw
-<LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stepMotor_move_cw
+<BR>[Calls]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stepMotor_move_cw
+<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stepMotor_move_ccw
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;load_LPC_GPIO_setting_to
 </UL>
 <BR>[Called By]<UL><LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
@@ -1132,7 +1133,7 @@ Global Symbols
 <LI>Call Chain = UART_makeRequestPermssionMsg &rArr; __2sprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getPwd_i
-<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSelectedLockerNumber
+<LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;getSelectedLockerNumber
 <LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_communication
@@ -1246,8 +1247,8 @@ Global Symbols
 <LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_receiveMsg
 <LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_sendMsg
 <LI><a href="#[b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_clearBuffer
-<LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setRequsetPermission
-<LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setCurrentSustemMode
+<LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setRequsetPermission
+<LI><a href="#[96]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setCurrentSustemMode
 <LI><a href="#[6d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setOpenDoorLock
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;setLCD_refresh
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;isRequestedPermission
@@ -1315,16 +1316,16 @@ Global Symbols
 <LI><a href="#[f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMER0_IRQHandler
 </UL>
 
-<P><STRONG><a name="[97]"></a>setRequsetPermission</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, .\obj\doorlock_data.o(.text))
+<P><STRONG><a name="[99]"></a>setRequsetPermission</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, .\obj\doorlock_data.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_communication
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Keypad_test
 </UL>
 
-<P><STRONG><a name="[9b]"></a>clearPwd</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, .\obj\doorlock_data.o(.text))
+<P><STRONG><a name="[9a]"></a>clearPwd</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, .\obj\doorlock_data.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Keypad_test
 </UL>
 
-<P><STRONG><a name="[94]"></a>setPwd</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, .\obj\doorlock_data.o(.text))
+<P><STRONG><a name="[97]"></a>setPwd</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, .\obj\doorlock_data.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Keypad_test
 </UL>
 
@@ -1336,7 +1337,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;showEnterPasswordPage
 </UL>
 
-<P><STRONG><a name="[96]"></a>popbackPwd</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, .\obj\doorlock_data.o(.text))
+<P><STRONG><a name="[98]"></a>popbackPwd</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, .\obj\doorlock_data.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Keypad_test
 </UL>
 
@@ -1363,14 +1364,14 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_communication
 </UL>
 
-<P><STRONG><a name="[99]"></a>getSelectedLockerNumber</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, .\obj\doorlock_data.o(.text))
+<P><STRONG><a name="[94]"></a>getSelectedLockerNumber</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, .\obj\doorlock_data.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_makeRequestPermssionMsg
 <LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;showSelectLockerPage
 <LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;showOpenLockerPage
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Keypad_test
 </UL>
 
-<P><STRONG><a name="[9a]"></a>setSelectedLockerNumber</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, .\obj\doorlock_data.o(.text))
+<P><STRONG><a name="[95]"></a>setSelectedLockerNumber</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, .\obj\doorlock_data.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Keypad_test
 </UL>
 
@@ -1383,7 +1384,7 @@ Global Symbols
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Keypad_test
 </UL>
 
-<P><STRONG><a name="[98]"></a>setCurrentSustemMode</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, .\obj\doorlock_data.o(.text))
+<P><STRONG><a name="[96]"></a>setCurrentSustemMode</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, .\obj\doorlock_data.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_communication
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Keypad_test
 </UL>
@@ -1546,8 +1547,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_GetPointer
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StepMotor_Cycle
-<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_motor_output
+<BR>[Called By]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_motor_output
+<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StepMotor_Cycle
 <LI><a href="#[82]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FND_Data_Reset
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FND_Data_CS
 <LI><a href="#[127]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Led_All_On
@@ -1561,8 +1562,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_GetPointer
 </UL>
-<BR>[Called By]<UL><LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StepMotor_Cycle
-<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_motor_output
+<BR>[Called By]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_motor_output
+<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StepMotor_Cycle
 <LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FND_Data_CS
 <LI><a href="#[84]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FND_COM_Init
 <LI><a href="#[128]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Led_All_Off
@@ -1985,8 +1986,9 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[81]"></a>Delay</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, .\obj\lpc1768_utility.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stepMotor_move_cw
-<LI><a href="#[b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StepMotor_Cycle
+<BR><BR>[Called By]<UL><LI><a href="#[b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;stepMotor_move_cw
+<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;StepMotor_Cycle
+<LI><a href="#[5c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_stepping_motor
 <LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FND_blink
 </UL>
 

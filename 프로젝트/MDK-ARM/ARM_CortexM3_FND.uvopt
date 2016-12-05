@@ -167,18 +167,18 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>269</LineNumber>
+          <LineNumber>115</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>7814</Address>
+          <Address>6798</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>C:\Users\yujun\Documents\microprocessor_project\?꾨줈?앺듃\MDK-ARM\doorLock_UART.c</Filename>
+          <Filename>C:\Users\yujun\Documents\microprocessor_project\?꾨줈?앺듃\MDK-ARM\doorLock_MOTOR.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\FND\doorLock_UART.c\269</Expression>
+          <Expression>\\FND\doorLock_MOTOR.c\115</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -340,7 +340,7 @@
       <GroupNumber>2</GroupNumber>
       <FileNumber>4</FileNumber>
       <FileType>1</FileType>
-      <tvExp>1</tvExp>
+      <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\GLCD.c</PathWithFileName>
@@ -400,7 +400,7 @@
       <GroupNumber>2</GroupNumber>
       <FileNumber>9</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
       <PathWithFileName>.\doorLock_UART.c</PathWithFileName>

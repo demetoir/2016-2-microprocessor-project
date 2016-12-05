@@ -55,20 +55,20 @@ void setLCDMode(LCD_MODE mode) {
 
 void showLabel(void) {
 	char lineBuffer[21];
-	
+
 	GLCD_setBackColor(Blue);                           /* Set the Text Color */
 	GLCD_setTextColor(White);                          /* Set the Text Color */
 	GLCD_displayStringLn(Line0, "   Fridge Locker     ");
 
 	GLCD_setBackColor(White);                           /* Set the Text Color */
-	GLCD_setTextColor(Blue);                          /* Set the Text Color */
+	GLCD_setTextColor(DarkGrey);                          /* Set the Text Color */
 	memset(lineBuffer, 0x00, sizeof(lineBuffer));
-	sprintf(lineBuffer, " data: %4d/%2d/%2d",
+	sprintf(lineBuffer, " DATE: %4d/%2d/%2d",
 		getTime(YEAR), getTime(MONTH), getTime(DAY));
 	GLCD_displayStringLn(Line1, lineBuffer);
-	
+
 	memset(lineBuffer, 0x00, sizeof(lineBuffer));
-	sprintf(lineBuffer, " time: %2d:%2d:%2d",
+	sprintf(lineBuffer, " TIME: %2d:%2d:%2d",
 		getTime(HOUR), getTime(MINUTE), getTime(SECOND));
 	GLCD_displayStringLn(Line2, lineBuffer);
 
@@ -87,11 +87,11 @@ void showInit(void) {
 
 void showServerDisconnection(void) {
 	char lineBuffer[21];
-	GLCD_setBackColor(White);		
-	GLCD_setTextColor(Blue);        
+	GLCD_setBackColor(White);
+	GLCD_setTextColor(Red);
 	if (isServerConnected() == false) {
 		memset(lineBuffer, 0x00, sizeof(lineBuffer));
-		sprintf(lineBuffer, "server disconnceted");
+		sprintf(lineBuffer, "Server Disconnceted");
 		GLCD_displayStringLn(Line9, lineBuffer);
 	}
 	else {
@@ -102,32 +102,36 @@ void showServerDisconnection(void) {
 void showSelectLockerPage(void) {
 	char lineBuffer[21];
 	int num = 0;
+	GLCD_setBackColor(Black);
+	GLCD_setTextColor(White);
+
+	memset(lineBuffer, 0x00, sizeof(lineBuffer));
+	sprintf(lineBuffer, "    Select Locker         ");
+	GLCD_displayStringLn(Line3, lineBuffer);
+
 	GLCD_setBackColor(White);
 	GLCD_setTextColor(Blue);
-	
-	memset(lineBuffer, 0x00, sizeof(lineBuffer));
-	sprintf(lineBuffer, "   select locker");
-	GLCD_displayStringLn(Line3, lineBuffer);
 
 	memset(lineBuffer, 0x00, sizeof(lineBuffer));
 	sprintf(lineBuffer, "  1  2  3  4  5  6 ");
-	GLCD_displayStringLn(Line4, lineBuffer);
-
-	memset(lineBuffer, 0x00, sizeof(lineBuffer));
-	sprintf(lineBuffer, "  7  8  9 10 11 12 ");
 	GLCD_displayStringLn(Line5, lineBuffer);
 
 	memset(lineBuffer, 0x00, sizeof(lineBuffer));
-	sprintf(lineBuffer, " 13 14 15 16 17 18 ");
+	sprintf(lineBuffer, "  7  8  9 10 11 12 ");
 	GLCD_displayStringLn(Line6, lineBuffer);
-	
+
+	memset(lineBuffer, 0x00, sizeof(lineBuffer));
+	sprintf(lineBuffer, " 13 14 15 16 17 18 ");
+	GLCD_displayStringLn(Line7, lineBuffer);
+
 	num = getSelectedLockerNumber();
 	if (num == 0) {
 		GLCD_clearLn(Line8);
 	}
 	else {
+		GLCD_setTextColor(Purple);
 		memset(lineBuffer, 0x00, sizeof(lineBuffer));
-		sprintf(lineBuffer, "         %d ",num);
+		sprintf(lineBuffer, "         %d ", num);
 		GLCD_displayStringLn(Line8, lineBuffer);
 	}
 
@@ -141,16 +145,16 @@ void showEnterPasswordPage(void) {
 	GLCD_setTextColor(Blue);
 
 	memset(lineBuffer, 0x00, sizeof(lineBuffer));
-	sprintf(lineBuffer, "   enter password");
-	GLCD_displayStringLn(Line3, lineBuffer);
-		
-	for(i =0; i<4; i++)
-		GLCD_displayChar(90 + 40*i, 140, '_');
-	
+	sprintf(lineBuffer, "   Enter password");
+	GLCD_displayStringLn(Line4, lineBuffer);
+
+	for (i = 0; i<4; i++)
+		GLCD_displayChar(90 + 40 * i, 140, '_');
+
 	pwdSize = getPwdSize();
 	//pwdSize = 4;
 	for (i = 0; i < 4; i++) {
-		if( i< pwdSize)
+		if (i< pwdSize)
 			GLCD_displayChar(90 + 40 * i, 130, '*');
 		else
 			GLCD_displayChar(90 + 40 * i, 130, ' ');
@@ -168,14 +172,14 @@ void clearPage(void) {
 	GLCD_clearLn(Line9);
 }
 
-void showWrongPasswordPage(void) {
+void showWaitingPage(void) {
 	char lineBuffer[21];
 	GLCD_setBackColor(White);
 	GLCD_setTextColor(Blue);
 
 	memset(lineBuffer, 0x00, sizeof(lineBuffer));
-	sprintf(lineBuffer, "   wrong password  ");
-	GLCD_displayStringLn(Line3, lineBuffer);
+	sprintf(lineBuffer, "   Wait for second");
+	GLCD_displayStringLn(Line4, lineBuffer);
 }
 
 void showOpenLockerPage(void) {
@@ -188,14 +192,14 @@ void showOpenLockerPage(void) {
 	GLCD_displayStringLn(Line3, lineBuffer);
 }
 
-void showWaitingPage(void) {
+void showWrongPasswordPage(void) {
 	char lineBuffer[21];
 	GLCD_setBackColor(White);
-	GLCD_setTextColor(Blue);
+	GLCD_setTextColor(Red);
 
 	memset(lineBuffer, 0x00, sizeof(lineBuffer));
-	sprintf(lineBuffer, "   wait for second");
-	GLCD_displayStringLn(Line3, lineBuffer);
+	sprintf(lineBuffer, "   Wrong Password  ");
+	GLCD_displayStringLn(Line4, lineBuffer);
 }
 
 void LCD_refresh(void) {

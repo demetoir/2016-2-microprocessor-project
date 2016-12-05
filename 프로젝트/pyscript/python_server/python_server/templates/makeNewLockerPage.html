@@ -1,0 +1,59 @@
+<html>
+<head>
+    <title>make New Locker </title>
+</head>
+<body>
+    <div>
+        <h1>Fridge Locker</h1>
+    </div>
+    <div>
+        <h3>make new locker</h3>
+    </div>
+    <div>
+        userID : {{ userId }}
+    </div>
+    <div>
+        <form method="post" action="/userMainPage">
+            <button type='submit'>cancle</button>
+            <input type="hidden" name="id" value="{{userId}}" />
+        </form>
+    </div>
+    <div>
+        {% for key in range(1,18+1): %}
+               lockerNumber : {{ str(key) }}  
+                    {% if lockerDB[str(key)] == none : %}  
+                                <div>
+                                    possible
+                                   <form method="post" action="/checkMakeNewLocker">
+                                       <button type='submit'>select {{ str(key) }} Locker </button>
+                                       <input type="hidden" name="id" value="{{ userId}}" />
+                                       <input type="hidden" name="lockerNumber" value="{{ str(key) }}" />
+                                   </form>
+                                </div>
+        <br />
+        {% else : %} 
+                <div>
+                    impossible                    
+                </div>
+        <br />
+        {% endif %} 
+        {% endfor %}
+    </div>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

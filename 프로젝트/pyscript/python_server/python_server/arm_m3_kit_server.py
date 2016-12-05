@@ -6,14 +6,15 @@ import time
 import sys
 import traceback
 import datetime
+import random 
 
 from time import gmtime, strftime
 
+rootPwd = "1234"
 
 class arm_m3_kit_server :
 	MSG_ENCONDDING_TYPE = "ascii"
 	MAX_MSG_LEN = 100
-	receiveBuffer =""
 	connectionMsgList = ["end\n",
 					"send_handshake",
 					"receive_handshake",
@@ -23,7 +24,13 @@ class arm_m3_kit_server :
 					"disconnect",
 					"success"]
 	SLEEP_TIME = 0.1
-	CHECK_CONNECTION_INTERVAL = 5000 * 10
+	CHECK_CONNECTION_INTERVAL = 50
+	HAND_SHAKE_TIME_LIMIT = 20
+	lockerDB = {}
+
+	def setLockerDB(self, lockerDB):
+		self.lockerDB = lockerDB
+
 	def delay(self):
 		time.sleep(self.SLEEP_TIME)
 
@@ -82,7 +89,7 @@ class arm_m3_kit_server :
 				print("send : %s  echo : %s" % (bChar, echoChar))
 		return 
 
-	def makeHandShake(self, showLog=false, timeOut=20):
+	def makeHandShake(self, showLog=false, timeOut=HAND_SHAKE_TIME_LIMIT):
 		curtime = time.clock
 		startTime = curtime()
 		handShakeMsg = "send_handshake end\n"
@@ -116,7 +123,7 @@ class arm_m3_kit_server :
 			
 		return false
 
-	def disconnectSession(self, showLog=true) :
+	def disconnectToArmKit(self, showLog=false) :
 		curtime = time.clock
 		starttime = curtime()	
 		dcsMsg = "disconnect end\n"
@@ -183,7 +190,7 @@ class arm_m3_kit_server :
 				return true
 		return false
 		
-	def isPemissionMsg(self, msg, showLog= true):
+	def isPemissionMsg(self, msg, showLog= false):
 		tokenList = msg.split()
 
 		if len(tokenList) <4 :
@@ -194,14 +201,14 @@ class arm_m3_kit_server :
 
 		return false
 	
-	def responsePermissionMsg(self, msg, showLog = true):
+	def responsePermissionMsg(self, msg, showLog = false):
 		tokenList = msg.split()
 		pwd = tokenList[1]
-		lockNum = tokenList[2]
+		lockerNum = tokenList[2]
 		if showLog:
 			print("server recieved : pwd %s , lockNum : %s"%(pwd,lockNum))
-
-		if pwd =="1234":
+		if lockerNum in self.lockerDB and self.lockerDB[lockerNum]["lockerPassword"] == pwd:
+			self.lockerDB[lockerNum]["lockerPassword"] = "%04d"%(random.randint(0,9999))
 			result = true
 		else :
 			result = false
@@ -215,69 +222,70 @@ class arm_m3_kit_server :
 			print("server send : %s"%( msg))
 		self.sendMsg(msg)
 
-	def main(self):
-		self.connectSerial(self.serialConnectionSetting)
-		if self.serialConnectionObject == None:
-			print("can not make serial connection")
-			exit()
+	def printTimeLog(self, msg, showLog = true):
+		if showLog:
+			print("%s arm server : %s"%( str(datetime.datetime.now()), msg ))	
 
-		self.disconnectSession()
-		print("server : disconnection success")
+	def connectToArmKit(self, showLowg = false):
+		self.disconnectToArmKit()
+		self.printTimeLog("disconnection success")
 
-		print("server : start hand shake")
+		self.printTimeLog("start hand shake")
 		while(1):
 			if self.makeHandShake() == true:
 				break
-			print("hand Shake fail")
-			print("retry hand shake")	
-		print("server : hand shake success")
+			self.printTimeLog("retry hand shake")	
+		self.printTimeLog("hand shake success")
 
 		self.sendSynTimeMsg()
-	
+		self.printTimeLog("sync Time complete")
+		return
 
+	def main(self, _lockerDB = {}):
+		self.setLockerDB(_lockerDB)
+		self.connectSerial(self.serialConnectionSetting)
+		if self.serialConnectionObject == None:
+			self.printTimeLog("can not make serial connection")
+			exit()
+
+		self.connectToArmKit()
+	
 		checkConnectionTime = self.CHECK_CONNECTION_INTERVAL
 		msg = ""
 		while true:
-			#self.delay()
-			msg += self.receiveMsg()
+			self.delay()
 
+			checkConnectionTime -= 1
+			if checkConnectionTime <= 0:
+				checkConnectionTime = self.CHECK_CONNECTION_INTERVAL
+				isOk = self.CheckConnection()
+				if isOk:
+					self.printTimeLog("check ok")
+				else :
+					self.connectToArmKit()
+
+			msg += self.receiveMsg()
 			if msg != "" :
 				tokenList = msg.split()
 				if tokenList[-1] != 'end\\n':
 					continue;
 
-				print("%s server receive : %s"%(str(datetime.datetime.now()), msg))		
+				self.printTimeLog("received : %s"%(msg))		
 				if self.isPemissionMsg(msg) != false:
 					self.responsePermissionMsg(msg)
 
 				msg = ""
-				continue
+				continue					
 
-			checkConnectionTime-=1
-			if checkConnectionTime <=0:
-				checkConnectionTime = self.CHECK_CONNECTION_INTERVAL
-				isOk = self.CheckConnection()
-				strTime = str(datetime.datetime.now())
-				if isOk:
-					print("%s server check : ok"%(strTime ))		
-				else :
-					print("%s server check : disconnected"%(strTime))
-					while(1):
-						if self.makeHandShake() == true:
-							break
-						print("hand Shake fail")
-						print("retry hand shake")	
-					print("server : hand shake success")
-					
-
-		self.disconnectSession()
+		self.disconnectToArmKit()
 		
 
 	
 			
 
 # start
-arm_m3_kit_server().main()
+if __name__ == "__main__":
+	arm_m3_kit_server().main()
 
 
 
