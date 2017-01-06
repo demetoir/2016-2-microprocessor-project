@@ -31,7 +31,7 @@ class arm_m3_kit_server :
 	def setLockerDB(self, lockerDB):
 		self.lockerDB = lockerDB
 
-	def delay(self):
+	def sleep(self):
 		time.sleep(self.SLEEP_TIME)
 
 	class SerialConnectionSetting :
@@ -99,7 +99,7 @@ class arm_m3_kit_server :
 		
 		msg = "" 
 		while 1:	
-			self.delay()
+			self.sleep()
 			rcvMsg = self.receiveMsg()
 			if curtime() - startTime > 1:
 				self.sendMsg(handShakeMsg)
@@ -141,7 +141,7 @@ class arm_m3_kit_server :
 					print("server : disconnect time out")
 					print("server : resend disconnect msg")
 				self.sendMsg(dcsMsg)
-			self.delay()
+			self.sleep()
 			s = self.receiveMsg()
 			if s == "": continue
 			msg += s
@@ -242,19 +242,24 @@ class arm_m3_kit_server :
 		return
 
 	def main(self, _lockerDB = {}):
+		#lockerDB를 초기화한다
 		self.setLockerDB(_lockerDB)
+		#uart 연결을 한다 
 		self.connectSerial(self.serialConnectionSetting)
 		if self.serialConnectionObject == None:
 			self.printTimeLog("can not make serial connection")
 			exit()
 
+		#ArmKit와 연결을 시도한다
 		self.connectToArmKit()
-	
+		
 		checkConnectionTime = self.CHECK_CONNECTION_INTERVAL
-		msg = ""
+		msgBuffer = ""
 		while true:
-			self.delay()
-
+			#polling 부하를 줄이기 위한 sleep
+			self.sleep()
+			
+			#Arm kit와 연결을 확인하기위해 일정시간마다 연결메세지를 전송한다
 			checkConnectionTime -= 1
 			if checkConnectionTime <= 0:
 				checkConnectionTime = self.CHECK_CONNECTION_INTERVAL
@@ -264,17 +269,23 @@ class arm_m3_kit_server :
 				else :
 					self.connectToArmKit()
 
-			msg += self.receiveMsg()
-			if msg != "" :
-				tokenList = msg.split()
+			#수신받은 내용을 버퍼에 추가한다
+			curReceivedData = self.receiveMsg()
+			msgBuffer += curReceivedData
+			#수신받은 내용이 존재하지않으면 무시한다
+			if curReceivedData != "" :
+				#완전한 메세지 포멧이 아니라면 무시한다 
+				tokenList = msgBuffer.split()
 				if tokenList[-1] != 'end\\n':
 					continue;
 
-				self.printTimeLog("received : %s"%(msg))		
-				if self.isPemissionMsg(msg) != false:
-					self.responsePermissionMsg(msg)
-
-				msg = ""
+				self.printTimeLog("received : %s"%(msgBuffer))	
+	
+				#받은 메세지가 인증요청 메세지의 경우에대한 처리
+				if self.isPemissionMsg(msgBuffer) != false:
+					self.responsePermissionMsg(msgBuffer)
+				
+				msgBuffer = ""
 				continue					
 
 		self.disconnectToArmKit()

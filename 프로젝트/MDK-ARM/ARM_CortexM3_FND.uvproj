@@ -444,11 +444,6 @@
               <FilePath>.\GLCD.c</FilePath>
             </File>
             <File>
-              <FileName>doorLock_FND.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\doorLock_FND.c</FilePath>
-            </File>
-            <File>
               <FileName>doorLock_KEYPAD.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\doorLock_KEYPAD.c</FilePath>

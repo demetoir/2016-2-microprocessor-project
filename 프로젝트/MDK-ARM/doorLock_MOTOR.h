@@ -23,24 +23,18 @@
 #define false							0
 #define true 							1
 
-#define CCW_MOVE_MOTOR_TIME 100
-#define CW_MOVE_MOTOR_TIME 100
-#define MOTOR_DELAY_TIME 100
+#define MOTOR_DELAY_TIME		(SEC_1 / 150)
 
-#define move 0
-#define stop 1
-#define DOORLOCK_CLOSE 0
-#define DOORLOCK_OPEN 1
+#define move					0
+#define stop					1
+#define LOCKER_CLOSE			0		
+#define LOCKER_OPEN				1
 
-void init_stepping_motor(void);
-void set_motor_output(int a, int na, int b, int nb);
-void StepMotor_Cycle(uint8_t cycle);
-void stepMotor_move_cw(void);
-void stepMotor_move_ccw(void);
-
-void setOpenDoorLock(void);
-void setCloseDoorLock(void);
-void move_steppingMotor(void);
+void MOTOR_init(void);
+void MOTOR_moveCCWHalfCycle(void);
+void MOTOR_setOpenLocker(void);
+void MOTOR_setCloseLocker(void);
+void MOTOR_mainTask(void);
 
 #endif
 

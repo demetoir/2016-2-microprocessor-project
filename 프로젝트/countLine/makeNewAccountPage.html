@@ -1,0 +1,58 @@
+<html>
+<head>
+    <title>make new Account Page </title>
+</head>
+<body>
+
+    <div>
+        <h1>Fridge Locker</h1>
+    </div>
+
+    <div>
+        <form method="POST" action="/checkNewAccount">
+            <div>
+                <h3>make new Account</h3>
+            </div>
+            <div>
+                id              
+                <input type="text" name="userId" />
+            </div>
+            <div>
+                password
+                <input type="password" name="pwd" />
+            </div>
+            <div>
+                confirm password
+                <input type="password" name="confirmPwd" />
+            </div>
+            <div>
+                {% if request.args['isPwdNotConfirm'] :%}
+                    password does not match with password confirm
+                {% endif %}
+            </div>
+            <div>
+                {% if request.args['isIDNotAble'] :%}
+                    ID unable
+                {% endif %}
+            </div>
+            <div>
+                <button type='submit'>make new Account </button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

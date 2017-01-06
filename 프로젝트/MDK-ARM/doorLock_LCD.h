@@ -11,17 +11,25 @@
 #include "doorLock_data.h"
 
 
-void init_lcd(void);
-void setLCDkey(char  val);
-void setLCD_refresh(void);
-//void setLCDMode(LCD_MODE mode);
 
-void showLabel(void);
-void showInit(void);
-void showServerDisconnection(void);
-void showSelectLockerPage(void);
-void LCD_refresh(void);
-void clearPage(void);
+void LCD_init(void);
+
+void LCD_setRefresh(void);
+
+void LCD_clearPage(void);
+
+// print lcd
+void LCD_printHeader(void);
+void LCD_printInitPage(void);
+void LCD_printServerDisconnectionMsg(void);
+void LCD_printSelectLockerPage(void);
+void LCD_printEnterPasswordPage(void);
+void LCD_printWaitingPage(void);
+void LCD_printOpenLockerPage(void);
+void LCD_printWrongPasswordPage(void);
+// end print lcd
+
+void LCD_mainTask(void);
 
 
 

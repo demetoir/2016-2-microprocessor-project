@@ -62,7 +62,7 @@ def logoutPage():
 		print("after: ",session)
 		return redirect(url_for('loginPage'))
 	else:
-		return "what the fuck???"
+		return "logout fail"
 
 @app.route('/loginPage')
 def loginPage():	
@@ -140,6 +140,8 @@ def makeNewLockerPage():
 			none = None
 			)
 
+##사용자가 요청한 락커 사용 신청을 처리한다
+##락커의 비밀번호를 랜덤으로 설정하고 락커를 등록한다
 @app.route('/checkMakeNewLocker', methods = ['post'] )
 def checkMakeNewLocker():
 	userId = request.form['id']
@@ -156,6 +158,7 @@ def completeMakeNewLockerPage():
 			userId = userId
 				)
 
+##사용한 락커를 반납하는 페이지
 @app.route('/returnLocker', methods = ['POST', 'GET'])
 def returnLocker():
 	userId = request.form["userId"]
@@ -188,6 +191,7 @@ def killAllSession():
 def makeNewAccountPage():
 	return render_template("makeNewAccountpage.html")
 
+##웹서버와 키트와의 UART통신을 하기위해 두개의 스레드로 각각 실행하도록 만든다
 if __name__ == "__main__":
 	initLockerDb()
 	try:
@@ -195,8 +199,8 @@ if __name__ == "__main__":
 		armServer = arm_m3_kit_server.arm_m3_kit_server()
 		thArmServer = threading.Thread(target = armServer.main, kwargs={'_lockerDB': lockerDB} )
 		thArmServer.start()
-		thFlaskServer = threading.Thread(target = app.run, args = ('192.168.0.2', 8080) )
-		#thFlaskServer = threading.Thread(target = app.run, args = ('127.0.0.1', 8080) )
+		#thFlaskServer = threading.Thread(target = app.run, args = ('192.168.0.2', 8080) )
+		thFlaskServer = threading.Thread(target = app.run, args = ('127.0.0.1', 8080) )
 		thFlaskServer.start()
 		threadList +=[thArmServer, thFlaskServer]
 	

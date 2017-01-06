@@ -31,14 +31,14 @@
 .\obj\main.o: LPC1768_Huins.h
 .\obj\main.o: LPC1768_motor.h
 .\obj\main.o: LPC1768_Huins.h
+.\obj\main.o: doorLock_KEYPAD.h
+.\obj\main.o: doorLock_LCD.h
+.\obj\main.o: doorLock_data.h
 .\obj\main.o: doorLock_FND.h
 .\obj\main.o: LPC1768_fnd.h
 .\obj\main.o: LPC1768_Huins.h
 .\obj\main.o: LPC1768_utility.h
 .\obj\main.o: LPC1768_Huins.h
-.\obj\main.o: doorLock_data.h
-.\obj\main.o: doorLock_KEYPAD.h
-.\obj\main.o: doorLock_LCD.h
 .\obj\main.o: doorLock_data.h
 .\obj\main.o: doorLock_data.h
 .\obj\main.o: doorLock_UART.h

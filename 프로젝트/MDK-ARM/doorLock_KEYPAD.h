@@ -45,7 +45,6 @@
 #define KEY_CLOSE						'F'
 
 //////////////////// Mapping //////////////////////////////
-//
 // cKeypad_Value       Rev_Value
 // --------------      ----------
 // 0						1
@@ -78,24 +77,22 @@
 ////////////////////////////////////////////////////////////
 
 void EXT_IO_init(void);
-void Keypad_DIR_Output(void);
-void Keypad_DIR_Input(void);
+void KEYPAD_DIR_Output(void);
+void KEYPAD_DIR_Input(void);
 void EXT_IO_A_CS(void);
 void EXT_IO_B_CS(void);
 void EXT_IO_C_CS(void);
-void Keypad_Output_Row_1(void);
-void Keypad_Output_Row_2(void);
-void Keypad_Output_Row_3(void);
-void Keypad_Output_Row_4(void);
+void KEYPAD_Output_Row_1(void);
+void KEYPAD_Output_Row_2(void);
+void KEYPAD_Output_Row_3(void);
+void KEYPAD_Output_Row_4(void);
 uint8_t Keypad_Input(uint8_t Low_Num);
-uint8_t Keypad(int8_t EXT_IO_DIR);
+uint8_t KEYPAD_getPressKeyNumber(int8_t EXT_IO_DIR);
 
-int getKEYPAD_ivalue(void);
-char getKEYPAD_cvalue(void);
 
-void init_keypad(void);
-void Keypad_test(void);
-void init_keypad_vactor(void);
+void KEYPAD_initKeypadMappingVector(void);
+void KEYPAD_init(void);
+void Keypad_mainTask(void);
 #endif // !_doorlock_keypad_H_
 
 

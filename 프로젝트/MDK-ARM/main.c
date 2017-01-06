@@ -48,15 +48,10 @@
 #include "lpc17xx_pinsel.h"
 #endif // !"lpc17xx_pinsel.h"
 
-//#ifndef _debug_frmwrk_h
-//#include "debug_frmwrk.h"
-//#endif // !"debug_frmwrk.h"
-
 #include "doorlock_data.h"
 #include "doorLock_utility.h"
 #include "doorLock_LCD.h"
 #include "doorLock_MOTOR.h"
-#include "doorLock_FND.h"
 #include "doorLock_KEYPAD.h"
 #include "doorLock_UART.h"
 ////////////////////////////////////////////////////////////////////////////////////
@@ -65,114 +60,78 @@
 
 /*declare function ---------------------------------------------------------------*/
 ////////////////////////////////////////////////////////////////////////////////////
-
-////		timer0
-
 TIM_TIMERCFG_Type TIM_ConfigStruct;
 TIM_MATCHCFG_Type TIM_MatchConfigStruct;
 void init_timer0(void);
-void time_update(void);
+void DATA_timeUpdate(void);
 void TIMER0_IRQHandler(void);
-//		end timer0
 
-// INT button pressed
-void init_EXTI(void);
-void EINT0_IRQHandler(void);
-
-// system total init leave in main.c ??
 void init(void);
-
 ////////////////////////////////////////////////////////////////////////////////////////
 /*end declare function ---------------------------------------------------------------*/
 
-/* Private function ------------------------------------------------------------------*/
-////////////////////////////////////////////////////////////////////////////////////////
-//		init function
+//사용할 기능들을 모두 초기화한다
 void init() {
-	init_FND();
 	init_timer0();
-	init_lcd();
-	init_keypad();
-	init_EXTI();
-	init_stepping_motor();
+	LCD_init();
+	KEYPAD_init();
+	MOTOR_init();
 	UART_init();
 }
-//		init function
-/* end Private function --------------------------------------------------------------*/
-////////////////////////////////////////////////////////////////////////////////////////
 
-
+//main
 int main(void) {
+	//사용할 모든 기능을 초기화
 	init();
+
+	//무한 루프를 돌면서 각 기능이 동작하게만든다
 	while (1) {
-		FND_blink();
-		Keypad_test();
-		LCD_refresh();
-		move_steppingMotor();
-		UART_communication();
+		Keypad_mainTask();
+		LCD_mainTask();
+		MOTOR_mainTask();
+		UART_mainTask();
 	}
 }
 
 /* INTERRUPT HANDLER -----------------------------------------------------------------*/
 ////////////////////////////////////////////////////////////////////////////////////////
-
 // call every 1 sec
 void init_timer0() {
 	//timer0 init
-	TIM_ConfigStruct.PrescaleOption = TIM_PRESCALE_USVAL;	//	us(microsecond) 占쏙옙占쏙옙占쏙옙占쏙옙 Prescale 占쏙옙占쏙옙
-	TIM_ConfigStruct.PrescaleValue = 100;	//	100us
-	TIM_MatchConfigStruct.MatchChannel = 0;	//	0占쏙옙 채占쏙옙 占쏙옙占쏙옙
-	TIM_MatchConfigStruct.IntOnMatch = ENABLE;	//	Timer占쏙옙 占쏙옙치占쏙옙 占쏙옙  Interrupt 占쌩삼옙 Enable
-	TIM_MatchConfigStruct.ResetOnMatch = ENABLE;	//	Timer占쏙옙 占쏙옙치占쏙옙 占쏙옙  Reset Enable
-	TIM_MatchConfigStruct.StopOnMatch = DISABLE;	//	Timer占쏙옙 占쏙옙치占쏙옙 占쏙옙 Timer Stop Disable
-	TIM_MatchConfigStruct.ExtMatchOutputType = TIM_EXTMATCH_NOTHING;	//	Timer 占쏙옙치占쌀띰옙 占싣뱄옙占쏙옙 占쌤븝옙 占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙 (占쌤부뤄옙 占쏙옙占쏙옙占쏙옙占쏙옙 占십깍옙 占쏙옙占쏙옙占쏙옙 GPIO占쏙옙 占쏙옙占쏙옙占쏙옙占쏙옙 占십아듸옙 占쏙옙.)
-	TIM_MatchConfigStruct.MatchValue = 10000;	// Timer 占쏙옙치 占쏙옙 占쏙옙占쏙옙 100us * 10000占쏙옙 = 1占쏙옙
+	TIM_ConfigStruct.PrescaleOption = TIM_PRESCALE_USVAL;	//	us(microsecond) 기준으로 Prescale 설정
+	TIM_ConfigStruct.PrescaleValue = 100;					//	100us
+	TIM_MatchConfigStruct.MatchChannel = 0;					//	0번 채널 사용
+	TIM_MatchConfigStruct.IntOnMatch = ENABLE;				//	Timer가 일치할 때  Interrupt 발생 Enable
+	TIM_MatchConfigStruct.ResetOnMatch = ENABLE;			//	Timer가 일치할 때  Reset Enable
+	TIM_MatchConfigStruct.StopOnMatch = DISABLE;			//	Timer가 일치할 때 Timer Stop Disable
+	TIM_MatchConfigStruct.ExtMatchOutputType = TIM_EXTMATCH_NOTHING;	//	Timer 일치할때 아무런 외부 출력 하지 않음 (외부로 출력하지 않기 때문에 GPIO를 설정하지 않아도 됨.)
+	TIM_MatchConfigStruct.MatchValue = 10000;				// Timer 일치 값 설정 100us * 10000번 = 1초
 
 	TIM_Init(LPC_TIM0, TIM_TIMER_MODE, &TIM_ConfigStruct);	//  TIM_ConfigStruct 설정 적용
 	TIM_ConfigMatch(LPC_TIM0, &TIM_MatchConfigStruct);		// TIM_MatchConfigStruct 설정 적용
-	NVIC_EnableIRQ(TIMER0_IRQn);	//	TIMER0 Interrupt 활성화
-	TIM_Cmd(LPC_TIM0, ENABLE);	//	Timer Start
+	NVIC_EnableIRQ(TIMER0_IRQn);							//	TIMER0 Interrupt 활성화
+	TIM_Cmd(LPC_TIM0, ENABLE);								//	Timer Start
 }
 
-
+//매초마다 인터럽트 핸들러에 진한다 
 void TIMER0_IRQHandler(void) {
-	TIM_ClearIntPending(LPC_TIM0, TIM_MR0_INT); //TIM0 interrupt clear
+	//timer0의 인터럽트 비트를 클리어하여 다음 1초 후에 진입하도록 만든다
+	TIM_ClearIntPending(LPC_TIM0, TIM_MR0_INT); 
 
-	// timer for 1sec,10sec,1minute,10minute
-	time_update();	
+	//현재 시간을 1초가 지난 시간으로 업데이트 한다 
+	DATA_timeUpdate();	
 
-	//repaint
-	setLCD_refresh();
+	//1초마다 lcd 화면이 갱신이 하도록 설정한다
+	LCD_setRefresh();
 
-	//uart_refresh count 
-	uart_refresh_counter_up();
-	UART_liveSigal_count_up();
+	//arm 프로세서가 서버와 연결되어있다면 연결확인을 위한 카운터를 갱신한다
+	if (DATA_isServerConnected())
+		DATA_connectionCountDown();
 
-	if (isServerConnected())
-		connectionCountDown();
-
-	if (isRequestedPermission())
-		sendingMsgCountDown();
+	//비밀번호를 확인하기위해 전달한 메세지를 위한 카운터를 갱신한다
+	if (DATA_isRequestedPermission())
+		DATA_sendingMsgCountDown();
 }
-
-// INT button pressed
-void init_EXTI() {
-	EXTI_Init();	// EXTI 초기화
-	AF_ConfigPin(GPIO_PORT_2, PINSEL_PIN_10, PINSEL_FUNC_1);	// 단순 GPIO 기능이 아닌 Alternate Function을 사용하기 위해 설정
-	EXTI_ConfigPin(EXTI_EINT0); // EXTI0 설정
-	NVIC_EnableIRQ(EINT0_IRQn); // EXTI0 활성화
-}
-void EINT0_IRQHandler(void) {
-	//clear INTERRUPT bit
-	EXTI_ClearEXTIFlag(EXTI_EINT0);
-
-	//capture current time.
-	setOpenDoorLock();
-}
-
-////////////////////////////////////////////////////////////////////////////////////////
-/* end INTERRUPT HANDLER -------------------------------------------------------------*/
-
 
 
 
