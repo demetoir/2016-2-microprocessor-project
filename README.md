@@ -8,7 +8,7 @@
 -   Flask(python)를 이용한 웹서버 구성
 
 # demo
-- TBD
+- [Demo PPT link](https://docs.google.com/presentation/d/1ZqrdrRI4rhzknihFlKyHWttXvxb19Hb5_U_-GvePH38/edit?usp=sharing)
 
 
 # 개발 기간
